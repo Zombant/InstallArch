@@ -37,7 +37,7 @@ usermod -aG wheel,audio,video,optical,storage ${USERNAME}
 
 # Install sudo
 pacman -S sudo --noconfirm
-https://raw.githubusercontent.com/Zombant/InstallArch/master/wheel_group.txt > wheel_group.txt
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/wheel_group.txt > wheel_group.txt
 cat wheel_group.txt >> /etc/sudoers.tmp
 
 # Install grub
