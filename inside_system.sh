@@ -37,7 +37,8 @@ usermod -aG wheel,audio,video,optical,storage ${USERNAME}
 
 # Install sudo
 pacman -S sudo --noconfirm
-echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers.tmp
+https://raw.githubusercontent.com/Zombant/InstallArch/master/wheel_group.txt > wheel_group.txt
+cat wheel_group.txt >> /etc/sudoers.tmp
 
 # Install grub
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
