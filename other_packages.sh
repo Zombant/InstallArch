@@ -10,6 +10,9 @@ sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/ligh
 
 sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
 
+# Enable multilib
+sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/'
+
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -S dolphin firefox termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation --noconfirm
