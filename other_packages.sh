@@ -11,7 +11,8 @@ sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/ligh
 sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
 
 # Other stuff
-pacman -S dolphin firefox termite --noconfirm
+# ttf-liberation is a font for steam
+pacman -S dolphin firefox termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation --noconfirm
 
 # Update
 pacman -Syu --noconfirm
@@ -23,4 +24,9 @@ chown ${1} /home/${1}/yay
 su $1 <<EOF
 	cd /home/${1}/yay
 	makepkg -sri --noconfirm
+	# Sync AUR
+	yay -Syu	
+
+	# Install AUR packages
+	yay -S android-studio zoom minecraft-launcher
 EOF
