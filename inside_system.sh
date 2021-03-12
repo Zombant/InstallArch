@@ -61,7 +61,7 @@ pacman -S networkmanager --noconfirm
 systemctl enable NetworkManager
 
 ## Install and set up other necessities for a base install
-pacman -S nano git base-devel iwd openssh go --noconfirm
+pacman -S nano git base-devel iwd openssh --noconfirm
 systemctl enable iwd
 
 # Install DE and other packages
