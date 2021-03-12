@@ -18,9 +18,9 @@ pacman -Syu --noconfirm
 
 # Install yay
 pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git /home/a/yay
-chown $1 /home/a/yay
-su $1 <<'EOF'
+git clone https://aur.archlinux.org/yay.git /home/${1}/yay
+chown ${1} /home/${1}/yay
+su $1 <<EOF
 	cd /home/${1}/yay
 	makepkg -sri --noconfirm
 EOF
