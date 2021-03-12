@@ -59,7 +59,7 @@ read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
 case $OTHER in
 	y|Y)
 	echo "Installing Packages"
-	chmod +x /mnt/other_packages.sh
+	chmod +x other_packages.sh
 	./other_packages.sh
 	;;
 	n|N)
