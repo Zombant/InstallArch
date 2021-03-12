@@ -17,11 +17,10 @@ pacman -S dolphin firefox termite --noconfirm
 pacman -Syu --noconfirm
 
 # Install yay
-echo $1
 pacman -S go --noconfirm
+git clone https://aur.archlinux.org/yay.git /home/a/yay
+chown $1 /home/a/yay
 su $1 <<'EOF'
-	cd /home/${1}
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
+	cd /home/${1}/yay
 	makepkg -sri --noconfirm
 EOF
