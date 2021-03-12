@@ -37,7 +37,8 @@ usermod -aG wheel,audio,video,optical,storage ${USERNAME}
 
 # Install sudo
 pacman -S sudo --noconfirm
-echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+#echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+sed -i '/#\s*%wheel ALL=(ALL) ALL$/ c %wheel ALL=(ALL) ALL' /etc/sudoers
 
 # Install grub
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
@@ -51,10 +52,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman -S networkmanager --noconfirm
 systemctl enable NetworkManager
 
-# Install other necessities for a base install
-pacman -S nano --noconfirm
+## Install and set up other necessities for a base install
+pacman -S nano git base-devel iwd --noconfirm
+systemctl enable iwd
 
-# Install my stuff
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -sri
+cd ..
+rm -r yay
+
+# Install DE and other packages
 read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
 case $OTHER in
 	y|Y)
