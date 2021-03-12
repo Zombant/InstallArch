@@ -9,6 +9,9 @@ chmod +x other_packages.sh
 # Sync time
 timedatectl set-ntp true
 
+# Wait for timedatectl output
+sleep 5
+
 # Show disks
 lsblk -f
 
