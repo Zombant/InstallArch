@@ -55,5 +55,4 @@ arch-chroot /mnt ./inside_system.sh $EFI
 rm /mnt/inside_system.sh
 rm /mnt/other_packages.sh
 umount -l /mnt
-clear
 echo "Installation finished. Remove media and reboot now."
