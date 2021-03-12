@@ -31,14 +31,13 @@ passwd
 # Set up user
 read -p "Enter your username: " USERNAME
 useradd -m ${USERNAME}
-echo "Enter the password for ${USERNAME}:
+echo "Enter the password for ${USERNAME}":
 passwd ${USERNAME}
 usermod -aG wheel,audio,video,optical,storage ${USERNAME}
 
 # Install sudo
 pacman -S sudo --noconfirm
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/wheel_group.txt > wheel_group.txt
-cat wheel_group.txt >> /etc/sudoers.tmp
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers.tmp
 
 # Install grub
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
@@ -56,9 +55,22 @@ systemctl enable NetworkManager
 pacman -S nano --noconfirm
 
 # Install my stuff
-chmod +x /mnt/other_packages.sh
-./other_packages.sh
-
+read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
+case $OTHER in
+	y|Y)
+	echo "Installing Packages"
+	chmod +x /mnt/other_packages.sh
+	./other_packages.sh
+	;;
+	n|N)
+	echo ""
+	;;
+	*)
+	echo "Installing Packages"
+	chmod +x /mnt/other_packages.sh
+	./other_packages.sh
+	;;
+esac
 
 
 # Exit chroot
