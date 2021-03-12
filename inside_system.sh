@@ -15,6 +15,7 @@ touch /etc/locale.conf
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Set hostname and save to /etc/hostname
+clear
 read -p "Enter the hostname for this computer: " HOST
 echo "${HOST}" >> /etc/hostname
 
@@ -25,10 +26,14 @@ echo "::1		localhost" >> /etc/hosts
 echo "127.0.1.1	${HOST}.localdomain	${HOST}" >> /etc/hosts
 
 # Set up root password
-echo "Enter the root password:"
+echo ""
+echo "Set up root password..."
 passwd
 
 # Set up user
+echo ""
+echo ""
+echo "Set up user..."
 read -p "Enter your username: " USERNAME
 useradd -m ${USERNAME}
 echo "Enter the password for ${USERNAME}":
@@ -43,10 +48,13 @@ sed -i '/#\s*%wheel ALL=(ALL) ALL$/ c %wheel ALL=(ALL) ALL' /etc/sudoers
 # Install grub
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 mkdir /boot/EFI
-read -p "Enter the EFI partition: " EFI
-mount ${EFI} /boot/EFI
+#read -p "Enter the EFI partition: " EFI
+mount $1 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# Update
+pacman -Syu --noconfirm
 
 # Install and enable network manager
 pacman -S networkmanager --noconfirm
@@ -56,13 +64,18 @@ systemctl enable NetworkManager
 pacman -S nano git base-devel iwd --noconfirm
 systemctl enable iwd
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -sri
-cd ..
-rm -r yay
+# Install yay
+su $USERNAME <<'EOF'
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -sli
+	cd ..
+	rm -r yay
+EOF
+	
 
 # Install DE and other packages
+clear
 read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
 case $OTHER in
 	y|Y)

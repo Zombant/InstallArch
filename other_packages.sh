@@ -11,4 +11,7 @@ sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/ligh
 sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
 
 # Other stuff
-pacman -S dolphin firefox termite
+pacman -S dolphin firefox termite --noconfirm
+
+# Update
+pacman -Syu

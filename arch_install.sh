@@ -7,12 +7,16 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/other_packa
 chmod +x other_packages.sh
 
 # Sync time
+echo "Syncing time..."
 timedatectl set-ntp true
 
 # Wait for timedatectl output
 sleep 5
 
 # Show disks
+echo ""
+echo ""
+echo "Disk formatting..."
 lsblk -f
 
 # Format EFI partition
@@ -44,10 +48,11 @@ cp inside_system.sh /mnt/inside_system.sh
 cp other_packages.sh /mnt/other_packages.sh
 chmod +x /mnt/inside_system.sh
 chmod +x /mnt/other_packages.sh
-arch-chroot /mnt ./inside_system.sh
+arch-chroot /mnt ./inside_system.sh $EFI
 
 # After running inside_system
 rm /mnt/inside_system.sh
 rm /mnt/other_packages.sh
 umount -l /mnt
+clear
 echo "Installation finished. Remove media and reboot now."
