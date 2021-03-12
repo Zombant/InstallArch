@@ -17,6 +17,7 @@ pacman -S dolphin firefox termite --noconfirm
 pacman -Syu --noconfirm
 
 # Install yay
+echo $1
 su $1 <<'EOF'
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
