@@ -56,11 +56,9 @@ systemctl enable NetworkManager
 pacman -S nano --noconfirm
 
 # Install my stuff
-read -p  "Base install finished. Install other packages? [y/n]" OTHER
-if [ $OTHER == "y" ]; then
-	chmod +x /mnt/other_packages.sh
-	./other_packages.sh
-fi
+chmod +x /mnt/other_packages.sh
+./other_packages.sh
+
 
 
 # Exit chroot
