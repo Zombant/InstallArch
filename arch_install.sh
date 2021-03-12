@@ -1,5 +1,11 @@
 #! /bin/bash
 
+# Download other scripts
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/inside_system.sh > inside_system.sh
+chmod +x inside_system.sh
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/other_packages.sh > other_packages.sh
+chmod +x other_packages.sh
+
 # Sync time
 timedatectl set-ntp true
 
