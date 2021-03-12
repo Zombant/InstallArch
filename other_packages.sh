@@ -14,4 +14,11 @@ sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-g
 pacman -S dolphin firefox termite --noconfirm
 
 # Update
-pacman -Syu
+pacman -Syu --noconfirm
+
+# Install yay
+su $1 <<'EOF'
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -sri --noconfirm
+EOF

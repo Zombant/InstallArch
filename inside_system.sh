@@ -61,18 +61,8 @@ pacman -S networkmanager --noconfirm
 systemctl enable NetworkManager
 
 ## Install and set up other necessities for a base install
-pacman -S nano git base-devel iwd --noconfirm
+pacman -S nano git base-devel iwd openssh go --noconfirm
 systemctl enable iwd
-
-# Install yay
-su $USERNAME <<'EOF'
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
-	makepkg -sli
-	cd ..
-	rm -r yay
-EOF
-	
 
 # Install DE and other packages
 clear
@@ -81,7 +71,7 @@ case $OTHER in
 	y|Y)
 	echo "Installing Packages"
 	chmod +x other_packages.sh
-	./other_packages.sh
+	./other_packages.sh $USERNAME
 	;;
 	n|N)
 	echo ""
@@ -89,7 +79,7 @@ case $OTHER in
 	*)
 	echo "Installing Packages"
 	chmod +x /mnt/other_packages.sh
-	./other_packages.sh
+	./other_packages.sh $USERNAME
 	;;
 esac
 

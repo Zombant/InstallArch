@@ -14,9 +14,10 @@ timedatectl set-ntp true
 sleep 5
 
 # Show disks
+clear
 echo ""
 echo ""
-echo "Disk formatting..."
+echo "Format disks:"
 lsblk -f
 
 # Format EFI partition
