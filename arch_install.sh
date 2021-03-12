@@ -41,7 +41,7 @@ cp inside_system.sh /mnt/inside_system.sh
 cp other_packages.sh /mnt/other_packages.sh
 chmod +x /mnt/inside_system.sh
 chmod +x /mnt/other_packages.sh
-arch-chroot /mnt ./inside_system
+arch-chroot /mnt ./inside_system.sh
 
 # After running inside_system
 rm /mnt/inside_system.sh
