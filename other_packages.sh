@@ -1,14 +1,16 @@
 #! /bin/bash
 
-# Setup environment with xorg, plasma, and lightdm with a theme
-pacman -S xorg xorg-xinit plasma-meta lightdm lightdm-gtk-greeter lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --noconfirm
+# Setup environment
+pacman -S xorg xorg-xinit plasma-meta --noconfirm
+
+# pacman -S lightdm lightdm-gtk-greeter lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --noconfirm
+
 echo "exec startplasma-x11" >> ~/.xinitrc
-systemctl enable lightdm
+systemctl enable sddm.service
 
-sed -i '/#user-session=/ c user-session=plasma' /etc/lightdm/lightdm.conf
-sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/lightdm/lightdm.conf
-
-sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
+#sed -i '/#user-session=/ c user-session=plasma' /etc/lightdm/lightdm.conf
+#sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/lightdm/lightdm.conf
+#sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
 
 # Enable multilib
 sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
@@ -29,5 +31,7 @@ su $1 <<EOF
 	yay -Syu	
 
 	# Install AUR packages
-	yay -S android-studio zoom minecraft-launcher
+	yay -S android-studio
+	yay -S  zoom
+	yay -S minecraft-launcher
 EOF
