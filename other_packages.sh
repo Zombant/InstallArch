@@ -15,10 +15,8 @@ sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/' /et
 
 # Other stuff
 # ttf-liberation is a font for steam
-pacman -S dolphin firefox termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation --noconfirm
-
-# Update
 pacman -Syu --noconfirm
+pacman -S dolphin firefox termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation
 
 # Install yay
 pacman -S go --noconfirm
