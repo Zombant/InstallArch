@@ -18,20 +18,21 @@ sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/' /et
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S dolphin firefox termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation
+pacman -S dolphin termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation
 
-# Install yay
-pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git /home/${1}/yay
-chown ${1} /home/${1}/yay
+# Install paru
+git clone https://aur.archlinux.org/paru.git /home/${1}/paru
+chown ${1} /home/${1}/paru
 su $1 <<EOF
-	cd /home/${1}/yay
+	cd /home/${1}/paru
 	makepkg -sri --noconfirm
 	# Sync AUR
-	yay -Syu	
+	paru -Syu	
 
 	# Install AUR packages
-	yay -S android-studio
-	yay -S  zoom
-	yay -S minecraft-launcher
+	#paru -S android-studio
+	#paru -S zoom
+	#paru -S minecraft-launcher
+	#paru -S chrome-remote-desktop
+	#paru -S brave-bin
 EOF
