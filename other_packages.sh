@@ -23,8 +23,8 @@ pacman -S dolphin termite intellij-idea-community-edition anki arduino blender c
 ### This section downloads from the AUR
 
 # Download paru
-git clone https://aur.archlinux.org/paru.git /home/${1}/paru
-chown ${1} /home/${1}/paru
+#git clone https://aur.archlinux.org/paru.git /home/${1}/paru
+#chown ${1} /home/${1}/paru
 
 # Download shell-color-scripts
 git clone https://aur.archlinux.org/shell-color-scripts.git /home/${1}/shell-color-scripts
@@ -59,10 +59,10 @@ su $1 <<EOF
 
 	### This section installs downloaded AUR packages
 	# Install paru
-	cd /home/${1}/paru
-	makepkg -sri --noconfirm
+	#cd /home/${1}/paru
+	#makepkg -sri --noconfirm
 	# Sync AUR
-	paru -Syu
+	#paru -Syu
 	
 	# Install shell-color-scripts
 	cd /home/${1}/shell-color-scripts
