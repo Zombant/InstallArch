@@ -1,19 +1,27 @@
 #! /bin/bash
 
 # Setup environment
-pacman -S xorg xorg-xinit plasma-meta --noconfirm
+pacman -S xorg xorg-xinit --noconfirm
 
-# pacman -S lightdm lightdm-gtk-greeter lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --noconfirm
+read -n1 -p "Install plasma? [y/n]" PLASMA
+case $PLASMA in
+	y|Y)
+	echo "Installing plasma..."
+	pacman -S plasma-meta --noconfirm
+	echo "exec startplasma-x11" >> ~/.xinitrc
+	systemctl enable sddm.service
+	;;
+	*)
+	echo "Installing plasma..."
+	pacman -S plasma-meta --noconfirm
+	echo "exec startplasma-x11" >> ~/.xinitrc
+	systemctl enable sddm.service
+	;;
+esac
 
-echo "exec startplasma-x11" >> ~/.xinitrc
-systemctl enable sddm.service
-
-#sed -i '/#user-session=/ c user-session=plasma' /etc/lightdm/lightdm.conf
-#sed -i '/#greeter-session=/ c greeter-session=lightdm-webkit2-greeter' /etc/lightdm/lightdm.conf
-#sed -i '/^webkit_theme/ c webkit_theme = litarvan' /etc/lightdm/lightdm-webkit-greeter.conf
-
-# Enable multilib
-sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+# Download pacman.conf
+#sed -i 's/#\[multilib\]/[multilib]\n\Include = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
 
 # Other stuff
 # ttf-liberation is a font for steam

@@ -69,6 +69,7 @@ clear
 read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
 case $OTHER in
 	y|Y)
+	echo ""
 	echo "Installing Packages"
 	chmod +x other_packages.sh
 	./other_packages.sh $USERNAME
