@@ -19,13 +19,21 @@ case $PLASMA in
 	;;
 esac
 
-# Download pacman.conf
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
-
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
 pacman -S dolphin termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord
+
+
+# Download pacman.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
+
+# Download .bashrc
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.bashrc > /home/${1}/.bashrc
+
+# Download termite config
+mkdir /home/${1}/.config/termite
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/termite/config > /home/${1}/.config/termite/config
 
 ### This section downloads from the AUR
 
