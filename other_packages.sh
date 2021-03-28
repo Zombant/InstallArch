@@ -22,7 +22,7 @@ esac
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S dolphin termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord
+pacman -S dolphin termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord arandr
 
 
 # Download pacman.conf
@@ -65,6 +65,10 @@ chown ${1} /home/${1}/chrome-remote-desktop
 git clone https://aur.archlinux.org/brave-bin.git /home/${1}/brave-bin
 chown ${1} /home/${1}/brave-bin
 
+# Download chrome-remote-desktop
+git clone https://aur.archlinux.org/chrome-remote-desktop.git /home/${1}/chrome-remote-desktop
+chown ${1} /home/${1}/brave-bin
+
 ###
 
 # Run as user
@@ -102,6 +106,11 @@ su $1 <<EOF
 	# Install brave-bin
 	cd /home/${1}/brave-bin
 	makepkg -sri --noconfirm
+
+	# Install chrome-remote-desktop
+	cd /home/${1}/chrome-remote-desktop
+	makepkg -sri --noconfirm
+
 
 	# Clean up home directory
 	cd /home/${1}
