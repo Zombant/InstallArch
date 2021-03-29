@@ -9,4 +9,4 @@ alias ls='ls -F -lh --color=auto'
 alias lsa='ls -F -lha --color=auto'
 PS1='[\u@\h \W]\$ '
 
-neofetch
+doge
