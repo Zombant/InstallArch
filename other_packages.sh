@@ -23,7 +23,9 @@ read -n1 -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
 	y|Y)
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar lxappearance pulseaudio pulseaudio-alsa --noconfirm
+	pulseaudio --check
+	pulseaudio -D
 	mkdir /home/${1}/.xmonad
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonad.hs
 	mkdir /home/${1}/.config/xmobar
