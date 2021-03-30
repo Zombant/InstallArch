@@ -23,7 +23,7 @@ read -n1 -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
 	y|Y)
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar lxappearance pulseaudio pulseaudio-alsa --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils--noconfirm
 	pulseaudio --check
 	pulseaudio -D
 	mkdir /home/${1}/.xmonad
