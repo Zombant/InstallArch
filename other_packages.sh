@@ -103,8 +103,6 @@ chown ${1} /home/${1}/brave-bin
 
 # Run as user
 su $1 <<EOF
-	# Add neofetch to .bashrc
-	echo neofetch >> /home/${1}/.bashrc
 
 	### This section installs downloaded AUR packages
 	# Install paru
