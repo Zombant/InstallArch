@@ -5,6 +5,7 @@ import XMonad.Util.SpawnOnce
 import Data.Monoid
 import System.Exit
 import qualified Data.Map as M
+import Data.Maybe (fromJust)
 
 -- Actions
 import XMonad.Actions.MouseResize
@@ -63,8 +64,9 @@ myFont :: String
 myFont = "xft:RobotoMono Nerd Font:size=12:antialias=true:hinting=true"
 
 -- Workspaces
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-
+myWorkspaces = ["<action=`xdotool key super+1`> 1 </action>", "<action=`xdotool key super+2`> 2 </action>", "<action=`xdotool key super+3`> 3 </action>", 
+	"<action=`xdotool key super+4`> 4 </action>", "<action=`xdotool key super+5`> 5 </action>", "<action=`xdotool key super+6`> 6 </action>",
+	"<action=`xdotool key super+7`> 7 </action>", "<action=`xdotool key super+8`> 8 </action>", "<action=`xdotool key super+9`> 9 </action>"]
 
 -------------------
 -- LAYOUTS STUFF --
@@ -201,7 +203,7 @@ main = do
 				, ppSep     = "<fc=#666666> <fn=1>|</fn> </fc>"
 				, ppUrgent   = xmobarColor "#c45500" "" . wrap "!" "!"
 				}
-  , handleEventHook	= myEventHook -- <+> docksEventHook <+> fullscreenEventHook
+  , handleEventHook	= myEventHook <+> docksEventHook <+> fullscreenEventHook
   , manageHook		= myManageHook <+> manageDocks -- <+> (isFullscreen --> doFullFloat)
   }
 
