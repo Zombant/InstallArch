@@ -11,6 +11,9 @@ case $PLASMA in
 	echo "exec startplasma-x11" >> ~/.xinitrc
 	systemctl enable sddm.service
 	;;
+	n|N)
+	echo ""
+	;;
 	*)
 	echo "Installing plasma..."
 	pacman -S plasma-meta --noconfirm
@@ -31,9 +34,18 @@ case $XMONAD in
 	mkdir /home/${1}/.config/xmobar
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
 	;;
+	n|N)
+	echo ""
+	;;
 	*)
 	echo "Installing XMonad and xmobar..."
-	
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils--noconfirm
+	pulseaudio --check
+	pulseaudio -D
+	mkdir /home/${1}/.xmonad
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonad.hs
+	mkdir /home/${1}/.config/xmobar
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
 	;;
 esac
 
