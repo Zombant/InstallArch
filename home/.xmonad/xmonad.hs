@@ -28,6 +28,10 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
 
+-- Hooks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
+
 -- For spawnPipe xmobar
 import XMonad.Util.Run
 
@@ -116,11 +120,13 @@ grid	= renamed [Replace "grid"]
 
 threeCol= renamed [Replace "threeCol"]
 	  $ windowNavigation
+	  $ mySpacing mySpacingAmount
 	  $ addTabs shrinkText myTabTheme
 	  $ ThreeCol 1 (3/100) (1/2)
 
 threeRow= renamed [Replace "threeRow"]
 	  $ windowNavigation
+	  $ mySpacing mySpacingAmount
 	  $ Mirror
 	  $ ThreeCol 1 (3/100) (1/2)
 
@@ -170,7 +176,7 @@ main = do
   xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0"
 
   --xmonad setup
-  xmonad $ docks def {
+  xmonad $ docks $ ewmh def {
     terminal		= myTerminal
   , modMask		= myModMask
   , borderWidth		= myBorderWidth
@@ -195,8 +201,8 @@ main = do
 				, ppSep     = "<fc=#666666> <fn=1>|</fn> </fc>"
 				, ppUrgent   = xmobarColor "#c45500" "" . wrap "!" "!"
 				}
-  , handleEventHook	= myEventHook
-  , manageHook		= myManageHook
+  , handleEventHook	= myEventHook -- <+> docksEventHook <+> fullscreenEventHook
+  , manageHook		= myManageHook <+> manageDocks -- <+> (isFullscreen --> doFullFloat)
   }
 
 
@@ -276,7 +282,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
-    -- Toggle Borders
+    -- Toggle fullscreen with no borders
     , ((modm		  , xK_v     ), sendMessage (XMonad.Layout.MultiToggle.Toggle NBFULL) >> sendMessage ToggleStruts)
     ]
     ++
