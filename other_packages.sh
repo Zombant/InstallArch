@@ -18,6 +18,22 @@ case $PLASMA in
 	systemctl enable sddm.service
 	;;
 esac
+clear
+read -n1 -p "Install XMonad with xmobar? [y/n]" XMONAD
+case $XMONAD in
+	y|Y)
+	echo "Installing XMonad and xmobar..."
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar --noconfirm
+	mkdir /home/${1}/.xmonad
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonad.hs
+	mkdir /home/${1}/.config/xmobar
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
+	;;
+	*)
+	echo "Installing XMonad and xmobar..."
+	
+	;;
+esac
 
 # Other stuff
 # ttf-liberation is a font for steam
