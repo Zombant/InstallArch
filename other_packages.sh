@@ -34,7 +34,11 @@ case $XMONAD in
 	pulseaudio --check
 	pulseaudio -D
 	mkdir /home/${1}/.xmonad
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonad.hs
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
+	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
+	rm /home/${1}/.xmonad/xmonadtemp.hs
+	xmonad --recompile
+	mkdir /home/${1}/.config
 	mkdir /home/${1}/.config/xmobar
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
 	;;
