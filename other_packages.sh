@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Setup environment
-pacman -Syu
+pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
 
 read -n1 -p "Install plasma? [y/n]" PLASMA
