@@ -43,7 +43,7 @@ case $XMONAD in
 	;;
 	*)
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils--noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils --noconfirm
 	pulseaudio --check
 	pulseaudio -D
 	mkdir /home/${1}/.xmonad
