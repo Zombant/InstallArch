@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Download pacman.conf (enables mirrors)
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
+
 # Setup environment
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
@@ -54,10 +57,6 @@ esac
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
 pacman -S dolphin termite intellij-idea-community-edition anki arduino blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch arandr pavucontrol doge
-
-
-# Download pacman.conf
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
 
 # Download .bashrc
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.bashrc > /home/${1}/.bashrc
