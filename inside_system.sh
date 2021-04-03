@@ -64,6 +64,7 @@ systemctl enable NetworkManager
 pacman -S nano git base-devel iwd openssh htop --noconfirm
 systemctl enable iwd
 
+
 # Install DE and other packages
 clear
 read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
