@@ -179,7 +179,7 @@ myManageHook = composeAll
 -- Run xmobar and xmonad configs
 main = do
   --xmobar0
-  xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0"
+  xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0.hs"
 
   --xmonad setup
   xmonad $ docks $ ewmh def {
@@ -286,7 +286,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "ghc --make -threaded -dynamic /home/anthony/.config/xmobar/xmobarrc0.hs -package xmobar; xmonad --recompile; xmonad --restart")
 
     -- Toggle fullscreen with no borders
     , ((modm		  , xK_v     ), sendMessage (XMonad.Layout.MultiToggle.Toggle NBFULL) >> sendMessage ToggleStruts)

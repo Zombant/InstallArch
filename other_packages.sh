@@ -32,14 +32,23 @@ case $XMONAD in
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
 	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
+
+	# Copy xmonad config
 	mkdir /home/${1}/.xmonad
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
 	rm /home/${1}/.xmonad/xmonadtemp.hs
 	xmonad --recompile
+
 	mkdir /home/${1}/.config
 	mkdir /home/${1}/.config/xmobar
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
+	# curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
+	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
+	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
+
+	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
+	
 
 	# Audio
 	pulseaudio --check
