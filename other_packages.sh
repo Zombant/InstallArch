@@ -31,7 +31,7 @@ case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
 	mkdir /home/${1}/.xmonad
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
@@ -52,10 +52,10 @@ case $XMONAD in
 
 	# Allow user to change brightness
 	# For intel
-	mkdir -p /etc/udev/rules.d
-	touch /etc/udev/rules.d/backlight.rules
-	echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
-	echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
+	# mkdir -p /etc/udev/rules.d
+	# touch /etc/udev/rules.d/backlight.rules
+	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
+	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
 	
 	;;
 	n|N)
@@ -64,7 +64,7 @@ case $XMONAD in
 	*)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom ttf-ubuntu-font-family --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom ttf-ubuntu-font-family --noconfirm
 	mkdir /home/${1}/.xmonad
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
@@ -85,10 +85,10 @@ case $XMONAD in
 
 	# Allow user to change brightness
 	# For intel
-	mkdir -p /etc/udev/rules.d
-	touch /etc/udev/rules.d/backlight.rules
-	echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
-	echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
+	# mkdir -p /etc/udev/rules.d
+	# touch /etc/udev/rules.d/backlight.rules
+	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
+	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
 	
 	;;
 esac

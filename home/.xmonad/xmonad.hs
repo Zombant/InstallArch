@@ -1,14 +1,17 @@
 import XMonad
 import qualified XMonad.StackSet as W
-
-import XMonad.Util.SpawnOnce
-import Data.Monoid
 import System.Exit
+
+ -- Data
 import qualified Data.Map as M
 import Data.Maybe (fromJust)
+import Data.Monoid
 
 -- Actions
-import XMonad.Actions.MouseResize
+-- import XMonad.Actions.MouseResize
+import qualified XMonad.Actions.FlexibleResize as Flex
+import XMonad.Actions.CycleWS
+import XMonad.Actions.FloatSnap
 
 -- Layouts
 import XMonad.Layout.GridVariants (Grid(Grid))
@@ -32,15 +35,14 @@ import XMonad.Layout.NoBorders
 -- Hooks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ManageDocks -- For preventing windows from covering xmobar
+import XMonad.Hooks.DynamicLog -- For showing workspaces on xmobar
 
--- For spawnPipe xmobar
-import XMonad.Util.Run
-
--- For preventing windows from covering xmobar
-import XMonad.Hooks.ManageDocks
-
--- For showing workspaces on xmobar
-import XMonad.Hooks.DynamicLog
+-- Utils
+import XMonad.Util.Run -- For spawnPipe xmobar
+import XMonad.Util.SpawnOnce
+import XMonad.Util.EZConfig
 
 -- Variables
 myTerminal	= "termite"
@@ -145,7 +147,7 @@ myTabTheme = def { fontName		= myFont
 		  }
 
 -- layout hook
-myLayouts = avoidStruts $ mouseResize $ windowArrange $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) (tall ||| magnify
+myLayouts = avoidStruts {- $ mouseResize -} $ windowArrange $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) (tall ||| magnify
  ||| noBorders oneWin ||| floating ||| grid ||| threeCol ||| threeRow ||| noBorders tabs)
 
 
@@ -155,6 +157,8 @@ myLayouts = avoidStruts $ mouseResize $ windowArrange $ mkToggle (NBFULL ?? NOBO
 myStartupHook :: X ()
 myStartupHook = do
 	spawnOnce "nitrogen --restore &"
+	spawnOnce "picom --experimental-backends -D 3 -o 0 -r 0 --vsync &"
+	setWMName "LG3D"
 
 
 -- Stuff to run when the windows set is changed
@@ -205,7 +209,7 @@ main = do
 				}
   , handleEventHook	= myEventHook <+> docksEventHook <+> fullscreenEventHook
   , manageHook		= myManageHook <+> manageDocks -- <+> (isFullscreen --> doFullFloat)
-  }
+  } `additionalKeysP` myAdditionalKeys
 
 
 
@@ -286,6 +290,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Toggle fullscreen with no borders
     , ((modm		  , xK_v     ), sendMessage (XMonad.Layout.MultiToggle.Toggle NBFULL) >> sendMessage ToggleStruts)
+    
+    -- Cycle to the next workspace
+    , ((modm .|. controlMask  , xK_Right ), nextWS)
+    
+    -- Cycle to the previous workspace
+    , ((modm .|. controlMask  , xK_Left ), prevWS)
     ]
     ++
 
@@ -306,20 +316,35 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
+myAdditionalKeys :: [(String, X ())]
+myAdditionalKeys =
+	[ -- Audio controls
+	  ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+	, ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
+	, ("<XF86AudioMute>", spawn "amixer set Master toggle")
+	, ("<XF86AudioPlay>", spawn "")
+	, ("<XF86AudioPrev>", spawn "")
+	, ("<XF86AudioNext>", spawn "")
+	
+	  -- Brightness controls
+	, ("<XF86MonBrightnessUp>", spawn "awk -F: '{ print $1 + 50 }' /sys/class/backlight/intel_backlight/brightness > /sys/class/backlight/intel_backlight/brightness")
+	, ("<XF86MonBrightnessDown>", spawn "awk -F: '{ print $1 - 50 }' /sys/class/backlight/intel_backlight/brightness > /sys/class/backlight/intel_backlight/brightness")
+	]
 
 -- Mouse bindings
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
     [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
-                                       >> windows W.shiftMaster))
+                     		       >> windows W.shiftMaster))
 
     -- mod-button2, Raise the window to the top of the stack
     , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
-                                       >> windows W.shiftMaster))
+    , ((modm, button3), (\w -> focus w >> Flex.mouseResizeWindow w
+                                       >> windows W.shiftMaster
+				       >> afterDrag (snapMagicMouseResize 50 (Just 50) (Just 50) w)))
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
