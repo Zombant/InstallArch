@@ -31,28 +31,29 @@ case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit --noconfirm
 
 
 
 	# Copy xmonad config
-	mkdir /home/${1}/.xmonad
+	mkdir -p /home/${1}/.xmonad
+	chown ${1} -R /home/${1}
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
 	rm /home/${1}/.xmonad/xmonadtemp.hs
-	chown ${1} /home/${1}/.xmonad/xmonad.hs
-	chown ${1} /home/${1}/.xmonad/	
+	# chown ${1} /home/${1}/.xmonad/xmonad.hs
+	# chown ${1} /home/${1}/.xmonad/
+	chown ${1} -R /home/${1}
 	xmonad --recompile
 
 	# Copy xmobar config and scripts
-	mkdir /home/${1}/.config
-	mkdir /home/${1}/.config/xmobar
+	mkdir -p /home/${1}/.config/xmobar
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
 	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
 	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
 	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
-
+	chown ${1} -R /home/${1}
 	# Compile xmobar
 	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
 	
@@ -80,15 +81,34 @@ case $XMONAD in
 	*)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar trayer xorg-xclock cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom ttf-ubuntu-font-family --noconfirm
-	mkdir /home/${1}/.xmonad
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit --noconfirm
+
+
+
+	# Copy xmonad config
+	mkdir -p /home/${1}/.xmonad
+	chown ${1} -R /home/${1}
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
 	rm /home/${1}/.xmonad/xmonadtemp.hs
+	# chown ${1} /home/${1}/.xmonad/xmonad.hs
+	# chown ${1} /home/${1}/.xmonad/
+	chown ${1} -R /home/${1}
 	xmonad --recompile
-	mkdir /home/${1}/.config
-	mkdir /home/${1}/.config/xmobar
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
+
+	# Copy xmobar config and scripts
+	mkdir -p /home/${1}/.config/xmobar
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
+	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
+	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
+	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
+	chown ${1} -R /home/${1}
+	# Compile xmobar
+	cabal install --lib xmobar
+	cabal install --lib process
+	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
+	
 
 	# Audio
 	pulseaudio --check
@@ -159,6 +179,12 @@ chown ${1} /home/${1}/brave-bin
 git clone https://aur.archlinux.org/nerd-fonts-mononoki.git /home/${1}/nerd-fonts-mononoki
 chown ${1} /home/${1}/nerd-fonts-mononoki
 
+# Download nerd-fonts-roboto-mono
+git clone https://aur.archlinux.org/nerd-fonts-roboto-mono.git /home/${1}/nerd-fonts-roboto-mono
+chown ${1} /home/${1}/nerd-fonts-roboto-mono
+
+chown ${1} -R /home/${1}
+
 ###
 
 # Run as user
@@ -203,6 +229,10 @@ su $1 <<EOF
 	cd /home/${1}/nerd-fonts-mononoki
 	makepkg -sri --noconfirm
 
+	# Install nerd-fonts-roboto-mono
+	cd /home/${1}/nerd-fonts-roboto-mono
+	makepkg -sri --noconfirm
+
 
 	# Clean up home directory
 	cd /home/${1}
@@ -214,7 +244,7 @@ su $1 <<EOF
 	rm -rf chrome-remote-desktop
 	rm -rf brave-bin
 	rm -rf nerd-fonts-mononoki
-
+	rm -rf nerd-fonts-roboto-mono
 	###
 
 EOF
