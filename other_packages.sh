@@ -177,10 +177,6 @@ su $1 <<EOF
 	cd /home/${1}/brave-bin
 	makepkg -sri --noconfirm
 
-	# Install chrome-remote-desktop
-	cd /home/${1}/chrome-remote-desktop
-	makepkg -sri --noconfirm
-
 	# Install nerd-fonts-mononoki
 	cd /home/${1}/nerd-fonts-mononoki
 	makepkg -sri --noconfirm
