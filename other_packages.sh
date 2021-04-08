@@ -31,9 +31,7 @@ case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit --noconfirm
-
-
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons --noconfirm
 
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
@@ -68,6 +66,7 @@ case $XMONAD in
 	pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
 	modprobe btusb
 	systemctl enable bluetooth
+	systemctl start bluetooth
 
 	# Allow user to change brightness
 	# For intel
