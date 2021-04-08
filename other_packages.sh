@@ -55,6 +55,8 @@ case $XMONAD in
 	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
 	chown ${1} -R /home/${1}
 	# Compile xmobar
+	cabal install --lib xmobar
+	cabal install --lib process
 	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
 	
 
@@ -79,53 +81,7 @@ case $XMONAD in
 	echo ""
 	;;
 	*)
-	# XMonad and xmobar
-	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit --noconfirm
 
-
-
-	# Copy xmonad config
-	mkdir -p /home/${1}/.xmonad
-	chown ${1} -R /home/${1}
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
-	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
-	rm /home/${1}/.xmonad/xmonadtemp.hs
-	# chown ${1} /home/${1}/.xmonad/xmonad.hs
-	# chown ${1} /home/${1}/.xmonad/
-	chown ${1} -R /home/${1}
-	xmonad --recompile
-
-	# Copy xmobar config and scripts
-	mkdir -p /home/${1}/.config/xmobar
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
-	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
-	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
-	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
-	chown ${1} -R /home/${1}
-	# Compile xmobar
-	cabal install --lib xmobar
-	cabal install --lib process
-	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
-	
-
-	# Audio
-	pulseaudio --check
-	pulseaudio -D
-
-	# Bluetooth stuff
-	pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
-	modprobe btusb
-	systemctl enable bluetooth
-
-	# Allow user to change brightness
-	# For intel
-	# mkdir -p /etc/udev/rules.d
-	# touch /etc/udev/rules.d/backlight.rules
-	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
-	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
-	
 	;;
 esac
 
