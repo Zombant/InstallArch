@@ -40,6 +40,8 @@ case $XMONAD in
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
 	rm /home/${1}/.xmonad/xmonadtemp.hs
+	chown ${1} /home/${1}/.xmonad/xmonad.hs
+	chown ${1} /home/${1}/.xmonad/	
 	xmonad --recompile
 
 	# Copy xmobar config and scripts
