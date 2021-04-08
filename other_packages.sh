@@ -31,7 +31,9 @@ case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom --noconfirm
+
+
 
 	# Copy xmonad config
 	mkdir /home/${1}/.xmonad
@@ -40,13 +42,16 @@ case $XMONAD in
 	rm /home/${1}/.xmonad/xmonadtemp.hs
 	xmonad --recompile
 
+	# Copy xmobar config and scripts
 	mkdir /home/${1}/.config
 	mkdir /home/${1}/.config/xmobar
-	# curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0 >> /home/${1}/.config/xmobar/xmobarrc0
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
 	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
 	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
+	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
+	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
 
+	# Compile xmobar
 	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
 	
 
@@ -73,7 +78,7 @@ case $XMONAD in
 	*)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom ttf-ubuntu-font-family --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar trayer xorg-xclock cabal-install xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom ttf-ubuntu-font-family --noconfirm
 	mkdir /home/${1}/.xmonad
 	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs

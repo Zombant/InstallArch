@@ -158,6 +158,7 @@ myStartupHook :: X ()
 myStartupHook = do
 	spawnOnce "nitrogen --restore &"
 	spawnOnce "picom --experimental-backends -D 3 -o 0 -r 0 --vsync &"
+--	spawn "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor true --monitor 0 --transparent true --alpha 0 --tint 0x000000 --height 22 &"
 	setWMName "LG3D"
 
 
@@ -171,7 +172,8 @@ myManageHook = composeAll
   [ className =? "MPlayer"		--> doFloat
   , className =? "Gimp"			--> doFloat
   , resource  =? "desktop_window"	--> doIgnore
-  , resource  =? "kdesktop"		--> doIgnore ]
+  , resource  =? "kdesktop"		--> doIgnore
+  , resource  =? "xclock"	        --> doFloat ]
 
 
 -- Stuff for XMonad config
