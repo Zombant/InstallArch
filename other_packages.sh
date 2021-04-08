@@ -7,7 +7,8 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
 
-read -n1 -p "Install plasma? [y/n]" PLASMA
+clear
+read -p "Install plasma? [y/n]" PLASMA
 case $PLASMA in
 	y|Y)
 	echo "Installing plasma..."
@@ -26,12 +27,12 @@ case $PLASMA in
 	;;
 esac
 clear
-read -n1 -p "Install XMonad with xmobar? [y/n]" XMONAD
+read -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons xclock --noconfirm
 
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
