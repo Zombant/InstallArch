@@ -20,9 +20,9 @@ bluetoothString = do go
 	where go = do
 		status <- readProcess "/home/anthony/.config/xmobar/get-bluetooth.sh" [""] ""
 		if (status) == ("1\n")
-		  then return "<fn=1>\xf5b0 </fn>"
+		  then return "<action=`blueman-manager`><fn=1>\xf5b0 </fn></action>"
 		else
-		  return "<fn=1>\xf5b1 </fn>"
+		  return "<action=`blueman-manager`><fn=1>\xf5b1 </fn></action>"
 
 
 data TrayerPadding = TrayerPadding
@@ -57,14 +57,14 @@ config = defaultConfig { font = "xft:Ubuntu:size=12:antialias=true:hinting=true"
        , commands = [ Run $ Date "<action=`xclock -analog -twelve`> <fn=1>\xf133 </fn> %D %l:%M %p</action>" "date" 10
                     , Run $ UnsafeStdinReader
 		    , Run $ Volume "default" "Master" ["-t", "<action=`amixer set Master toggle`><status></action> <action=`pavucontrol`><volume>%</action>", "--", "-o", "<fn=1>\xfa80 </fn>", "-O", "<fn=1>\xf028 </fn>", "-c", "#aaaaaa", "-C", "#aaaaaa"] 1
-		    , Run $ DynNetwork ["-t", "<fn=1>\xf0aa </fn> <rx>KB  <fn=1>\xf0ab </fn> <tx>KB", "--"] 1
+		    , Run $ DynNetwork ["-t", "<fn=1>\xf0aa </fn> <rx>KB  <fn=1>\xf0ab </fn> <tx>KB", "--"] 50
 		    , Run $ ArchIcon
 		    , Run $ BluetoothIcon
 --		    , Run $ TrayerPadding
 		    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%archicon% %UnsafeStdinReader%}{ %bluetoothicon% | %dynnetwork% | %default:Master% | %date%"
+       , template = "%archicon% %UnsafeStdinReader%}{ %dynnetwork% | %bluetoothicon%| %default:Master% | %date%"
        }
        
 main :: IO ()

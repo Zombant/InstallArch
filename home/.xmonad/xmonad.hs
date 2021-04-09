@@ -159,6 +159,9 @@ myStartupHook = do
 	spawnOnce "nitrogen --restore &"
 	spawnOnce "picom --experimental-backends -D 3 -o 0 -r 0 --vsync &"
 --	spawn "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor true --monitor 0 --transparent true --alpha 0 --tint 0x000000 --height 22 &"
+	spawnOnce "xinput --set-prop 13 298 0 1" -- Sets the mouse acceleration mode. See "xinput --list-props <device-id>". device-id can be found with "xinput list"
+	spawnOnce "xinput --set-prop 13 295 -0.1"
+	spawnOnce "blueman-applet &"
 	setWMName "LG3D"
 
 
