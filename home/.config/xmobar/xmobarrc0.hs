@@ -64,7 +64,7 @@ config = defaultConfig { font = "xft:Ubuntu:size=12:antialias=true:hinting=true"
 		    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%archicon% %UnsafeStdinReader%}{ %dynnetwork% | %bluetoothicon%| %default:Master% | %date%"
+       , template = "%archicon% %UnsafeStdinReader%}{ %dynnetwork% |  %bluetoothicon%| %default:Master% | %date%"
        }
        
 main :: IO ()
