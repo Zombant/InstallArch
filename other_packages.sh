@@ -32,7 +32,7 @@ case $XMONAD in
 	y|Y)
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance qt5ct pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons arc-gtk-theme xorg-xclock ttf-ubuntu-font-family atril feh sxiv --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance qt5ct pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons arc-gtk-theme xorg-xclock xlockmore ttf-ubuntu-font-family atril feh sxiv --noconfirm
 
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
