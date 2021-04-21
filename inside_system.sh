@@ -61,7 +61,7 @@ pacman -S networkmanager --noconfirm
 systemctl enable NetworkManager
 
 ## Install and set up other necessities for a base install
-pacman -S nano git base-devel iwd openssh htop --noconfirm
+pacman -S nano vim git base-devel iwd openssh htop --noconfirm
 systemctl enable iwd
 
 
