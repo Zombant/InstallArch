@@ -37,7 +37,7 @@ case $XMONAD in
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
 	chown ${1} -R /home/${1}
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
+	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
 	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
 	rm /home/${1}/.xmonad/xmonadtemp.hs
 	# chown ${1} /home/${1}/.xmonad/xmonad.hs
@@ -47,10 +47,10 @@ case $XMONAD in
 
 	# Copy xmobar config and scripts
 	mkdir -p /home/${1}/.config/xmobar
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
+	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
 	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
 	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
-	curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
+	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
 	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
 	chown ${1} -R /home/${1}
 	# Compile xmobar
@@ -91,11 +91,15 @@ pacman -Syu --noconfirm
 pacman -S pcmanfm termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch arandr pavucontrol doge iftop vlc
 
 # Download .bashrc
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.bashrc > /home/${1}/.bashrc
+curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.bashrc > /home/${1}/.bashrc
 
 # Download termite config
 mkdir /home/${1}/.config/termite
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/home/.config/termite/config > /home/${1}/.config/termite/config
+curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/termite/config > /home/${1}/.config/termite/config
+
+# Download gedit config
+mkdir -p /home/${1}/.local/share/gedit
+curl -L https://github.com/Zombant/dotfiles/blob/master/.local/share/gedit/styles > /home/${1}/.local/share/gedit/styles
 
 ### This section downloads from the AUR
 
