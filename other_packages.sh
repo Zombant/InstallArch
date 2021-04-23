@@ -30,6 +30,11 @@ clear
 read -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
 	y|Y)
+	
+	# SDDM
+	pacman -S sddm --noconfirm
+	systemctl enable sddm
+	
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
 	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance qt5ct pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons arc-gtk-theme xorg-xclock xorg-xfontsel xlockmore ttf-ubuntu-font-family atril feh sxiv zip unzip fuse ntfs-3g gpick scrot vifm --noconfirm
