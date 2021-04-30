@@ -7,25 +7,25 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
 
-clear
-read -p "Install plasma? [y/n]" PLASMA
-case $PLASMA in
-	y|Y)
-	echo "Installing plasma..."
-	pacman -S plasma-meta --noconfirm
-	echo "exec startplasma-x11" >> ~/.xinitrc
-	systemctl enable sddm.service
-	;;
-	n|N)
-	echo ""
-	;;
-	*)
-	echo "Installing plasma..."
-	pacman -S plasma-meta --noconfirm
-	echo "exec startplasma-x11" >> ~/.xinitrc
-	systemctl enable sddm.service
-	;;
-esac
+#clear
+#read -p "Install plasma? [y/n]" PLASMA
+#case $PLASMA in
+#	y|Y)
+#	echo "Installing plasma..."
+#	pacman -S plasma-meta --noconfirm
+#	echo "exec startplasma-x11" >> ~/.xinitrc
+#	systemctl enable sddm.service
+#	;;
+#	n|N)
+#	echo ""
+#	;;
+#	*)
+#	echo "Installing plasma..."
+#	pacman -S plasma-meta --noconfirm
+#	echo "exec startplasma-x11" >> ~/.xinitrc
+#	systemctl enable sddm.service
+#	;;
+#esac
 clear
 read -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
@@ -37,7 +37,23 @@ case $XMONAD in
 	
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu nitrogen xmobar cabal-install udisks2 xdotool lxappearance qt5ct pulseaudio pulseaudio-alsa alsa-utils picom gedit pavucontrol doge arandr pcmanfm termite breeze-gtk breeze-icons arc-gtk-theme xorg-xclock xorg-xfontsel xlockmore ttf-ubuntu-font-family atril feh zip unzip fuse ntfs-3g gpick scrot vifm --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu xmobar cabal-install udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore gedit doge atril feh zip unzip fuse ntfs-3g gpick vifm pcmanfm --noconfirm
+	
+	
+	# Audio stuff
+	pacman -S pulseaudio pulseaudio-alsa alsa-utils pavucontrol --noconfirm
+	pulseaudio --check
+	pulseaudio -D
+
+	# Bluetooth stuff
+	pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
+	modprobe btusb
+	systemctl enable bluetooth
+	systemctl start bluetooth
+	
+	# Graphics and Appearance stuff
+	pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family scrot --noconfirm
+	
 
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
@@ -58,21 +74,12 @@ case $XMONAD in
 	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
 	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
 	chown ${1} -R /home/${1}
+	
 	# Compile xmobar
 	cabal install --lib xmobar
 	cabal install --lib process
 	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
 	
-
-	# Audio
-	pulseaudio --check
-	pulseaudio -D
-
-	# Bluetooth stuff
-	pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
-	modprobe btusb
-	systemctl enable bluetooth
-	systemctl start bluetooth
 
 	# Allow user to change brightness
 	# For intel
@@ -93,7 +100,7 @@ esac
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S pcmanfm termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch arandr pavucontrol doge iftop vlc
+pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser
 
 # Download .bashrc
 curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.bashrc > /home/${1}/.bashrc
@@ -148,6 +155,10 @@ chown ${1} /home/${1}/nerd-fonts-mononoki
 git clone https://aur.archlinux.org/nerd-fonts-roboto-mono.git /home/${1}/nerd-fonts-roboto-mono
 chown ${1} /home/${1}/nerd-fonts-roboto-mono
 
+# Download joplin-desktop
+git clone https://aur.archlinux.org/joplin.git /home/${1}/joplin
+chown ${1} /home/${1}/joplin
+
 chown ${1} -R /home/${1}
 
 ###
@@ -194,18 +205,23 @@ su $1 <<EOF
 	cd /home/${1}/nerd-fonts-roboto-mono
 	makepkg -sri --noconfirm
 
+	# Install joplin
+	cd /home/${1}/joplin
+	makepkg -sri --noconfirm
+
 
 	# Clean up home directory
 	cd /home/${1}
-	rm -rf paru
-	rm -rf shell-color-scripts
-	rm -rf android-studio
-	rm -rf zoom
-	rm -rf minecraft-launcher
-	rm -rf chrome-remote-desktop
-	rm -rf brave-bin
-	rm -rf nerd-fonts-mononoki
-	rm -rf nerd-fonts-roboto-mono
+	rm -rf paru/
+	rm -rf shell-color-scripts/
+	rm -rf android-studio/
+	rm -rf zoom/
+	rm -rf minecraft-launcher/
+	rm -rf chrome-remote-desktop/
+	rm -rf brave-bin/
+	rm -rf nerd-fonts-mononoki/
+	rm -rf nerd-fonts-roboto-mono/
+	rm -rf joplin/
 	###
 
 EOF
