@@ -37,7 +37,8 @@ case $XMONAD in
 	
 	# XMonad and xmobar
 	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu xmobar cabal-install udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore gedit doge atril feh zip unzip fuse ntfs-3g gpick vifm pcmanfm --noconfirm
+	pacman -S xmonad xmonad-contrib dmenu xmobar cabal-install udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore gedit atril feh zip unzip fuse ntfs-3g gpick vifm pcmanfm --noconfirm
+
 	
 	
 	# Audio stuff
@@ -100,7 +101,7 @@ esac
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity
+pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge
 
 # Download .bashrc
 curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.bashrc > /home/${1}/.bashrc
@@ -159,6 +160,20 @@ chown ${1} /home/${1}/nerd-fonts-roboto-mono
 git clone https://aur.archlinux.org/joplin.git /home/${1}/joplin
 chown ${1} /home/${1}/joplin
 
+# Download openrazer-driver-dkms
+git clone https://aur.archlinux.org/openrazer.git
+chown ${1} /home/${1}/openrazer
+
+# Download balena-etcher
+git clone https://aur.archlinux.org/balena-etcher.git
+chown ${1} /home/${1}/balena-etcher
+
+# Download microsoft fonts
+git clone https://aur.archlinux.org/ttf-ms-fonts.git
+git clone https://aur.archlinux.org/ttf-vista-fonts.git
+chown ${1} /home/${1}/ttf-ms-fonts
+chown ${1} /home/${1}/ttf-vista-fonts
+
 chown ${1} -R /home/${1}
 
 ###
@@ -209,6 +224,19 @@ su $1 <<EOF
 	cd /home/${1}/joplin
 	makepkg -sri --noconfirm
 
+    # Install openrazer-driver-dkms
+    cd /home/${1}/openrazer
+    makepkg -sri --noconfirm
+
+    # Install balena-etcher
+    cd /home/${1}/balena-etcher
+    makepkg -sri --noconfirm
+
+    # Install microsoft fonts
+    cd /home/${1}/ttf-ms-fonts
+    makepkg -sri --noconfirm
+    cd /home/${1}/ttf-vista-fonts
+    makepkg -sri --noconfirm
 
 	# Clean up home directory
 	cd /home/${1}
@@ -222,6 +250,8 @@ su $1 <<EOF
 	rm -rf nerd-fonts-mononoki/
 	rm -rf nerd-fonts-roboto-mono/
 	rm -rf joplin/
+    rm -rf openrazer/
+    rm -rf balena-etcher/
 	###
 
 EOF
