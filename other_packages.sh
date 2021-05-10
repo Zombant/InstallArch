@@ -39,7 +39,8 @@ case $XMONAD in
 	echo "Installing XMonad and xmobar..."
 	pacman -S xmonad xmonad-contrib dmenu xmobar cabal-install udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore gedit atril feh zip unzip fuse ntfs-3g gpick vifm pcmanfm --noconfirm
 
-	
+	# Policy Kit
+    pacman -S lxsession --noconfirm
 	
 	# Audio stuff
 	pacman -S pulseaudio pulseaudio-alsa alsa-utils pavucontrol --noconfirm
@@ -102,6 +103,12 @@ esac
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
 pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
+
+# KVM Virtual Machines
+pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
+systemctl enable libvirtd
+systemctl start libvirtd
+sudo usermod -G libvirt -a ${1}
 
 # Download .bashrc
 curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.bashrc > /home/${1}/.bashrc
