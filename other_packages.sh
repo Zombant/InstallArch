@@ -102,7 +102,7 @@ esac
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-still jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
+pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
 
 # KVM Virtual Machines
 pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
@@ -181,6 +181,10 @@ git clone https://aur.archlinux.org/ttf-vista-fonts.git
 chown ${1} /home/${1}/ttf-ms-fonts
 chown ${1} /home/${1}/ttf-vista-fonts
 
+# Download snapd
+git clone https://aur.archlinux.org/snapd.git
+chown ${1} /home/${1}/snapd
+
 chown ${1} -R /home/${1}
 
 ###
@@ -231,19 +235,23 @@ su $1 <<EOF
 	cd /home/${1}/joplin
 	makepkg -sri --noconfirm
 
-    # Install openrazer-driver-dkms
-    cd /home/${1}/openrazer
-    makepkg -sri --noconfirm
+   	# Install openrazer-driver-dkms
+    	cd /home/${1}/openrazer
+    	makepkg -sri --noconfirm
 
-    # Install balena-etcher
-    cd /home/${1}/balena-etcher
-    makepkg -sri --noconfirm
+    	# Install balena-etcher
+    	cd /home/${1}/balena-etcher
+    	makepkg -sri --noconfirm
 
-    # Install microsoft fonts
-    cd /home/${1}/ttf-ms-fonts
-    makepkg -sri --noconfirm
-    cd /home/${1}/ttf-vista-fonts
-    makepkg -sri --noconfirm
+    	# Install microsoft fonts
+    	cd /home/${1}/ttf-ms-fonts
+    	makepkg -sri --noconfirm
+    	cd /home/${1}/ttf-vista-fonts
+    	makepkg -sri --noconfirm
+    
+    	# Install snapd
+    	cd /home/${1}/snapd
+    	makepkg -sri --noconfirm
 
 	# Clean up home directory
 	cd /home/${1}
@@ -257,8 +265,15 @@ su $1 <<EOF
 	rm -rf nerd-fonts-mononoki/
 	rm -rf nerd-fonts-roboto-mono/
 	rm -rf joplin/
-    rm -rf openrazer/
-    rm -rf balena-etcher/
+   	rm -rf openrazer/
+    	rm -rf balena-etcher/
+    	rm -rf ttf-ms-fonts/
+    	rm -rf ttf-vista-fonts
+    	rm -rf snapd/
 	###
 
 EOF
+
+# Set up snaps
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap
