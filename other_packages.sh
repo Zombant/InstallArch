@@ -56,7 +56,7 @@ case $XMONAD in
 	# Graphics and Appearance stuff
 	pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family scrot --noconfirm
 	
-
+	###
 	# Copy xmonad config
 	mkdir -p /home/${1}/.xmonad
 	chown ${1} -R /home/${1}
@@ -76,6 +76,7 @@ case $XMONAD in
 	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
 	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
 	chown ${1} -R /home/${1}
+	###
 	
 	# Compile xmobar
 	cabal install --lib xmobar
@@ -102,7 +103,7 @@ esac
 # Other stuff
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S termite intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
 
 # KVM Virtual Machines
 pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
@@ -110,16 +111,7 @@ systemctl enable libvirtd
 systemctl start libvirtd
 sudo usermod -G libvirt -a ${1}
 
-# Download .bashrc
-curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.bashrc > /home/${1}/.bashrc
 
-# Download termite config
-mkdir /home/${1}/.config/termite
-curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/termite/config > /home/${1}/.config/termite/config
-
-# Download gedit config
-mkdir -p /home/${1}/.local/share/gedit
-curl -L https://github.com/Zombant/dotfiles/blob/master/.local/share/gedit/styles > /home/${1}/.local/share/gedit/styles
 
 ### This section downloads from the AUR
 
