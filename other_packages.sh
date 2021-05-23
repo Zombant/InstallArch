@@ -3,107 +3,75 @@
 # Download pacman.conf (enables mirrors)
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
 
-# Setup environment
+# Setup xorg
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
 
-#clear
-#read -p "Install plasma? [y/n]" PLASMA
-#case $PLASMA in
-#	y|Y)
-#	echo "Installing plasma..."
-#	pacman -S plasma-meta --noconfirm
-#	echo "exec startplasma-x11" >> ~/.xinitrc
-#	systemctl enable sddm.service
-#	;;
-#	n|N)
-#	echo ""
-#	;;
-#	*)
-#	echo "Installing plasma..."
-#	pacman -S plasma-meta --noconfirm
-#	echo "exec startplasma-x11" >> ~/.xinitrc
-#	systemctl enable sddm.service
-#	;;
-#esac
+
+## Stuff for all window managers ##
+
+# SDDM
+pacman -S sddm --noconfirm
+systemctl enable sddm
+
+# Lock screen
+pacman -S xlockmore --noconfirm
+
+# File managers/File systems
+pacman -S vifm pcmanfm ntfs-3g --noconfirm
+
+# Policy Kit
+pacman -S lxsession --noconfirm
+
+# Audio stuff
+pacman -S pulseaudio pulseaudio-alsa alsa-utils pavucontrol --noconfirm
+pulseaudio --check
+pulseaudio -D
+
+# Bluetooth stuff
+pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
+modprobe btusb
+systemctl enable bluetooth
+systemctl start bluetooth
+
+# Graphics and Appearance stuff
+pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family scrot --noconfirm
+
+# Other programs
+pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzip fuse gpick --noconfirm	
+
+# Changing brightness
+# For intel
+# mkdir -p /etc/udev/rules.d
+# touch /etc/udev/rules.d/backlight.rules
+# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
+# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
+
 clear
+
 read -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
 	y|Y)
 	
-	# SDDM
-	pacman -S sddm --noconfirm
-	systemctl enable sddm
-	
 	# XMonad and xmobar
-	echo "Installing XMonad and xmobar..."
-	pacman -S xmonad xmonad-contrib dmenu xmobar cabal-install udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore gedit atril feh zip unzip fuse ntfs-3g gpick vifm pcmanfm --noconfirm
-
-	# Policy Kit
-    pacman -S lxsession --noconfirm
-	
-	# Audio stuff
-	pacman -S pulseaudio pulseaudio-alsa alsa-utils pavucontrol --noconfirm
-	pulseaudio --check
-	pulseaudio -D
-
-	# Bluetooth stuff
-	pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
-	modprobe btusb
-	systemctl enable bluetooth
-	systemctl start bluetooth
-	
-	# Graphics and Appearance stuff
-	pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family scrot --noconfirm
-	
-	###
-	# Copy xmonad config
-	mkdir -p /home/${1}/.xmonad
-	chown ${1} -R /home/${1}
-	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.xmonad/xmonad.hs >> /home/${1}/.xmonad/xmonadtemp.hs
-	cat /home/${1}/.xmonad/xmonadtemp.hs > /home/${1}/.xmonad/xmonad.hs
-	rm /home/${1}/.xmonad/xmonadtemp.hs
-	# chown ${1} /home/${1}/.xmonad/xmonad.hs
-	# chown ${1} /home/${1}/.xmonad/
-	chown ${1} -R /home/${1}
-	xmonad --recompile
-
-	# Copy xmobar config and scripts
-	mkdir -p /home/${1}/.config/xmobar
-	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/xmobarrc0.hs >> /home/${1}/.config/xmobar/xmobarrc0temp.hs
-	cat /home/${1}/.config/xmobar/xmobarrc0temp.hs > /home/${1}/.config/xmobar/xmobarrc0.hs
-	rm /home/${1}/.config/xmobar/xmobarrc0temp.hs
-	curl -L https://raw.githubusercontent.com/Zombant/dotfiles/master/.config/xmobar/get-bluetooth.sh >> /home/${1}/.config/xmobar/get-bluetooth.sh
-	chmod +x /home/${1}/.config/xmobar/get-bluetooth.sh
-	chown ${1} -R /home/${1}
-	###
-	
-	# Compile xmobar
-	cabal install --lib xmobar
-	cabal install --lib process
-	ghc --make -threaded -dynamic /home/${1}/.config/xmobar/xmobarrc0.hs -package xmobar
-	
-
-	# Allow user to change brightness
-	# For intel
-	# mkdir -p /etc/udev/rules.d
-	# touch /etc/udev/rules.d/backlight.rules
-	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
-	# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
+	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
 	
 	;;
 	n|N)
 	echo ""
 	;;
 	*)
-
+	
+	# XMonad and xmobar
+	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
+	
 	;;
 esac
 
-# Other stuff
+## Stuff for any system ##
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim qutebrowser audacity doge macchanger calcurse
 
 # KVM Virtual Machines
 pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
