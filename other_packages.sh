@@ -79,7 +79,8 @@ systemctl enable libvirtd
 systemctl start libvirtd
 sudo usermod -G libvirt -a ${1}
 
-
+# Install starship prompt
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 ### This section downloads from the AUR
 
