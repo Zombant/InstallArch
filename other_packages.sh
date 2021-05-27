@@ -82,6 +82,9 @@ sudo usermod -G libvirt -a ${1}
 # Install starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
+# Install .NET Core and mono
+pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
+
 ### This section downloads from the AUR
 
 # Download paru
