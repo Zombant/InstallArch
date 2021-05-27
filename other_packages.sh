@@ -136,6 +136,10 @@ chown ${1} /home/${1}/openrazer
 git clone https://aur.archlinux.org/balena-etcher.git
 chown ${1} /home/${1}/balena-etcher
 
+# Download unityhub
+git clone https://aur.archlinux.org/unityhub.git
+chown ${1} /home/${1}/unityhub
+
 # Download microsoft fonts
 git clone https://aur.archlinux.org/ttf-ms-fonts.git
 git clone https://aur.archlinux.org/ttf-vista-fonts.git
@@ -202,6 +206,10 @@ su $1 <<EOF
 
     	# Install balena-etcher
     	cd /home/${1}/balena-etcher
+    	makepkg -sri --noconfirm
+    	
+    	# Install unityhub
+    	cd /home/${1}/unityhub
     	makepkg -sri --noconfirm
 
     	# Install microsoft fonts
