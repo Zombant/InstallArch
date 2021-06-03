@@ -153,6 +153,11 @@ chown ${1} /home/${1}/ttf-vista-fonts
 git clone https://aur.archlinux.org/snapd.git
 chown ${1} /home/${1}/snapd
 
+# Download blugon
+git clone https://aur.archlinux.org/blugon.git
+chown ${1} /home/${1}/blugon
+
+
 chown ${1} -R /home/${1}
 
 ###
@@ -224,6 +229,11 @@ su $1 <<EOF
     	# Install snapd
     	cd /home/${1}/snapd
     	makepkg -sri --noconfirm
+
+        # Install blugon
+    	cd /home/${1}/blugon
+    	makepkg -sri --noconfirm
+
 
 	# Clean up home directory
 	cd /home/${1}
