@@ -47,6 +47,7 @@ pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzi
 # echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
 # echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
 
+
 clear
 
 read -p "Install XMonad with xmobar? [y/n]" XMONAD
@@ -71,7 +72,8 @@ esac
 ## Stuff for any system ##
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser audacity doge macchanger calcurse
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser audacity doge macchanger calcurse exa bat ripgrep tokei procs
+
 
 # KVM Virtual Machines
 pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
