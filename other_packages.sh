@@ -72,7 +72,7 @@ esac
 ## Stuff for any system ##
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser audacity doge macchanger calcurse exa bat ripgrep tokei procs
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet
 
 
 # KVM Virtual Machines
@@ -159,6 +159,11 @@ chown ${1} /home/${1}/snapd
 git clone https://aur.archlinux.org/blugon.git
 chown ${1} /home/${1}/blugon
 
+# Download gmi2html
+git clone https://aur.archlinux.org/gmi2html.git /home/${1}/gmi2html
+chown ${1} /home/${1}/gmi2html
+
+
 
 chown ${1} -R /home/${1}
 
@@ -236,6 +241,9 @@ su $1 <<EOF
     	cd /home/${1}/blugon
     	makepkg -sri --noconfirm
 
+        # Install gmi2html
+    	cd /home/${1}/gmi2html
+    	makepkg -sri --noconfirm
 
 	# Clean up home directory
 	cd /home/${1}
@@ -254,6 +262,8 @@ su $1 <<EOF
     	rm -rf ttf-ms-fonts/
     	rm -rf ttf-vista-fonts
     	rm -rf snapd/
+    	rm -rf blugon/
+    	rm -rf gmi2html/
 	###
 
 EOF
