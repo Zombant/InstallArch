@@ -163,6 +163,8 @@ chown ${1} /home/${1}/blugon
 git clone https://aur.archlinux.org/gmi2html.git /home/${1}/gmi2html
 chown ${1} /home/${1}/gmi2html
 
+git clone https://aur.archlinux.org/newsflash.git /home/${1}/newsflash
+chown ${1} /home/${1}/newsflash
 
 
 chown ${1} -R /home/${1}
@@ -245,6 +247,10 @@ su $1 <<EOF
     	cd /home/${1}/gmi2html
     	makepkg -sri --noconfirm
 
+	# Install newsflash
+    	cd /home/${1}/newsflash
+    	makepkg -sri --noconfirm
+
 	# Clean up home directory
 	cd /home/${1}
 	rm -rf paru/
@@ -264,6 +270,7 @@ su $1 <<EOF
     	rm -rf snapd/
     	rm -rf blugon/
     	rm -rf gmi2html/
+	rm -rf newsflash/
 	###
 
 EOF
