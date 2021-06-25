@@ -169,6 +169,10 @@ chown ${1} /home/${1}/newsflash
 git clone https://aur.archlinux.org/shortwave.git /home/${1}/shortwave
 chown ${1} /home/${1}/shortwave
 
+git clone https://aur.archlinux.org/moc-pulse-svn.git /home/${1}/moc-pulse-svn
+chown ${1} /home/${1}/moc-pulse-svn
+
+
 chown ${1} -R /home/${1}
 
 ###
@@ -257,6 +261,11 @@ su $1 <<EOF
     	cd /home/${1}/shortwave
     	makepkg -sri --noconfirm
 
+	# Install moc-pulse-svn
+    	cd /home/${1}/moc-pulse-svn
+    	makepkg -sri --noconfirm
+
+
 	# Clean up home directory
 	cd /home/${1}
 	rm -rf paru/
@@ -278,6 +287,7 @@ su $1 <<EOF
     	rm -rf gmi2html/
 	rm -rf newsflash/
 	rm -rf shortwave/
+	rm -rf moc-pulse-svn
 	###
 
 EOF
