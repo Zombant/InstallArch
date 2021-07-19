@@ -35,7 +35,7 @@ systemctl enable bluetooth
 systemctl start bluetooth
 
 # Graphics and Appearance stuff
-pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family scrot --noconfirm
+pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family noto-fonts-emoji scrot --noconfirm
 
 # Other programs
 pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzip fuse gpick --noconfirm	
