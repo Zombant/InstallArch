@@ -37,6 +37,9 @@ systemctl start bluetooth
 # Graphics and Appearance stuff
 pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family noto-fonts-emoji scrot --noconfirm
 
+# Notifications
+pacman -S dunst libnotify
+
 # Other programs
 pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzip fuse gpick --noconfirm	
 
