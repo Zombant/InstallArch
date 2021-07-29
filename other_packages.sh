@@ -18,7 +18,7 @@ systemctl enable sddm
 pacman -S xlockmore --noconfirm
 
 # File managers/File systems
-pacman -S vifm pcmanfm ntfs-3g --noconfirm
+pacman -S vifm pcmanfm ntfs-3g cifs-utils --noconfirm
 
 # Policy Kit
 pacman -S lxsession --noconfirm
@@ -55,27 +55,47 @@ clear
 
 read -p "Install XMonad with xmobar? [y/n]" XMONAD
 case $XMONAD in
-	y|Y)
-	
+    y|Y)
 	# XMonad and xmobar
 	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
 	
 	;;
-	n|N)
+    
+    n|N)
 	echo ""
-	;;
-	*)
 	
+	;;
+
+    *)
 	# XMonad and xmobar
 	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
 	
 	;;
 esac
 
+read -p "Install openbox with tint2 panel? [y/n]" OPENBOX
+case $OPENBOX in
+    y|Y)
+	# Openbox and tint2
+	pacman -S openbox tint2 obconf --noconfirm
+	
+	;;
+    
+    n|N)
+	echo ""
+
+	;;
+    
+    *)
+	# Openbox and tint2
+	pacman -S openbox tint2 obconf --noconfirm
+	
+	;;
+
 ## Stuff for any system ##
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet prettyping dvdstyler
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch doge iftop vlc vim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet prettyping dvdstyler newsflash nmap youtube-dl
 
 
 # KVM Virtual Machines
