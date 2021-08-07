@@ -130,15 +130,9 @@ pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
 # ttf-vista-fonts
 # unityhub
 # zoom
-
-
-###
-
-# Run as user
-su $1 <<EOF
-
-
-EOF
+# nbtexplorer-bin
+# rpi-imager
+# scrcpy
 
 # Set up snaps
 systemctl enable --now snapd.socket
