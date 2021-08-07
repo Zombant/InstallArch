@@ -121,7 +121,8 @@ pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
 # moc-pulse-svn
 # nerd-fonts-mononoki
 # nerd-fonts-roboto-mono
-# openrazer-driver-dkms
+# openrazer-meta
+# polychromatic-git
 # paru
 # python-spotdl
 # shell-color-scripts
