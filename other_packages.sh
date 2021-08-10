@@ -43,6 +43,9 @@ pacman -S dunst libnotify
 # Other programs
 pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzip fuse gpick --noconfirm	
 
+# Android phone
+pacman -S android-file-transfer --noconfirm
+
 # Changing brightness
 # For intel
 # mkdir -p /etc/udev/rules.d
