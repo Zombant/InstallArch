@@ -18,7 +18,7 @@ systemctl enable sddm
 pacman -S xlockmore --noconfirm
 
 # File managers/File systems
-pacman -S vifm pcmanfm ntfs-3g cifs-utils --noconfirm
+pacman -S vifm pcmanfm ntfs-3g cifs-utils fuse --noconfirm
 
 # Policy Kit
 pacman -S lxsession --noconfirm
@@ -34,17 +34,26 @@ modprobe btusb
 systemctl enable bluetooth
 systemctl start bluetooth
 
-# Graphics and Appearance stuff
-pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme ttf-ubuntu-font-family noto-fonts-emoji scrot --noconfirm
+# Appearance
+pacman -S nitrogen picom arandr scrot --noconfirm
+
+# Fonts
+pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts xorg-xfontsel --noconfirm
+
+# Themes and icons
+pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
 
 # Notifications
 pacman -S dunst libnotify
 
-# Other programs
-pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore xorg-fonts-misc xorg-xlsfonts atril feh zip unzip atool fuse gpick --noconfirm	
+# Compression
+pacman -S zip unzip atool --noconfirm
 
 # Android phone
 pacman -S android-file-transfer --noconfirm
+
+# Other programs
+pacman -S udisks2 xdotool xorg-xclock xlockmore atril feh gpick --noconfirm
 
 # Changing brightness
 # For intel
