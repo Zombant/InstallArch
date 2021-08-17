@@ -35,13 +35,13 @@ systemctl enable bluetooth
 systemctl start bluetooth
 
 # Graphics and Appearance stuff
-pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme ttf-ubuntu-font-family noto-fonts-emoji scrot --noconfirm
+pacman -S nitrogen lxappearance qt5ct picom arandr breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme ttf-ubuntu-font-family noto-fonts-emoji scrot --noconfirm
 
 # Notifications
 pacman -S dunst libnotify
 
 # Other programs
-pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore atril feh zip unzip fuse gpick --noconfirm	
+pacman -S udisks2 xdotool xorg-xclock xorg-xfontsel xlockmore xorg-fonts-misc xorg-xlsfonts atril feh zip unzip atool fuse gpick --noconfirm	
 
 # Android phone
 pacman -S android-file-transfer --noconfirm
@@ -98,7 +98,7 @@ case $OPENBOX in
 ## Stuff for any system ##
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch iftop vlc neovim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet prettyping dvdstyler nmap youtube-dl neomutt
+pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch iftop vlc neovim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet prettyping dvdstyler nmap youtube-dl neomutt lolcat
 
 
 # KVM Virtual Machines
