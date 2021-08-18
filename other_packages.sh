@@ -52,6 +52,12 @@ pacman -S zip unzip atool --noconfirm
 # Android phone
 pacman -S android-file-transfer --noconfirm
 
+# KVM Virtual Machines
+pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
+systemctl enable libvirtd
+systemctl start libvirtd
+sudo usermod -G libvirt -a ${1}
+
 # Other programs
 pacman -S udisks2 xdotool xorg-xclock xlockmore atril feh gpick --noconfirm
 
@@ -104,23 +110,40 @@ case $OPENBOX in
 	
 	;;
 
-## Stuff for any system ##
+
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S alacritty xterm intellij-idea-community-edition pycharm-community-edition code gedit anki arduino arduino-avr-core blender cmatrix gimp grub-customizer libreoffice-fresh jre-openjdk neofetch steam ttf-liberation java-runtime discord stellarium putty wireshark-qt virtualbox virtualbox-host-modules-arch iftop vlc neovim emacs qutebrowser amfora audacity doge macchanger calcurse exa bat ripgrep tokei procs figlet prettyping dvdstyler nmap youtube-dl neomutt lolcat
+pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop vlc macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl
 
+# Terminals
+pacman -S alacritty xterm --noconfirm
 
-# KVM Virtual Machines
-pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
-systemctl enable libvirtd
-systemctl start libvirtd
-sudo usermod -G libvirt -a ${1}
+# Text editors
+pacman -S neovim emacs gedit --noconfirm
+
+# Browsers
+pacman -S qutebrowser amfora --noconfirm
+
+# Email
+pacman -S isync neomutt --noconfirm
+
+# Programming/IDEs
+pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
+
+# Graphics/design
+pacman -S gimp blender --noconfirm
+
+# Audio editors
+pacman -S audacity --noconfirm
 
 # Install starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
-# Install .NET Core and mono
+# .NET Core and mono
 pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
+
+# Fun stuff
+pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 
 ### AUR packages to install
 # agate-bin
