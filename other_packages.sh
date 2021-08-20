@@ -18,7 +18,7 @@ systemctl enable sddm
 pacman -S xlockmore --noconfirm
 
 # File managers/File systems
-pacman -S vifm pcmanfm ntfs-3g cifs-utils fuse --noconfirm
+pacman -S pcmanfm ntfs-3g cifs-utils fuse --noconfirm
 
 # Policy Kit
 pacman -S lxsession --noconfirm
@@ -169,6 +169,7 @@ pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 # nbtexplorer-bin
 # rpi-imager
 # scrcpy
+# lf
 
 # Set up snaps
 systemctl enable --now snapd.socket
