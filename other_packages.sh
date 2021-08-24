@@ -68,47 +68,11 @@ pacman -S udisks2 xdotool xorg-xclock xlockmore atril feh gpick --noconfirm
 # echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
 # echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
 
-
-clear
-
-read -p "Install XMonad with xmobar? [y/n]" XMONAD
-case $XMONAD in
-    y|Y)
-	# XMonad and xmobar
-	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
-	
-	;;
-    
-    n|N)
-	echo ""
-	
-	;;
-
-    *)
-	# XMonad and xmobar
-	pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
-	
-	;;
-esac
-
-read -p "Install openbox with tint2 panel? [y/n]" OPENBOX
-case $OPENBOX in
-    y|Y)
-	# Openbox and tint2
-	pacman -S openbox tint2 obconf --noconfirm
-	
-	;;
-    
-    n|N)
-	echo ""
-
-	;;
-    
-    *)
-	# Openbox and tint2
-	pacman -S openbox tint2 obconf --noconfirm
-	
-	;;
+# Window managers
+# XMonad and xmobar
+pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
+# Openbox and tint2
+pacman -S openbox tint2 obconf --noconfirm
 
 
 # ttf-liberation is a font for steam
@@ -135,6 +99,9 @@ pacman -S gimp blender --noconfirm
 
 # Audio editors
 pacman -S audacity --noconfirm
+
+# Calculators
+pacman -S qalculate-gtk --noconfirm
 
 # Install starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
