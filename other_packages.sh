@@ -59,7 +59,7 @@ systemctl start libvirtd
 sudo usermod -G libvirt -a ${1}
 
 # Other programs
-pacman -S udisks2 xdotool xorg-xclock xlockmore atril feh gpick --noconfirm
+pacman -S udisks2 xdotool xorg-xclock xlockmore gpick --noconfirm
 
 # Changing brightness
 # For intel
@@ -84,6 +84,12 @@ pacman -S alacritty xterm --noconfirm
 
 # Text editors
 pacman -S neovim emacs gedit --noconfirm
+
+# Document viewers
+pacman -S atril zathura --noconfirm
+
+# Image viewers
+pacman -S feh --noconfirm
 
 # Browsers
 pacman -S qutebrowser amfora --noconfirm
