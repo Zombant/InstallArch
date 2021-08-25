@@ -86,7 +86,7 @@ pacman -S alacritty xterm --noconfirm
 pacman -S neovim emacs gedit --noconfirm
 
 # Document viewers
-pacman -S atril zathura --noconfirm
+pacman -S atril zathura zathura-pdf-mupdf --noconfirm
 
 # Image viewers
 pacman -S feh --noconfirm
