@@ -101,7 +101,7 @@ pacman -S isync neomutt --noconfirm
 pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
 
 # Graphics/design
-pacman -S gimp blender --noconfirm
+pacman -S gimp blender imagemagick --noconfirm
 
 # Audio editors
 pacman -S audacity --noconfirm
