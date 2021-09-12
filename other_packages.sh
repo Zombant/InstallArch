@@ -3,6 +3,9 @@
 # Download pacman.conf (enables mirrors)
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
 
+# Download makepkg.conf (use all CPU cores)
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.conf > /etc/makepkg.conf
+
 # Setup xorg
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
@@ -71,13 +74,17 @@ pacman -S udisks2 xdotool xorg-xclock xlockmore gpick --noconfirm
 # Window managers
 # XMonad and xmobar
 pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
+
+# After installing dotfiles:
+# ghc --make -threaded -dynamic $HOME/.config/xmobar/xmobarrc0.hs -package xmobar
+
 # Openbox and tint2
 pacman -S openbox tint2 obconf --noconfirm
 
 
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl
+pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl --noconfirm
 
 # Terminals
 pacman -S alacritty xterm --noconfirm
@@ -121,6 +128,9 @@ pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
 # Fun stuff
 pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 
+# AUR
+pacman -S base-devel --noconfirm
+
 ### AUR packages to install
 # agate-bin
 # android-studio
@@ -136,8 +146,7 @@ pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 # polychromatic-git
 # paru
 # python-spotdl
-# shell-color-scripts
-# snapd
+# snap
 # ttf-ms-fonts
 # ttf-vista-fonts
 # unityhub
