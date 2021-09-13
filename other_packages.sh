@@ -6,6 +6,9 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf
 # Download makepkg.conf (use all CPU cores)
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.conf > /etc/makepkg.conf
 
+# Download 30-touchpad.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/30-touchpad.conf > /etc/X11/xorg.conf.d/30-touchpad.conf
+
 # Setup xorg
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
