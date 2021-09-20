@@ -50,7 +50,13 @@ pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts 
 pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
 
 # Notifications
-pacman -S dunst libnotify
+pacman -S dunst libnotify --noconfirm
+
+# System tray
+pacman -S stalonetray --noconfirm
+
+# Network applet
+pacman -S network-manager-applet --noconfirm
 
 # Compression
 pacman -S zip unzip atool --noconfirm
@@ -158,6 +164,7 @@ pacman -S base-devel --noconfirm
 # rpi-imager
 # scrcpy
 # lf
+# networkmanager-dmenu-git
 
 # Set up snaps
 systemctl enable --now snapd.socket
