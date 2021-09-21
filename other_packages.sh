@@ -165,6 +165,7 @@ pacman -S base-devel --noconfirm
 # scrcpy
 # lf
 # networkmanager-dmenu-git
+# text2pdf
 
 # Set up snaps
 systemctl enable --now snapd.socket
