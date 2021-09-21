@@ -114,7 +114,7 @@ pacman -S intellij-idea-community-edition pycharm-community-edition code arduino
 pacman -S gimp blender imagemagick --noconfirm
 
 # Audio editors
-pacman -S audacity --noconfirm
+pacman -S audacity mpg123 --noconfirm
 
 # Calculators
 pacman -S qalculate-gtk --noconfirm
