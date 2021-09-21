@@ -6,6 +6,9 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf
 # Download makepkg.conf (use all CPU cores)
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.conf > /etc/makepkg.conf
 
+# Download 30-touchpad.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/30-touchpad.conf > /etc/X11/xorg.conf.d/30-touchpad.conf
+
 # Setup xorg
 pacman -Syu --noconfirm
 pacman -S xorg xorg-xinit --noconfirm
@@ -47,7 +50,13 @@ pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts 
 pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
 
 # Notifications
-pacman -S dunst libnotify
+pacman -S dunst libnotify --noconfirm
+
+# System tray
+pacman -S stalonetray --noconfirm
+
+# Network applet
+pacman -S network-manager-applet --noconfirm
 
 # Compression
 pacman -S zip unzip atool --noconfirm
@@ -155,6 +164,7 @@ pacman -S base-devel --noconfirm
 # rpi-imager
 # scrcpy
 # lf
+# networkmanager-dmenu-git
 
 # Set up snaps
 systemctl enable --now snapd.socket
