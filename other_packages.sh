@@ -104,6 +104,9 @@ pacman -S neovim emacs gedit --noconfirm
 # Document viewers
 pacman -S atril zathura zathura-pdf-mupdf --noconfirm
 
+# Document mergers
+pacman -S poppler --noconfirm
+
 # Image viewers
 pacman -S feh --noconfirm
 
