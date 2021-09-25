@@ -129,7 +129,7 @@ pacman -S gimp blender imagemagick --noconfirm
 pacman -S audacity mpg123 --noconfirm
 
 # Calculators
-pacman -S qalculate-gtk --noconfirm
+pacman -S qalculate-gtk octave --noconfirm
 
 # Install starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
