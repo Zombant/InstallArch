@@ -93,7 +93,7 @@ pacman -S openbox tint2 obconf --noconfirm
 
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl --noconfirm
+pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck --noconfirm
 
 # Terminals
 pacman -S alacritty xterm --noconfirm
