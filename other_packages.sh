@@ -111,7 +111,10 @@ pacman -S poppler --noconfirm
 pacman -S feh --noconfirm
 
 # Media players
-pacman -S vlc mpv --noconfirm
+pacman -S vlc mpv mplayer --noconfirm
+
+# Audio visualizer
+pacman -S glava --noconfirm
 
 # Browsers
 pacman -S qutebrowser amfora --noconfirm
@@ -120,6 +123,7 @@ pacman -S qutebrowser amfora --noconfirm
 pacman -S isync neomutt --noconfirm
 
 # Programming/IDEs
+pacman -S nasm --noconfirm
 pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
 
 # Graphics/design
