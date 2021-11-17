@@ -90,6 +90,14 @@ pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
 # Openbox and tint2
 pacman -S openbox tint2 obconf --noconfirm
 
+# XFCE
+pacman -S xfce4 --noconfirm
+
+# Docks
+pacman -S plank --noconfirm
+
+# Bspwm
+pacman -S bspwm --noconfirm
 
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
@@ -97,6 +105,9 @@ pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberati
 
 # Terminals
 pacman -S alacritty xterm --noconfirm
+
+# Run launcher
+pacman -S rofi --noconfirm
 
 # Text editors
 pacman -S neovim emacs gedit --noconfirm
@@ -117,7 +128,7 @@ pacman -S vlc mpv mplayer --noconfirm
 pacman -S glava --noconfirm
 
 # Browsers
-pacman -S qutebrowser amfora --noconfirm
+pacman -S qutebrowser amfora firefox --noconfirm
 
 # Email
 pacman -S isync neomutt --noconfirm
@@ -133,7 +144,8 @@ pacman -S gimp blender imagemagick --noconfirm
 pacman -S audacity mpg123 --noconfirm
 
 # Calculators
-pacman -S qalculate-gtk octave --noconfirm
+# gcc-fortran is for octave packages
+pacman -S qalculate-gtk octave gcc-fortran --noconfirm
 
 # Install starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
@@ -173,6 +185,8 @@ pacman -S base-devel --noconfirm
 # lf
 # networkmanager-dmenu-git
 # text2pdf
+# polybar
+# kjv-git
 
 # Set up snaps
 systemctl enable --now snapd.socket
