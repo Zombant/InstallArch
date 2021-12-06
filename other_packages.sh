@@ -49,6 +49,9 @@ pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts 
 # Themes and icons
 pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
 
+# Wallpapers
+pacman -S archlinux-wallpaper livewallpaper --noconfirm
+
 # Notifications
 pacman -S dunst libnotify --noconfirm
 
