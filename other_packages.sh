@@ -58,8 +58,8 @@ pacman -S dunst libnotify --noconfirm
 # System tray
 pacman -S stalonetray --noconfirm
 
-# Network applet
-pacman -S network-manager-applet --noconfirm
+# Applets applet
+pacman -S network-manager-applet pasystray --noconfirm
 
 # Compression
 pacman -S zip unzip atool --noconfirm
