@@ -9,10 +9,22 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.con
 # Download 30-touchpad.conf
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/30-touchpad.conf > /etc/X11/xorg.conf.d/30-touchpad.conf
 
-# Setup xorg
+# Update
 pacman -Syu --noconfirm
-pacman -S xorg xorg-xinit --noconfirm
 
+# For pacman mirror updates
+pacman -S reflector --noconfirm
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/reflector.conf > /etc/xdg/reflector/reflector.conf
+systemctl enable reflector.service
+
+# Set up changemac service
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/changemac@.service > /etc/systemd/system/changemac@.service
+ip link show | awk '{if ($1 ~ "[0-9]:") print substr($2, 1, length($2)-1) }'
+read -p "Enter device to enable MAC changer for: " DEVICE
+systemctl enable --now changemac@$HOST
+
+# Set up xorg
+pacman -S xorg xorg-xinit --noconfirm
 
 ## Stuff for all window managers ##
 
@@ -22,6 +34,7 @@ systemctl enable sddm
 
 # Lock screen
 pacman -S xlockmore --noconfirm
+# slock
 
 # File managers/File systems
 pacman -S pcmanfm ntfs-3g cifs-utils fuse --noconfirm
@@ -102,6 +115,8 @@ pacman -S plank --noconfirm
 # Bspwm
 pacman -S bspwm --noconfirm
 
+#dwm
+
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
 pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck --noconfirm
@@ -139,6 +154,7 @@ pacman -S isync neomutt --noconfirm
 # Programming/IDEs
 pacman -S nasm --noconfirm
 pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
+pacman -S glfw-x11 glew glm --noconfirm
 
 # Graphics/design
 pacman -S gimp blender imagemagick --noconfirm
@@ -192,5 +208,5 @@ pacman -S base-devel --noconfirm
 # kjv-git
 
 # Set up snaps
-systemctl enable --now snapd.socket
-ln -s /var/lib/snapd/snap /snap
+#systemctl enable --now snapd.socket
+#ln -s /var/lib/snapd/snap /snap
