@@ -172,6 +172,12 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 # .NET Core and mono
 pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
 
+# Torrents
+pacman -S qbittorrent --noconfirm
+
+# VPN
+pacman -S openvpn networkmanager-openvpn --noconfirm
+
 # Fun stuff
 pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 
