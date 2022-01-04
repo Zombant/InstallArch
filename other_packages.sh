@@ -37,7 +37,7 @@ pacman -S xlockmore --noconfirm
 # slock
 
 # File managers/File systems
-pacman -S pcmanfm ntfs-3g cifs-utils fuse --noconfirm
+pacman -S pcmanfm ntfs-3g cifs-utils fuse filezilla --noconfirm
 
 # Policy Kit
 pacman -S lxsession --noconfirm
@@ -127,6 +127,9 @@ pacman -S alacritty xterm --noconfirm
 # Run launcher
 pacman -S rofi --noconfirm
 
+# Graphical storage viewer
+pacman -S baobab --noconfirm
+
 # Text editors
 pacman -S neovim emacs gedit --noconfirm
 
@@ -154,7 +157,7 @@ pacman -S isync neomutt --noconfirm
 # Programming/IDEs
 pacman -S nasm --noconfirm
 pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
-pacman -S glfw-x11 glew glm --noconfirm
+pacman -S glfw-x11 glew glm --noconfirm #opengl
 
 # Graphics/design
 pacman -S gimp blender imagemagick --noconfirm
