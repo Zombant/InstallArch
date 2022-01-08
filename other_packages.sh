@@ -119,7 +119,7 @@ pacman -S bspwm --noconfirm
 
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck --noconfirm
+pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt virtualbox virtualbox-host-modules-arch iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck wget --noconfirm
 
 # Terminals
 pacman -S alacritty xterm --noconfirm
@@ -215,6 +215,8 @@ pacman -S base-devel --noconfirm
 # text2pdf
 # polybar
 # kjv-git
+# flashplayer-standalone
+# librewolf-bin
 
 # Set up snaps
 #systemctl enable --now snapd.socket
