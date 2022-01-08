@@ -68,9 +68,6 @@ pacman -S archlinux-wallpaper livewallpaper --noconfirm
 # Notifications
 pacman -S dunst libnotify --noconfirm
 
-# System tray
-pacman -S stalonetray --noconfirm
-
 # Applets applet
 pacman -S network-manager-applet pasystray --noconfirm
 
@@ -109,13 +106,13 @@ pacman -S openbox tint2 obconf --noconfirm
 # XFCE
 pacman -S xfce4 --noconfirm
 
-# Docks
-pacman -S plank --noconfirm
-
 # Bspwm
 pacman -S bspwm --noconfirm
 
 #dwm
+
+# Docks
+pacman -S plank --noconfirm
 
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
@@ -126,6 +123,7 @@ pacman -S alacritty xterm --noconfirm
 
 # Run launcher
 pacman -S rofi --noconfirm
+#dmenu
 
 # Graphical storage viewer
 pacman -S baobab --noconfirm
@@ -149,15 +147,15 @@ pacman -S vlc mpv mplayer --noconfirm
 pacman -S glava --noconfirm
 
 # Browsers
-pacman -S qutebrowser amfora firefox --noconfirm
+#firefox
+pacman -S qutebrowser amfora --noconfirm
 
 # Email
-pacman -S isync neomutt --noconfirm
+pacman -S neomutt --noconfirm
 
 # Programming/IDEs
 pacman -S nasm --noconfirm
 pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
-pacman -S glfw-x11 glew glm --noconfirm #opengl
 
 # Graphics/design
 pacman -S gimp blender imagemagick --noconfirm
