@@ -9,6 +9,9 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.con
 # Download 30-touchpad.conf
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/30-touchpad.conf > /etc/X11/xorg.conf.d/30-touchpad.conf
 
+# Download journald.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/journald.conf > /etc/systemd/journald.conf
+
 # Update
 pacman -Syu --noconfirm
 
