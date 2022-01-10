@@ -56,14 +56,58 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Update
 pacman -Syu --noconfirm
 
-# Install and enable network manager
-pacman -S networkmanager --noconfirm
+# Install and enable network manager and iwd
+pacman -S networkmanager iwd --noconfirm
 systemctl enable NetworkManager
-
-## Install and set up other necessities for a base install
-pacman -S nano vim git base-devel iwd openssh htop --noconfirm
 systemctl enable iwd
 
+
+# Download pacman.conf (enables mirrors)
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/pacman.conf > /etc/pacman.conf
+
+# Download makepkg.conf (use all CPU cores)
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/makepkg.conf > /etc/makepkg.conf
+
+# Download 30-touchpad.conf
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/30-touchpad.conf > /etc/X11/xorg.conf.d/30-touchpad.conf
+
+# Download journald.conf (Only store 100M of journalctl data)
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/journald.conf > /etc/systemd/journald.conf
+
+# Update
+pacman -Syu --noconfirm
+
+
+# For pacman mirror updates
+pacman -S reflector --noconfirm
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/reflector.conf > /etc/xdg/reflector/reflector.conf
+systemctl enable reflector.service
+
+# Set up changemac service
+pacman -S macchanger --noconfirm
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/changemac@.service > /etc/systemd/system/changemac@.service
+devices=( $(ip link show | awk '{if ($1 ~ "[0-9]:") print substr($2, 1, length($2)-1) }') )
+for device in "${devices[@]}"
+do
+    case $device in 
+        "e"*)
+            echo "Enabling changemac service for "$device
+            systemctl enable changemac@"$device"
+            echo ""
+            ;;
+        "w"*)
+            echo "Enabling changemac service for "$device
+            #nmcli radio wifi off
+            systemctl enable changemac@"$device"
+            #nmcli radio wifi on
+            echo ""
+            ;;
+    esac
+done
+
+
+# Install and set up other necessities for a base install
+pacman -S git vim openssh htop --noconfirm
 
 # Install DE and other packages
 clear
