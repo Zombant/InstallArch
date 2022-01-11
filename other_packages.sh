@@ -53,7 +53,7 @@ pacman -S network-manager-applet pasystray --noconfirm
 pacman -S zip unzip atool --noconfirm
 
 # Android phone
-pacman -S android-file-transfer --noconfirm
+pacman -S android-file-transfer scrcpy --noconfirm
 
 ## Virtual Machines
 # KVM
@@ -89,7 +89,7 @@ pacman -S openbox tint2 obconf --noconfirm
 pacman -S xfce4 --noconfirm
 
 # Bspwm
-pacman -S bspwm --noconfirm
+pacman -S bspwm sxhkd --noconfirm
 
 # dwm
 
@@ -99,7 +99,7 @@ pacman -S plank --noconfirm
 # Misc.
 # ttf-liberation is a font for steam
 pacman -Syu --noconfirm
-pacman -S  anki grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck wget gpick xorg-xclock xdotool arandr --noconfirm
+pacman -S grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt iftop macchanger calcurse exa bat ripgrep tokei procs prettyping dvdstyler nmap youtube-dl shellcheck wget gpick xorg-xclock xdotool arandr --noconfirm
 
 # Terminals
 pacman -S alacritty xterm --noconfirm
@@ -177,7 +177,7 @@ pacman -S base-devel --noconfirm
 ### AUR packages to install
 # agate-bin
 # android-studio
-# balena-etcher
+# anki
 # blugon
 # brave-bin
 # joplin-desktop
@@ -196,7 +196,6 @@ pacman -S base-devel --noconfirm
 # zoom
 # nbtexplorer-bin
 # rpi-imager
-# scrcpy
 # lf
 # networkmanager-dmenu-git
 # text2pdf
