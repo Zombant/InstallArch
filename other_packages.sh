@@ -144,7 +144,7 @@ pacman -S neomutt --noconfirm
 
 # Programming/IDEs
 pacman -S nasm --noconfirm
-pacman -S intellij-idea-community-edition pycharm-community-edition code arduino arduino-avr-core --noconfirm
+pacman -S intellij-idea-community-edition pycharm-community-edition atom arduino arduino-avr-core --noconfirm
 
 # Graphics/design
 pacman -S gimp blender imagemagick --noconfirm
