@@ -140,7 +140,7 @@ pacman -S glava --noconfirm
 pacman -S qutebrowser amfora --noconfirm
 
 # Email
-pacman -S neomutt --noconfirm
+pacman -S neomutt lynx isync --noconfirm
 
 # Programming/IDEs
 pacman -S nasm --noconfirm
@@ -168,11 +168,15 @@ pacman -S qbittorrent --noconfirm
 # VPN
 pacman -S openvpn networkmanager-openvpn --noconfirm
 
+# Password manager
+pacman -S keepassxc pass --noconfirm
+
 # Fun stuff
 pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 
 # AUR
 pacman -S base-devel --noconfirm
+
 
 ### AUR packages to install
 # agate-bin
@@ -203,6 +207,7 @@ pacman -S base-devel --noconfirm
 # kjv-git
 # flashplayer-standalone
 # librewolf-bin
+# mutt-wizard-git
 
 # Set up snaps
 #systemctl enable --now snapd.socket
