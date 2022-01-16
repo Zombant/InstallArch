@@ -137,10 +137,10 @@ pacman -S glava --noconfirm
 
 # Browsers
 #firefox
-pacman -S qutebrowser amfora --noconfirm
+pacman -S qutebrowser amfora lynx --noconfirm
 
 # Email
-pacman -S neomutt lynx isync --noconfirm
+pacman -S neomutt isync --noconfirm
 
 # Programming/IDEs
 pacman -S nasm --noconfirm
