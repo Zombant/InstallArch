@@ -39,6 +39,7 @@ pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts 
 
 # Themes and icons
 pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
+wget -qO- https://git.io/papirus-icon-theme-install | sh
 
 # Wallpapers
 pacman -S nitrogen archlinux-wallpaper livewallpaper --noconfirm
