@@ -32,7 +32,7 @@ systemctl start bluetooth
 pacman -S picom --noconfirm
 
 # Screenshot utility
-pacman -S scrot --noconfirm
+pacman -S maim --noconfirm
 
 # Fonts
 pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts xorg-xfontsel --noconfirm
