@@ -119,7 +119,7 @@ pacman -S baobab --noconfirm
 pacman -S htop --noconfirm
 
 # Text editors
-pacman -S neovim emacs gedit nano --noconfirm
+pacman -S neovim emacs gedit nano geany --noconfirm
 
 # Document viewers
 pacman -S atril zathura zathura-pdf-mupdf --noconfirm
