@@ -172,6 +172,9 @@ pacman -S openvpn networkmanager-openvpn --noconfirm
 # Password manager
 pacman -S keepassxc pass --noconfirm
 
+# Cloud sync
+pacman -S nextcloud-client --noconfirm
+
 # Fun stuff
 pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
 
