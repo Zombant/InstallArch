@@ -63,22 +63,10 @@ pacman -S virtualbox virtualbox-host-modules-arch --noconfirm
 pacman -S udisks2 --noconfirm
 
 # Changing brightness
-# For HP Pavilion
-# mkdir -p /etc/udev/rules.d
-# touch /etc/udev/rules.d/backlight.rules
-# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/intel_backlight/brightness\"" > /etc/udev/rules.d/backlight.rules
-# echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/intel_backlight/brightness\"" >> /etc/udev/rules.d/backlight.rules
-
-# For Lenovo Flex
-#mkdir -p /etc/udev/rules.d
-#touch /etc/udev/rules.d/backlight.rules
-#echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"amdgpu_bl0\", RUN+=\"/usr/bin/chrgrp video /sys/class/backlight/amdgpu_bl0/brightness\"" > /etc/udev/rules.d/backlight.rules
-#echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"amdgpu_bl0\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/amdgpu_bl0/brightness\"" >> /etc/udev/rules.d/backlight.rules
-
-#mkdir -p /etc/udev/rules.d
-#touch /etc/udev/rules.d/backlight.rules
-#echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
-#echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/%k/brightness\"" >> /etc/udev/rules.d/backlight.rules
+mkdir -p /etc/udev/rules.d
+touch /etc/udev/rules.d/backlight.rules
+echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
+echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/%k/brightness\"" >> /etc/udev/rules.d/backlight.rules
 
 
 ## Window managers
