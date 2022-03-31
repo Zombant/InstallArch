@@ -1,185 +1,262 @@
-#! /bin/bash
+#!/bin/sh
 
-# Xorg
-pacman -S xorg xorg-xinit --noconfirm
+# To be organized:
+# jre-openjdk
+# java-runtime
 
-# SDDM
-pacman -S sddm --noconfirm
-systemctl enable sddm
+# Basics:
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 40 23 \
+xorg "" on \
+xorg-xinit "" on \
+ntfs-3g "" on \
+cifs-utils "" on \
+fuse "" on \
+picom "" on \
+dunst "" on \
+libnotify "" on \
+zip "" on \
+unzip "" on \
+udisks2 "" on \
+exa "" on \
+bat "" on \
+procs "" on \
+prettyping "" on \
+wget "" on \
+xdotool "" on \
+htop "" on \
+iftop "" on \
+maim "" on \
+arandr "" on \
+starship "" on \
+base-devel "" on
+))
 
-# Lock screen
-pacman -S xlockmore --noconfirm
-# slock
 
-# File systems
-pacman -S ntfs-3g cifs-utils fuse --noconfirm
 
-# Set up pulseaudio
-pacman -S pulseaudio pulseaudio-alsa alsa-utils pavucontrol --noconfirm
-pulseaudio --check
-pulseaudio -D
+# Audio Setup:
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 40 8 \
+pulseaudio "" on \
+pulseaudio-alsa "" on \
+alsa-utils "" on \
+pavucontrol "" on \
+bluez "" on \
+bluez-utils "" on \
+pulseaudio-bluetooth "" on \
+blueman "" on
+))
 
-# Set up Bluetooth
-pacman -S bluez bluez-utils pulseaudio-bluetooth blueman --noconfirm
-modprobe btusb
-systemctl enable bluetooth
-systemctl start bluetooth
+# Login Managers:
+PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 40 3 \
+sddm "" on \
+xlockmore "" off \
+slock "" off
+))
 
-# Compositor
-pacman -S picom --noconfirm
 
-# Screenshot utility
-pacman -S maim --noconfirm
+# DE/WM/Docks:
+PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 40 14 \
+network-manager-applet "" on \
+pasystray "" on \
+xmonad "" on \
+xmonad-contrib "" on \
+xmobar "" on \
+cabal-install "" on \
+openbox "" on \
+tint2 "" on \
+obconf "" on \
+xfce4 "" on \
+plank "" on \
+bspwm "" on \
+sxhkd "" on \
+dwm "" off
+))
 
-# Fonts
-pacman -S ttf-ubuntu-font-family noto-fonts-emoji xorg-fonts-misc xorg-xlsfonts xorg-xfontsel --noconfirm
+# Browsers:
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 10 40 2 \
+qutebrowser "" on \
+amfora "" on
+))
 
-# Wallpapers
-pacman -S nitrogen archlinux-wallpaper livewallpaper --noconfirm
+# Communications:
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 2 \
+discord "" on \
+neomutt "" on
+))
 
-# Notifications
-pacman -S dunst libnotify --noconfirm
+# Network/Internet
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 4 \
+nextcloud-client "" on \
+qbittorrent "" on \
+openvpn "" off \
+network-manager-openvpn "" off
+))
 
-# Applets applet
-pacman -S network-manager-applet pasystray --noconfirm
 
-# Compression
-pacman -S zip unzip --noconfirm
+# Games:
+PACKAGES+=($(dialog --stdout --checklist "Games:" 10 40 2 \
+steam "" on \
+ttf-liberation "Needed for steam" on
+))
 
-# Android phone
-pacman -S android-file-transfer scrcpy --noconfirm
+# Document/Text Editors:
+PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 40 6 \
+libreoffice-fresh "" on \
+neovim "" on \
+emacs "" on \
+gedit "" on \
+nano "" on \
+geany "" off
+))
 
-## Virtual Machines
-# KVM
-pacman -S qemu virt-manager ebtables dnsmasq --noconfirm
-systemctl enable libvirtd
-systemctl start libvirtd
-sudo usermod -G libvirt -a ${1}
+# Development:
+PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 40 9 \
+intellij-idea-community-edition "" on \
+pycharm-community-edition "" on \
+atom "" on \
+arduino "" on \
+arduino-avr-core "Needed for arduino" on \
+dotnet-runtime "" off \
+dotnet-sdk "" off \
+mono-msbuild "" off \
+mono "" off
+))
 
-# Virtualbox
-pacman -S virtualbox virtualbox-host-modules-arch --noconfirm
+# Graphics/Design:
+PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 10 40 2 \
+gimp "" on \
+blender "" off
+))
 
-# Easy management of drives
-pacman -S udisks2 --noconfirm
+# Audio Editors:
+PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 10 40 1 \
+audacity "" on
+))
 
-# Changing brightness
+# Calculators:
+PACKAGES+=($(dialog --stdout --checklist "Calculators:" 15 40 3 \
+qalculate-gtk "" on \
+octave "" on \
+gcc-fortran "Needed for octave" on
+))
+
+# Virtual Machines:
+PACKAGES+=($(dialog --stdout --checklist "Virtual Machines:" 30 40 6 \
+qemu "" on \
+virt-manager "Front-end for qemu" on \
+ebtables "Needed for qemu" on \
+dnsmasq "Needed for qemu" on \
+virtualbox "" on \
+virtuabox-host-modules-arch "Needed for virtualbox" on
+))
+
+# Terminals:
+PACKAGES+=($(dialog --stdout --checklist "Terminals:" 20 40 3 \
+alacritty "" on \
+xterm "" on \
+st "" off
+))
+
+# File Managers:
+PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 40 2 \
+pcmanfm "" on \
+filezilla "" off
+))
+
+# Documents:
+PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 20 40 4 \
+atril "" on \
+zathura "" on \
+zathura-pdf-mupdf "" on \
+poppler "" on
+))
+
+# Themes/Wallpapers/Icons/Fonts:
+PACKAGES+=($(dialog --stdout --checklist "Appearance:" 50 40 15 \
+ttf-ubuntu-font-family "" on \
+noto-fonts-emoji "" on \
+xorg-fonts-misc "" on \
+xorg-xlsfonts "" on \
+xorg-xfontsel "" on \
+nitrogen "" on \
+archlinux-wallpaper "" on \
+livewallpaper "" on \
+lxappearance "" on \
+qt5ct "" on \
+breeze-gtk "" on \
+breeze-icons "" on \
+arc-gtk-theme "" on \
+arc-icon-theme "" on \
+papirus "" on
+))
+
+# Media players:
+PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 40 3 \
+feh "Image viewer" on \
+vlc "" on \
+mpv "Video player" on
+))
+
+# Other Apps
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 17 \
+stellarium "" on \
+baobab "" on \
+android-file-transfer "" on \
+scrcpy "" on \
+grub-customizer "" on \
+nmap "" on \
+wireshark-qt "" on \
+gpick "" on \
+xorg-xclock "" on \
+shellcheck "" on \
+calcurse "" on \
+rofi "" on \
+dmenu "" off \
+keepassxc "" on \
+youtube-dl "" on
+))
+
+# Fun stuff:
+PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 40 6 \
+glava "" on \
+cmatrix "" on \
+doge "" on \
+figlet "" on \
+lolcat "" on \
+neofetch "" on
+))
+
+exit 0
+
+for item in "${PACKAGES[@]}"
+do
+    case "$item" in
+        papirus)
+            wget -qO- https://git.io/papirus-icon-theme-install | sh ;;
+        starship)
+            curl -sS https://starship.rs/install.sh | sh ;;
+        *)
+            pacman -S $item --noconfirm ;;
+    esac
+
+    case "$item" in
+        sddm)
+            systemctl enable sddm ;;
+        pulseaudio)
+            pulseaudio --check
+            pulseaudio -D
+            ;;
+        qemu)
+            systemctl enable --now libvirtd
+            usermod -G libvirt -a ${1}
+            ;;
+    esac
+done
+
+# Changing brightness for devices with 
 mkdir -p /etc/udev/rules.d
 touch /etc/udev/rules.d/backlight.rules
 echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
 echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/%k/brightness\"" >> /etc/udev/rules.d/backlight.rules
-
-
-## Window managers
-
-# XMonad and xmobar
-pacman -S xmonad xmonad-contrib xmobar cabal-install --noconfirm
-# After installing dotfiles:
-# ghc --make -threaded -dynamic $HOME/.config/xmobar/xmobarrc0.hs -package xmobar
-
-# Openbox and tint2
-pacman -S openbox tint2 obconf --noconfirm
-
-# XFCE
-pacman -S xfce4 --noconfirm
-
-# Bspwm
-pacman -S bspwm sxhkd --noconfirm
-
-# dwm
-
-# Docks
-pacman -S plank --noconfirm
-
-# Misc.
-# ttf-liberation is a font for steam
-#dvdstyler
-pacman -Syu --noconfirm
-pacman -S grub-customizer libreoffice-fresh jre-openjdk steam ttf-liberation java-runtime discord stellarium wireshark-qt iftop macchanger calcurse exa bat procs prettyping nmap youtube-dl shellcheck wget gpick xorg-xclock xdotool arandr --noconfirm
-
-# Themes and icons
-pacman -S lxappearance qt5ct breeze-gtk breeze-icons arc-gtk-theme arc-icon-theme --noconfirm
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-
-# Terminals
-pacman -S alacritty xterm --noconfirm
-
-# File manager
-pacman -S pcmanfm filezilla --noconfirm
-
-# Run launcher
-pacman -S rofi --noconfirm
-#dmenu
-
-# Graphical storage viewer
-pacman -S baobab --noconfirm
-
-# System monitor
-pacman -S htop --noconfirm
-
-# Text editors
-pacman -S neovim emacs gedit nano geany --noconfirm
-
-# Document viewers
-pacman -S atril zathura zathura-pdf-mupdf --noconfirm
-
-# Document mergers
-pacman -S poppler --noconfirm
-
-# Image viewers
-pacman -S feh --noconfirm
-
-# Media players
-#mplayer
-pacman -S vlc mpv --noconfirm
-
-# Audio visualizer
-pacman -S glava --noconfirm
-
-# Browsers
-#firefox lynx
-pacman -S qutebrowser amfora --noconfirm
-
-# Email
-pacman -S neomutt --noconfirm
-
-# Programming/IDEs
-# pacman -S nasm --noconfirm
-pacman -S intellij-idea-community-edition pycharm-community-edition atom arduino arduino-avr-core --noconfirm
-
-# Graphics/design
-pacman -S gimp blender --noconfirm
-
-# Audio editors
-pacman -S audacity --noconfirm
-
-# Calculators
-# gcc-fortran is for octave packages
-pacman -S qalculate-gtk octave gcc-fortran --noconfirm
-
-# Install starship prompt
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-
-# .NET Core and mono
-# pacman -S dotnet-runtime dotnet-sdk mono-msbuild mono --noconfirm
-
-# Torrent clients
-pacman -S qbittorrent --noconfirm
-
-# VPN
-# pacman -S openvpn networkmanager-openvpn --noconfirm
-
-# Password manager
-pacman -S keepassxc --noconfirm
-
-# Cloud sync
-pacman -S nextcloud-client --noconfirm
-
-# Fun stuff
-pacman -S cmatrix doge figlet lolcat neofetch --noconfirm
-
-# AUR
-pacman -S base-devel --noconfirm
-
 
 ### AUR packages to install
 # agate-bin
@@ -211,7 +288,10 @@ pacman -S base-devel --noconfirm
 # flashplayer-standalone
 # librewolf-bin
 # mutt-wizard-git
+# input-wacom
 
 # Set up snaps
 #systemctl enable --now snapd.socket
 #ln -s /var/lib/snapd/snap /snap
+
+exit 0
