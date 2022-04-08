@@ -5,7 +5,7 @@
 # java-runtime
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 40 23 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 40 24 \
 xorg "" on \
 xorg-xinit "" on \
 ntfs-3g "" on \
@@ -28,7 +28,8 @@ iftop "" on \
 maim "" on \
 arandr "" on \
 starship "" on \
-base-devel "" on
+base-devel "" on \
+tlp "Battery Manager" off
 ))
 
 
@@ -289,6 +290,7 @@ echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/
 # librewolf-bin
 # mutt-wizard-git
 # input-wacom
+# tlpui
 
 # Set up snaps
 #systemctl enable --now snapd.socket
