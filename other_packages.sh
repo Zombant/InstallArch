@@ -226,8 +226,6 @@ lolcat "" on \
 neofetch "" on
 ))
 
-exit 0
-
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
