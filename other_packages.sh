@@ -73,9 +73,11 @@ dwm "" off
 ))
 
 # Browsers:
-PACKAGES+=($(dialog --stdout --checklist "Browsers:" 10 40 2 \
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 10 40 4 \
+firefox "" on \
 qutebrowser "" on \
-amfora "" on
+lynx "" on \
+amfora "" off
 ))
 
 # Communications:
