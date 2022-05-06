@@ -80,10 +80,11 @@ lynx "" on \
 amfora "" off
 ))
 
-# Communications:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 2 \
+# Communication:
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 3 \
 discord "" on \
-neomutt "" on
+neomutt "" on \
+thunderbird "" on
 ))
 
 # Network/Internet
@@ -174,7 +175,7 @@ poppler "" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
-PACKAGES+=($(dialog --stdout --checklist "Appearance:" 50 40 15 \
+PACKAGES+=($(dialog --stdout --checklist "Appearance:" 50 40 16 \
 ttf-ubuntu-font-family "" on \
 noto-fonts-emoji "" on \
 xorg-fonts-misc "" on \
@@ -188,6 +189,7 @@ qt5ct "" on \
 breeze-gtk "" on \
 breeze-icons "" on \
 arc-gtk-theme "" on \
+materia-gtk-theme "" on \
 arc-icon-theme "" on \
 papirus "" on
 ))
@@ -291,6 +293,7 @@ echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/
 # mutt-wizard-git
 # input-wacom
 # tlpui
+# rfc-read
 
 # Set up snaps
 #systemctl enable --now snapd.socket
