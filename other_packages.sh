@@ -136,6 +136,14 @@ PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 10 40 1 \
 audacity "" on
 ))
 
+# Music:
+PACKAGES+=($(dialog --stdout --checklist "Sheet Music:" 10 40 4 \
+qsynth "" on \
+jack "Needed for qsynth" on \
+qjackctl "Needed for qsynth" on \
+musescore "" on
+))
+
 # Calculators:
 PACKAGES+=($(dialog --stdout --checklist "Calculators:" 15 40 3 \
 qalculate-gtk "" on \
@@ -154,10 +162,11 @@ virtuabox-host-modules-arch "Needed for virtualbox" on
 ))
 
 # Terminals:
-PACKAGES+=($(dialog --stdout --checklist "Terminals:" 20 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Terminals:" 20 40 4 \
 alacritty "" on \
 xterm "" on \
-st "" off
+st "" off \
+cool-retro-term "" off
 ))
 
 # File Managers:
