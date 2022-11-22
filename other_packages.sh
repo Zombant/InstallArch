@@ -89,7 +89,7 @@ thunderbird "" on
 
 # Network/Internet
 PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 4 \
-nextcloud-client "" on \
+nextcloud-client "" off \
 qbittorrent "" on \
 openvpn "" off \
 network-manager-openvpn "" off
@@ -211,7 +211,7 @@ mpv "Video player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 17 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 16 \
 stellarium "" on \
 baobab "" on \
 android-file-transfer "" on \
@@ -226,7 +226,8 @@ calcurse "" on \
 rofi "" on \
 dmenu "" off \
 keepassxc "" on \
-youtube-dl "" on
+youtube-dl "" on \
+minicom "" on
 ))
 
 # Fun stuff:
@@ -244,8 +245,6 @@ do
     case "$item" in
         papirus)
             wget -qO- https://git.io/papirus-icon-theme-install | sh ;;
-        starship)
-            curl -sS https://starship.rs/install.sh | sh ;;
         *)
             pacman -S $item --noconfirm ;;
     esac
