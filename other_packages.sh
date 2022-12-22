@@ -35,14 +35,15 @@ tlp "Battery Manager" off
 
 
 # Audio Setup:
-PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 40 8 \
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 40 9 \
 pulseaudio "" on \
 pulseaudio-alsa "" on \
+pulseaudio-bluetooth "" on \
+pulseaudio-jack "" on \
 alsa-utils "" on \
 pavucontrol "" on \
 bluez "" on \
 bluez-utils "" on \
-pulseaudio-bluetooth "" on \
 blueman "" on
 ))
 
@@ -55,7 +56,7 @@ slock "" off
 
 
 # DE/WM/Docks:
-PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 40 14 \
+PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 40 16 \
 network-manager-applet "" on \
 pasystray "" on \
 xmonad "" on \
@@ -68,8 +69,10 @@ obconf "" on \
 xfce4 "" on \
 plank "" on \
 bspwm "" on \
+polybar "" on \
 sxhkd "" on \
-dwm "" off
+dwm "" off \
+trayer "" off
 ))
 
 # Browsers:
@@ -84,13 +87,14 @@ amfora "" off
 PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 3 \
 discord "" on \
 neomutt "" on \
-thunderbird "" on
+thunderbird "" off
 ))
 
 # Network/Internet
-PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 5 \
 nextcloud-client "" off \
 qbittorrent "" on \
+putty "" on \
 openvpn "" off \
 network-manager-openvpn "" off
 ))
@@ -113,22 +117,29 @@ geany "" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 40 9 \
+PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 40 12 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 atom "" on \
 arduino "" on \
 arduino-avr-core "Needed for arduino" on \
+strace "" on \
+rust "" on \
 dotnet-runtime "" off \
 dotnet-sdk "" off \
 mono-msbuild "" off \
-mono "" off
+mono "" off \
+imlib "Image library for C" off \
+nasm "x86 Assembler" off
 ))
 
 # Graphics/Design:
-PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 10 40 2 \
+PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 10 40 5 \
 gimp "" on \
-blender "" off
+blender "" off \
+freecad "" off \
+imagemagick "" on \
+rawtherapee "" off
 ))
 
 # Audio Editors:
@@ -137,11 +148,14 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Sheet Music:" 10 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Sheet Music:" 10 40 7 \
 qsynth "" on \
 jack "Needed for qsynth" on \
-qjackctl "Needed for qsynth" on \
-musescore "" on
+qjackctl "" on \
+cadence "" off \
+musescore "" on \
+guitarix "" on \
+lmms "" off
 ))
 
 # Calculators:
@@ -170,9 +184,10 @@ cool-retro-term "" off
 ))
 
 # File Managers:
-PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 40 2 \
+PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 40 3 \
 pcmanfm "" on \
-filezilla "" off
+filezilla "" off \
+thunar "Will be installed by xfdesktop" off
 ))
 
 # Documents:
@@ -192,7 +207,7 @@ xorg-xlsfonts "" on \
 xorg-xfontsel "" on \
 nitrogen "" on \
 archlinux-wallpaper "" on \
-livewallpaper "" on \
+livewallpaper "" off \
 lxappearance "" on \
 qt5ct "" on \
 breeze-gtk "" on \
@@ -204,14 +219,15 @@ papirus "" on
 ))
 
 # Media players:
-PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 40 4 \
 feh "Image viewer" on \
 vlc "" on \
-mpv "Video player" on
+mpv "Video player" on \
+mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 16 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 20 \
 stellarium "" on \
 baobab "" on \
 android-file-transfer "" on \
@@ -227,7 +243,11 @@ rofi "" on \
 dmenu "" off \
 keepassxc "" on \
 youtube-dl "" on \
-minicom "" on
+minicom "" on \
+kiwix-desktop "" off \
+macchanger "" on \
+newsboat "" on \
+reflector "" on 
 ))
 
 # Fun stuff:
@@ -294,7 +314,6 @@ echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/
 # lf
 # networkmanager-dmenu-git
 # text2pdf
-# polybar
 # kjv-git
 # flashplayer-standalone
 # librewolf-bin
