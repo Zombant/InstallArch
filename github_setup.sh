@@ -1,4 +1,4 @@
-#!/bin/sh bash
+#!/bin/bash
 
 read -p "Enter your email: " EMAIL
 
