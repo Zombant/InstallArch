@@ -296,7 +296,7 @@ echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/
 # anki
 # blugon
 # brave-bin
-# joplin-desktop
+# joplin-appimage
 # minecraft-launcher
 # moc-pulse-svn
 # nerd-fonts-mononoki
