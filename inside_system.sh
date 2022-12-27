@@ -109,6 +109,10 @@ done
 # Install and set up other necessities for a base install
 pacman -S git vim openssh htop --noconfirm
 
+# Copy github setup script into home directory
+curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/github_setup.sh > /home/$USERNAME/github_setup.sh
+chown $USERNAME /home/$USERNAME/github_setup.sh
+
 # Install DE and other packages
 clear
 read -n1 -p  "Base install finished. Install other packages? [y/n]" OTHER
