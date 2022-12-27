@@ -42,8 +42,7 @@ usermod -aG wheel,audio,video,optical,storage ${USERNAME}
 
 # Install sudo
 pacman -S sudo --noconfirm
-#echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-sed -i '/#\s*%wheel ALL=(ALL) ALL$/ c %wheel ALL=(ALL) ALL' /etc/sudoers
+sed -i "/# %wheel ALL=(ALL:ALL) ALL/c\%wheel ALL=(ALL:ALL) ALL" /etc/sudoers
 
 # Install grub
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
