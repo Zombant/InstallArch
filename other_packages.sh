@@ -8,29 +8,29 @@ pacman -S dialog --noconfirm
 
 # Basics:
 PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 40 24 \
-xorg "" on \
-xorg-xinit "" on \
-ntfs-3g "" on \
-cifs-utils "" on \
-fuse "" on \
-picom "" on \
-dunst "" on \
-libnotify "" on \
-zip "" on \
-unzip "" on \
-udisks2 "" on \
-exa "" on \
-bat "" on \
-procs "" on \
-prettyping "" on \
-wget "" on \
-xdotool "" on \
-htop "" on \
-iftop "" on \
-maim "" on \
-arandr "" on \
-starship "" on \
-base-devel "" on \
+xorg "Xorg graphics server package group" on \
+xorg-xinit "Manually start Xorg server" on \
+ntfs-3g "FOSS implementation of NTFS filesystem" on \
+cifs-utils "Tools for CIFS filesystem (Samba)" on \
+fuse "Allow mounting filesystems" on \
+picom "X Compositor" on \
+dunst "Notification daemon" on \
+libnotify "Notification library" on \
+zip "Creating/modifying .zip files" on \
+unzip "Extracting/viewing .zip files" on \
+udisks2 "Mount/unmount storage" on \
+exa "Better ls" on \
+bat "Better cat" on \
+procs "Better ps" on \
+prettyping "Better ping" on \
+wget "Download files" on \
+xdotool "Automate keyboard/mouse" on \
+htop "Process viewer" on \
+iftop "View traffic on network" on \
+maim "Screenshot" on \
+arandr "Graphical front of xrandr" on \
+starship "Cross-shell prompt" on \
+base-devel "Group of packages for AUR" on \
 tlp "Battery Manager" off
 ))
 
@@ -38,109 +38,106 @@ tlp "Battery Manager" off
 
 # Audio Setup:
 PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 40 9 \
-pulseaudio "" on \
-pulseaudio-alsa "" on \
-pulseaudio-bluetooth "" on \
-pulseaudio-jack "" on \
-alsa-utils "" on \
-pavucontrol "" on \
-bluez "" on \
-bluez-utils "" on \
-blueman "" on
+pulseaudio "General-purpose sound server" on \
+pulseaudio-alsa "For pulseaudio to manage ALSA" on \
+pulseaudio-bluetooth "Pulseaudio bluetooth audio support" on \
+pulseaudio-jack "Pulseaudio JACK sink, source, dbus" on \
+alsa-utils "ALSA utilities" on \
+pavucontrol "Graphical pulseaudio control" on \
+bluez "Bluetooth protocol stack" on \
+bluez-utils "Bluetooth utility" on \
+blueman "Bluetooth manager" on
 ))
 
-# Login Managers:
+# Login Managers/Lock Screens:
 PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 40 3 \
-sddm "" on \
-xlockmore "" off \
-slock "" off
+sddm "QML-based login-manager" on \
+xlockmore "X screensaver and lock screen" off \
+slock "Simple X lock screen" off
 ))
 
 
 # DE/WM/Docks:
 PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 40 16 \
-network-manager-applet "" on \
-pasystray "" on \
-xmonad "" on \
-xmonad-contrib "" on \
-xmobar "" on \
-cabal-install "" on \
-openbox "" on \
-tint2 "" on \
-obconf "" on \
-xfce4 "" on \
-plank "" on \
-bspwm "" on \
-polybar "" on \
-sxhkd "" on \
-dwm "" off \
-trayer "" off
+network-manager-applet "Tray icon for network-manager" on \
+pasystray "Tray icon for pulseaudio" on \
+xmonad "X Tiling window manager" on \
+xmonad-contrib "Extentions for Xmonad" on \
+xmobar "Minimal statusbar (for xmonad)" on \
+cabal-install "Command-line interface for Cabal and Hackage" on \
+openbox "Floating X window manager" on \
+tint2 "Taskbar (for openbox)" on \
+obconf "Openbox config tool" on \
+xfce4 "GTK3 desktop environment" on \
+plank "Simple dock (for xfce)" on \
+bspwm "Tiling Window manager" on \
+polybar "Status bar for bspwm" on \
+sxhkd "X hotkey daemon (for bspwm)" on \
+trayer "GTK2-based system tray" off
 ))
 
 # Browsers:
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 40 4 \
 firefox "" on \
-qutebrowser "" on \
-lynx "" on \
-amfora "" off
+qutebrowser "Vim-like browser" on \
+lynx "Terminal browser" on \
+amfora "Browser for Gemini protocol" off
 ))
 
 # Communication:
 PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 3 \
 discord "" on \
-neomutt "" on \
-thunderbird "" off
+neomutt "Terminal email client" off \
+thunderbird "Graphical email client" off
 ))
 
 # Network/Internet
-PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 5 \
-nextcloud-client "" off \
-qbittorrent "" on \
-putty "" on \
-openvpn "" off \
-network-manager-openvpn "" off
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 4 \
+putty "SSH client" on \
+qbittorrent "Bittorrent client" on \
+network-manager-openvpn "For connecting to VPNs" off \
+nextcloud-client "Nextcloud desktop client" off
 ))
 
 
 # Games:
 PACKAGES+=($(dialog --stdout --checklist "Games:" 10 40 2 \
 steam "" on \
-ttf-liberation "Needed for steam" on
+ttf-liberation "Font needed for steam" on
 ))
 
 # Document/Text Editors:
 PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 40 6 \
 libreoffice-fresh "" on \
-neovim "" on \
-emacs "" on \
-gedit "" on \
-nano "" on \
-geany "" off
+neovim "Better vim" on \
+emacs "Complicated editor" on \
+gedit "Graphical text editor" on \
+nano "Terminal text editor" on \
+geany "Lightweight IDE" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 80 11 \
+PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 80 10 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 arduino "" on \
 arduino-avr-core "Needed for arduino" on \
-strace "" on \
 rust "" on \
-dotnet-runtime "" off \
-dotnet-sdk "" off \
-mono-msbuild "" off \
-mono "" off \
+dotnet-runtime ".NET Core runtime (needed for unity)" off \
+dotnet-sdk ".NET Core sdk (needed for unity)" off \
+mono-msbuild "Xamarin implementation of MS build system" off \
+mono "Implementation of .NET platform" off \
 imlib "Image library for C" off \
 nasm "x86 Assembler" off
 ))
 
 # Graphics/Design:
 PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 40 5 \
-gimp "" on \
-blender "" off \
-freecad "" off \
-imagemagick "" on \
-rawtherapee "" off
+gimp "Powerful image editor" on \
+blender "3D graphics creation" off \
+freecad "Parametric CAD" off \
+imagemagick "Image viewing/manipulation" on \
+rawtherapee "Raw image processing" off
 ))
 
 # Audio Editors:
@@ -150,19 +147,19 @@ audacity "" on
 
 # Music:
 PACKAGES+=($(dialog --stdout --checklist "Music:" 20 40 7 \
-qsynth "" on \
-jack "Needed for qsynth" on \
-qjackctl "" on \
-cadence "" off \
-musescore "" on \
-guitarix "" on \
-lmms "" off
+qsynth "Qt GUI for fluidsynth" on \
+jack "Low-latency audio server for music (needed by qsynth)" on \
+qjackctl "Qt GUI front-end for jack" on \
+cadence "Another GUI front-end for jack" off \
+musescore "Sheet music creation" on \
+guitarix "Guitar amp and FX using jack" on \
+lmms "DAW" off
 ))
 
 # Calculators:
 PACKAGES+=($(dialog --stdout --checklist "Calculators:" 15 40 3 \
-qalculate-gtk "" on \
-octave "" on \
+qalculate-gtk "GUI and terminal calculator" on \
+octave "FOSS matlab" on \
 gcc-fortran "Needed for octave" on
 ))
 
@@ -177,88 +174,86 @@ virtuabox-host-modules-arch "Needed for virtualbox" on
 ))
 
 # Terminals:
-PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 40 3 \
 alacritty "" on \
-xterm "" on \
-st "" off \
-cool-retro-term "" off
+xterm "Basic X terminal" on \
+cool-retro-term "Cathode-display terminal" off
 ))
 
 # File Managers:
 PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 40 3 \
-pcmanfm "" on \
-filezilla "" off \
-thunar "Will be installed by xfdesktop" off
+pcmanfm "GTK file manager" on \
+filezilla "FTP, FTPS, SFTP client" off \
+thunar "xfce FM (installed by xfdesktop)" off
 ))
 
 # Documents:
 PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 40 4 \
-atril "" on \
-zathura "" on \
-zathura-pdf-mupdf "" on \
-poppler "" on
+atril "Document viewer" on \
+zathura "Minimal document viewer" on \
+zathura-pdf-mupdf "PDF support for zathura" on \
+poppler "PDF rendering library" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
 PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 40 16 \
-ttf-ubuntu-font-family "" on \
-noto-fonts-emoji "" on \
-xorg-fonts-misc "" on \
-xorg-xlsfonts "" on \
-xorg-xfontsel "" on \
-nitrogen "" on \
-archlinux-wallpaper "" on \
-livewallpaper "" off \
-lxappearance "" on \
-qt5ct "" on \
-breeze-gtk "" on \
-breeze-icons "" on \
-arc-gtk-theme "" on \
-materia-gtk-theme "" on \
-arc-icon-theme "" on \
-papirus "" on
+ttf-ubuntu-font-family "Ubuntu fonts" on \
+noto-fonts-emoji "Emoji font" on \
+xorg-fonts-misc "Xorg fonts" on \
+xorg-xlsfonts "List available X fonts" on \
+xorg-xfontsel "Tool for selecting font names" on \
+nitrogen "Wallpaper setter" on \
+archlinux-wallpaper "Arch wallpaper pack" on \
+livewallpaper "Animated 3D wallpapers" off \
+lxappearance "GTK theme switcher" on \
+qt5ct "Qt5 theme switcher" on \
+breeze-gtk "Breeze GTK2 and GTK3 theme" on \
+breeze-icons "Breeze theme icons" on \
+arc-gtk-theme "Arc GTK2, GTK3, GTK4 theme" on \
+materia-gtk-theme "Material design theme" on \
+arc-icon-theme "Arc icon theme" on \
+papirus "Papirus icon theme" on
 ))
 
 # Media players:
 PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 40 4 \
 feh "Image viewer" on \
-vlc "" on \
+vlc "Media player" on \
 mpv "Video player" on \
 mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 20 \
-stellarium "" on \
-baobab "" on \
-android-file-transfer "" on \
-scrcpy "" on \
-grub-customizer "" on \
-nmap "" on \
-wireshark-qt "" on \
-gpick "" on \
-xorg-xclock "" on \
-shellcheck "" on \
-calcurse "" on \
-rofi "" on \
-dmenu "" off \
-keepassxc "" off \
-youtube-dl "" on \
-minicom "" on \
-kiwix-desktop "" off \
-macchanger "" on \
-newsboat "" on \
-reflector "" on 
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 19 \
+baobab "GUI directory tree analyzer" on \
+android-file-transfer "Android MTP client" on \
+scrcpy "Display and control android device" on \
+grub-customizer "GUI grub2 settings manager" on \
+nmap "Network discovery and security" on \
+wireshark-qt "GUI network traffic and protocol analyzer" on \
+gpick "Color picker" on \
+xorg-xclock "Clock" on \
+shellcheck "Shell script analysis" on \
+calcurse "Calendar and organizer" on \
+rofi "Window switcher and run launcher" on \
+dmenu "Plain X run launcher" off \
+keepassxc "Password organizer" off \
+youtube-dl "Download youtube audio and video" on \
+minicom "Serial communication" on \
+kiwix-desktop "Offline reader for web content (expecially wikipedia)" off \
+macchanger "Change MAC address" on \
+newsboat "Terminal RSS/atom feed reader" on \
+reflector "Retrieve latest pacman mirror list" on 
 ))
 
 # Fun stuff:
 PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 40 6 \
-glava "" on \
-cmatrix "" on \
-doge "" on \
-figlet "" on \
-lolcat "" on \
-neofetch "" on
+glava "Audio spectrum visualizer" on \
+cmatrix "Matrix terminal" on \
+doge "doge" on \
+figlet "Large letters from text" on \
+lolcat "Rainbows" on \
+neofetch "Display system info" on
 ))
 
 for item in "${PACKAGES[@]}"
