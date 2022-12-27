@@ -1,5 +1,7 @@
 #!/bin/sh
 
+pacman -S dialog --noconfirm
+
 # To be organized:
 # jre-openjdk
 # java-runtime
@@ -76,7 +78,7 @@ trayer "" off
 ))
 
 # Browsers:
-PACKAGES+=($(dialog --stdout --checklist "Browsers:" 10 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 40 4 \
 firefox "" on \
 qutebrowser "" on \
 lynx "" on \
@@ -117,10 +119,9 @@ geany "" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 40 12 \
+PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 80 11 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
-atom "" on \
 arduino "" on \
 arduino-avr-core "Needed for arduino" on \
 strace "" on \
@@ -134,7 +135,7 @@ nasm "x86 Assembler" off
 ))
 
 # Graphics/Design:
-PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 10 40 5 \
+PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 40 5 \
 gimp "" on \
 blender "" off \
 freecad "" off \
@@ -148,7 +149,7 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Sheet Music:" 10 40 7 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 40 7 \
 qsynth "" on \
 jack "Needed for qsynth" on \
 qjackctl "" on \
@@ -176,7 +177,7 @@ virtuabox-host-modules-arch "Needed for virtualbox" on
 ))
 
 # Terminals:
-PACKAGES+=($(dialog --stdout --checklist "Terminals:" 20 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 40 4 \
 alacritty "" on \
 xterm "" on \
 st "" off \
@@ -191,7 +192,7 @@ thunar "Will be installed by xfdesktop" off
 ))
 
 # Documents:
-PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 20 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 40 4 \
 atril "" on \
 zathura "" on \
 zathura-pdf-mupdf "" on \
@@ -199,7 +200,7 @@ poppler "" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
-PACKAGES+=($(dialog --stdout --checklist "Appearance:" 50 40 16 \
+PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 40 16 \
 ttf-ubuntu-font-family "" on \
 noto-fonts-emoji "" on \
 xorg-fonts-misc "" on \
@@ -241,7 +242,7 @@ shellcheck "" on \
 calcurse "" on \
 rofi "" on \
 dmenu "" off \
-keepassxc "" on \
+keepassxc "" off \
 youtube-dl "" on \
 minicom "" on \
 kiwix-desktop "" off \
