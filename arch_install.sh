@@ -38,6 +38,9 @@ swapon ${SWAP}
 # Mount main Linux partition
 mount ${MAIN} /mnt
 
+# Update keyring
+pacman -Sy archlinux-keyring --noconfirm
+
 # Install base package, linux, and firmware for hardware
 pacstrap /mnt base linux linux-firmware
 

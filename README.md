@@ -5,9 +5,5 @@ This only works of EFI systems with 3 partitions: EFI, swap, and root filesystem
 To run the scripts, boot to the Arch Linux iso, create the partitions, and run:
 
 ```bash
-curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/arch_install.sh > arch_install.sh
-
-chmod +x arch_install.sh
-
-./arch_install.sh
+bash < (https://raw.githubusercontent.com/Zombant/InstallArch/master/arch_install.sh)
 ```
