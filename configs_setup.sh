@@ -1,7 +1,7 @@
 #!/bin/bash
 
-read -p "Enter URL to the github repo: " $REPO
-
+read -p "Enter URL to the github repo: " REPO
+echo $REPO
 mkdir ~/configs/
 /usr/bin/git --git-dir=$HOME/configs/ --work-tree=$HOME clone --bare $REPO ~/configs/
 /usr/bin/git --git-dir=$HOME/configs/ --work-tree=$HOME checkout
