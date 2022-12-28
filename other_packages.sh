@@ -7,7 +7,7 @@ pacman -S dialog --noconfirm
 # java-runtime
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 40 24 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 24 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -37,7 +37,7 @@ tlp "Battery Manager" off
 
 
 # Audio Setup:
-PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 40 9 \
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 9 \
 pulseaudio "General-purpose sound server" on \
 pulseaudio-alsa "For pulseaudio to manage ALSA" on \
 pulseaudio-bluetooth "Pulseaudio bluetooth audio support" on \
@@ -50,7 +50,7 @@ blueman "Bluetooth manager" on
 ))
 
 # Login Managers/Lock Screens:
-PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 3 \
 sddm "QML-based login-manager" on \
 xlockmore "X screensaver and lock screen" off \
 slock "Simple X lock screen" off
@@ -58,7 +58,7 @@ slock "Simple X lock screen" off
 
 
 # DE/WM/Docks:
-PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 40 16 \
+PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 80 16 \
 network-manager-applet "Tray icon for network-manager" on \
 pasystray "Tray icon for pulseaudio" on \
 xmonad "X Tiling window manager" on \
@@ -77,7 +77,7 @@ trayer "GTK2-based system tray" off
 ))
 
 # Browsers:
-PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 4 \
 firefox "" on \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
@@ -85,14 +85,14 @@ amfora "Browser for Gemini protocol" off
 ))
 
 # Communication:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 80 3 \
 discord "" on \
 neomutt "Terminal email client" off \
 thunderbird "Graphical email client" off
 ))
 
 # Network/Internet
-PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 80 4 \
 putty "SSH client" on \
 qbittorrent "Bittorrent client" on \
 network-manager-openvpn "For connecting to VPNs" off \
@@ -101,13 +101,13 @@ nextcloud-client "Nextcloud desktop client" off
 
 
 # Games:
-PACKAGES+=($(dialog --stdout --checklist "Games:" 10 40 2 \
+PACKAGES+=($(dialog --stdout --checklist "Games:" 10 80 2 \
 steam "" on \
 ttf-liberation "Font needed for steam" on
 ))
 
 # Document/Text Editors:
-PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 40 6 \
+PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 80 6 \
 libreoffice-fresh "" on \
 neovim "Better vim" on \
 emacs "Complicated editor" on \
@@ -132,7 +132,7 @@ nasm "x86 Assembler" off
 ))
 
 # Graphics/Design:
-PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 40 5 \
+PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 80 5 \
 gimp "Powerful image editor" on \
 blender "3D graphics creation" off \
 freecad "Parametric CAD" off \
@@ -141,12 +141,12 @@ rawtherapee "Raw image processing" off
 ))
 
 # Audio Editors:
-PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 10 40 1 \
+PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 10 80 1 \
 audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 40 7 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 7 \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
@@ -157,14 +157,14 @@ lmms "DAW" off
 ))
 
 # Calculators:
-PACKAGES+=($(dialog --stdout --checklist "Calculators:" 15 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Calculators:" 15 80 3 \
 qalculate-gtk "GUI and terminal calculator" on \
 octave "FOSS matlab" on \
 gcc-fortran "Needed for octave" on
 ))
 
 # Virtual Machines:
-PACKAGES+=($(dialog --stdout --checklist "Virtual Machines:" 30 40 6 \
+PACKAGES+=($(dialog --stdout --checklist "Virtual Machines:" 30 80 6 \
 qemu "" on \
 virt-manager "Front-end for qemu" on \
 ebtables "Needed for qemu" on \
@@ -174,21 +174,21 @@ virtuabox-host-modules-arch "Needed for virtualbox" on
 ))
 
 # Terminals:
-PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 80 3 \
 alacritty "" on \
 xterm "Basic X terminal" on \
 cool-retro-term "Cathode-display terminal" off
 ))
 
 # File Managers:
-PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 40 3 \
+PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 80 3 \
 pcmanfm "GTK file manager" on \
 filezilla "FTP, FTPS, SFTP client" off \
 thunar "xfce FM (installed by xfdesktop)" off
 ))
 
 # Documents:
-PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 80 4 \
 atril "Document viewer" on \
 zathura "Minimal document viewer" on \
 zathura-pdf-mupdf "PDF support for zathura" on \
@@ -196,7 +196,7 @@ poppler "PDF rendering library" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
-PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 40 16 \
+PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 80 16 \
 ttf-ubuntu-font-family "Ubuntu fonts" on \
 noto-fonts-emoji "Emoji font" on \
 xorg-fonts-misc "Xorg fonts" on \
@@ -216,7 +216,7 @@ papirus "Papirus icon theme" on
 ))
 
 # Media players:
-PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 40 4 \
+PACKAGES+=($(dialog --stdout --checklist "Media Players:" 15 80 4 \
 feh "Image viewer" on \
 vlc "Media player" on \
 mpv "Video player" on \
@@ -224,7 +224,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 40 19 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 19 \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
 scrcpy "Display and control android device" on \
@@ -247,7 +247,7 @@ reflector "Retrieve latest pacman mirror list" on
 ))
 
 # Fun stuff:
-PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 40 6 \
+PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 80 6 \
 glava "Audio spectrum visualizer" on \
 cmatrix "Matrix terminal" on \
 doge "doge" on \
