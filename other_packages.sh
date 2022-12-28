@@ -2,12 +2,8 @@
 
 pacman -S dialog --noconfirm
 
-# To be organized:
-# jre-openjdk
-# java-runtime
-
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 24 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 28 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -30,8 +26,12 @@ iftop "View traffic on network" on \
 maim "Screenshot" on \
 arandr "Graphical front of xrandr" on \
 starship "Cross-shell prompt" on \
+blugon "(AUR) Blue light filter for X" on \
 base-devel "Group of packages for AUR" on \
-tlp "Battery Manager" off
+paru-bin "(AUR) AUR Helper" on \
+snapd "(AUR) For installing snap packages" off \
+tlp "Battery Manager" off \
+tlpui "(AUR) GUI for tlp" off
 ))
 
 
@@ -60,6 +60,7 @@ slock "Simple X lock screen" off
 # DE/WM/Docks:
 PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 80 16 \
 network-manager-applet "Tray icon for network-manager" on \
+networkmanager-dmenu-git "(AUR) dmenu script for interacting with NM" on \
 pasystray "Tray icon for pulseaudio" on \
 xmonad "X Tiling window manager" on \
 xmonad-contrib "Extentions for Xmonad" on \
@@ -78,18 +79,20 @@ trayer "GTK2-based system tray" off
 
 # Browsers:
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 5 \
-brave-bin "" on \
-firefox "" on \
+brave-bin "(AUR) Privacy fork of chromium" on \
+librewolf-bin "(AUR) Privacy fork of firefox"
+firefox "" off \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
 amfora "Browser for Gemini protocol" off
 ))
 
 # Communication:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 80 3 \
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 80 4 \
 discord "" on \
 neomutt "Terminal email client" off \
-thunderbird "Graphical email client" off
+thunderbird "Graphical email client" off \
+zoom "(AUR)" on
 ))
 
 # Network/Internet
@@ -102,9 +105,11 @@ nextcloud-client "Nextcloud desktop client" off
 
 
 # Games:
-PACKAGES+=($(dialog --stdout --checklist "Games:" 10 80 2 \
+PACKAGES+=($(dialog --stdout --checklist "Games:" 10 80 4 \
 steam "" on \
-ttf-liberation "Font needed for steam" on
+ttf-liberation "Font needed for steam" on \
+minecraft-launcher "(AUR)" on \
+nbtexplorer-bin "(AUR) Open .nbt files for minecraft" on
 ))
 
 # Document/Text Editors:
@@ -118,12 +123,15 @@ geany "Lightweight IDE" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Developemnt:" 40 80 10 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 14 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
+android-studio "(AUR)" on \
 arduino "" on \
 arduino-avr-core "Needed for arduino" on \
 rust "" on \
+jre-openjdk "Java Development Kit" on \
+unityhub "(AUR) Unity game engine installer" off \
 dotnet-runtime ".NET Core runtime (needed for unity)" off \
 dotnet-sdk ".NET Core sdk (needed for unity)" off \
 mono-msbuild "Xamarin implementation of MS build system" off \
@@ -147,7 +155,8 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 7 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 8 \
+moc-pulse-svn "(AUR) Terminal music player" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
@@ -182,23 +191,29 @@ cool-retro-term "Cathode-display terminal" off
 ))
 
 # File Managers:
-PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 80 3 \
+PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 80 4 \
 pcmanfm "GTK file manager" on \
+lf "(AUR) Terminal file manager" on \
 filezilla "FTP, FTPS, SFTP client" off \
 thunar "xfce FM (installed by xfdesktop)" off
 ))
 
 # Documents:
-PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Document Viewers/Tools:" 15 80 5 \
 atril "Document viewer" on \
 zathura "Minimal document viewer" on \
 zathura-pdf-mupdf "PDF support for zathura" on \
-poppler "PDF rendering library" on
+poppler "PDF rendering library" on \
+joplin-appimage "(AUR) Note-taking app" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
-PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 80 16 \
+PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 80 18 \
+nerd-fonts-mononoki "(AUR)" on \
+nerd-fonts-roboto-mono "(AUR) Good font" on \
 ttf-ubuntu-font-family "Ubuntu fonts" on \
+ttf-ms-fonts "(AUR) Microsoft fonts" on \
+ttf-vista-fonts "(AUR) Microsoft fonts" on \
 noto-fonts-emoji "Emoji font" on \
 xorg-fonts-misc "Xorg fonts" on \
 xorg-xlsfonts "List available X fonts" on \
@@ -225,7 +240,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 19 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 21 \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
 scrcpy "Display and control android device" on \
@@ -244,23 +259,28 @@ minicom "Serial communication" on \
 kiwix-desktop "Offline reader for web content (expecially wikipedia)" off \
 macchanger "Change MAC address" on \
 newsboat "Terminal RSS/atom feed reader" on \
-reflector "Retrieve latest pacman mirror list" on 
+reflector "Retrieve latest pacman mirror list" on \
+anki-official-binary-bundle "(AUR) Flash card program" off \
+rpi-imager "(AUR) Flash images to card for RPi" off
 ))
 
 # Fun stuff:
-PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 80 6 \
+PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 80 9 \
 glava "Audio spectrum visualizer" on \
 cmatrix "Matrix terminal" on \
 doge "doge" on \
 figlet "Large letters from text" on \
 lolcat "Rainbows" on \
-neofetch "Display system info" on
+neofetch "Display system info" on \
+kjv-git "(AUR) Terminal KJV Bible" on \
+openrazer-meta "(AUR) Razer keyboard backend" off \
+polychromatic-git "(AUR) Razer keyboard GUI frontend" off
 ))
 
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | nerd-fonts-mononoki | nerd-fonts-roboto-mono | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
@@ -285,48 +305,17 @@ do
             systemctl enable --now libvirtd
             usermod -G libvirt -a ${1}
             ;;
+        snapd)
+            systemctl enable --now snapd.socket
+            ln -s /var/lib/snapd/snap /snap
+            ;;
     esac
 done
 
-# Changing brightness for devices with 
+# Changing brightness for devices with brightness setting
 mkdir -p /etc/udev/rules.d
 touch /etc/udev/rules.d/backlight.rules
 echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
 echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/%k/brightness\"" >> /etc/udev/rules.d/backlight.rules
-
-### AUR packages to install
-# agate-bin
-# android-studio
-# anki
-# blugon
-# brave-bin
-# joplin-appimage
-# minecraft-launcher
-# moc-pulse-svn
-# nerd-fonts-mononoki
-# nerd-fonts-roboto-mono
-# openrazer-meta
-# polychromatic-git
-# paru
-# python-spotdl
-# snap
-# ttf-ms-fonts
-# ttf-vista-fonts
-# unityhub
-# zoom
-# nbtexplorer-bin
-# rpi-imager
-# lf
-# networkmanager-dmenu-git
-# kjv-git
-# librewolf-bin
-# mutt-wizard-git
-# input-wacom
-# tlpui
-# rfc-read
-
-# Set up snaps
-#systemctl enable --now snapd.socket
-#ln -s /var/lib/snapd/snap /snap
 
 exit 0
