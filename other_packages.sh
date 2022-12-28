@@ -77,7 +77,8 @@ trayer "GTK2-based system tray" off
 ))
 
 # Browsers:
-PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 5 \
+brave-bin "" on \
 firefox "" on \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
@@ -259,8 +260,15 @@ neofetch "Display system info" on
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        papirus)
-            wget -qO- https://git.io/papirus-icon-theme-install | sh ;;
+        brave-bin)
+            location=$(pwd)
+            mkdir /home/${1}/clones/
+            cd /home/${1}/clones/
+            sudo -u ${1} git clone https://aur.archlinux.org/${item}.git
+            cd brave-bin
+            sudo -u ${1} makepkg -si --noconfirm
+            cd location
+            ;;
         *)
             pacman -S $item --noconfirm ;;
     esac
@@ -309,9 +317,7 @@ echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/
 # rpi-imager
 # lf
 # networkmanager-dmenu-git
-# text2pdf
 # kjv-git
-# flashplayer-standalone
 # librewolf-bin
 # mutt-wizard-git
 # input-wacom
