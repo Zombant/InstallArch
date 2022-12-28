@@ -264,8 +264,9 @@ do
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
-            sudo -u ${1} git clone https://aur.archlinux.org/${item}.git
-            cd brave-bin
+            git clone https://aur.archlinux.org/${item}.git
+            chown ${1} ${item}
+            cd ${item}
             sudo -u ${1} makepkg -si --noconfirm
             cd location
             ;;
