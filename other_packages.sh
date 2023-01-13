@@ -37,13 +37,16 @@ tlpui "(AUR) GUI for tlp" off
 
 
 # Audio Setup:
-PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 9 \
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 12 \
 pulseaudio "General-purpose sound server" on \
 pulseaudio-alsa "For pulseaudio to manage ALSA" on \
 pulseaudio-bluetooth "Pulseaudio bluetooth audio support" on \
 pulseaudio-jack "Pulseaudio JACK sink, source, dbus" on \
+pulseaudio-equalizer "Pulseaudio equalizer" on \
 alsa-utils "ALSA utilities" on \
 pavucontrol "Graphical pulseaudio control" on \
+pavumeter "(AUR) Volume meter for pulseaudio channels" on \
+paman "(AUR) Simple pulseaudio manager" on \
 bluez "Bluetooth protocol stack" on \
 bluez-utils "Bluetooth utility" on \
 blueman "Bluetooth manager" on
@@ -155,8 +158,9 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 8 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 9 \
 moc-pulse-svn "(AUR) Terminal music player" on \
+spotify "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
@@ -280,7 +284,7 @@ polychromatic-git "(AUR) Razer keyboard GUI frontend" off
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | nerd-fonts-mononoki | nerd-fonts-roboto-mono | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | nerd-fonts-mononoki | nerd-fonts-roboto-mono | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | pavumeter | paman)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
