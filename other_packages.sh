@@ -3,7 +3,7 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 28 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 29 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -31,7 +31,8 @@ base-devel "Group of packages for AUR" on \
 paru-bin "(AUR) AUR Helper" on \
 snapd "(AUR) For installing snap packages" off \
 tlp "Battery Manager" off \
-tlpui "(AUR) GUI for tlp" off
+tlpui "(AUR) GUI for tlp" off \
+jq "Command line JSON" on
 ))
 
 
@@ -161,6 +162,7 @@ audacity "" on
 PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 9 \
 moc-pulse-svn "(AUR) Terminal music player" on \
 spotify "(AUR)" on \
+spotify-polybar-module "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
@@ -213,8 +215,8 @@ joplin-appimage "(AUR) Note-taking app" on
 
 # Themes/Wallpapers/Icons/Fonts:
 PACKAGES+=($(dialog --stdout --checklist "Appearance:" 30 80 18 \
-nerd-fonts-mononoki "(AUR)" on \
-nerd-fonts-roboto-mono "(AUR) Good font" on \
+ttf-mononoki-nerd "Font" on \
+ttf-roboto-mono-nerd "Main font" on \
 ttf-ubuntu-font-family "Ubuntu fonts" on \
 ttf-ms-fonts "(AUR) Microsoft fonts" on \
 ttf-vista-fonts "(AUR) Microsoft fonts" on \
@@ -284,7 +286,7 @@ polychromatic-git "(AUR) Razer keyboard GUI frontend" off
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | nerd-fonts-mononoki | nerd-fonts-roboto-mono | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | pavumeter | paman)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
