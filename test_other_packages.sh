@@ -29,9 +29,9 @@ starship "Cross-shell prompt" on \
 blugon "(AUR) Blue light filter for X" on \
 base-devel "Group of packages for AUR" on \
 paru-bin "(AUR) AUR Helper" on \
-snapd "(AUR) For installing snap packages" off \
-tlp "Battery Manager" off \
-tlpui "(AUR) GUI for tlp" off \
+snapd "(AUR) For installing snap packages" on \
+tlp "Battery Manager" on \
+tlpui "(AUR) GUI for tlp" on \
 jq "Command line JSON" on \
 atool "Archive manager script" on
 ))
@@ -57,8 +57,8 @@ blueman "Bluetooth manager" on
 # Login Managers/Lock Screens:
 PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 3 \
 sddm "QML-based login-manager" on \
-xlockmore "X screensaver and lock screen" off \
-slock "Simple X lock screen" off
+xlockmore "X screensaver and lock screen" on \
+slock "Simple X lock screen" on
 ))
 
 
@@ -79,24 +79,24 @@ plank "Simple dock (for xfce)" on \
 bspwm "Tiling Window manager" on \
 polybar "Status bar for bspwm" on \
 sxhkd "X hotkey daemon (for bspwm)" on \
-trayer "GTK2-based system tray" off
+trayer "GTK2-based system tray" on
 ))
 
 # Browsers:
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 6 \
 brave-bin "(AUR) Privacy fork of chromium" on \
 librewolf-bin "(AUR) Privacy fork of firefox" \
-firefox "" off \
+firefox "" on \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
-amfora "Browser for Gemini protocol" off
+amfora "Browser for Gemini protocol" on
 ))
 
 # Communication:
 PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 80 4 \
 discord "" on \
-neomutt "Terminal email client" off \
-thunderbird "Graphical email client" off \
+neomutt "Terminal email client" on \
+thunderbird "Graphical email client" on \
 zoom "(AUR)" on
 ))
 
@@ -104,8 +104,8 @@ zoom "(AUR)" on
 PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 80 4 \
 putty "SSH client" on \
 qbittorrent "Bittorrent client" on \
-network-manager-openvpn "For connecting to VPNs" off \
-nextcloud-client "Nextcloud desktop client" off
+network-manager-openvpn "For connecting to VPNs" on \
+nextcloud-client "Nextcloud desktop client" on
 ))
 
 
@@ -125,7 +125,7 @@ neovim "Better vim" on \
 emacs "Complicated editor" on \
 gedit "Graphical text editor" on \
 nano "Terminal text editor" on \
-geany "Lightweight IDE" off
+geany "Lightweight IDE" on
 ))
 
 # Development:
@@ -139,22 +139,22 @@ valgrind "Memory leak checker" on \
 rust "" on \
 jre-openjdk "Java Development Kit" on \
 python-pip "Python package manager" on \
-unityhub "(AUR) Unity game engine installer" off \
-dotnet-runtime ".NET Core runtime (needed for unity)" off \
-dotnet-sdk ".NET Core sdk (needed for unity)" off \
-mono-msbuild "Xamarin implementation of MS build system" off \
-mono "Implementation of .NET platform" off \
-imlib "Image library for C" off \
-nasm "x86 Assembler" off
+unityhub "(AUR) Unity game engine installer" on \
+dotnet-runtime ".NET Core runtime (needed for unity)" on \
+dotnet-sdk ".NET Core sdk (needed for unity)" on \
+mono-msbuild "Xamarin implementation of MS build system" on \
+mono "Implementation of .NET platform" on \
+imlib "Image library for C" on \
+nasm "x86 Assembler" on
 ))
 
 # Graphics/Design:
 PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 80 5 \
 gimp "Powerful image editor" on \
-blender "3D graphics creation" off \
-freecad "Parametric CAD" off \
+blender "3D graphics creation" on \
+freecad "Parametric CAD" on \
 imagemagick "Image viewing/manipulation" on \
-rawtherapee "Raw image processing" off
+rawtherapee "Raw image processing" on
 ))
 
 # Audio Editors:
@@ -170,10 +170,10 @@ polybar-spotify-module "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
-cadence "Another GUI front-end for jack" off \
+cadence "Another GUI front-end for jack" on \
 musescore "Sheet music creation" on \
 guitarix "Guitar amp and FX using jack" on \
-lmms "DAW" off
+lmms "DAW" on
 ))
 
 # Calculators:
@@ -197,15 +197,15 @@ virtualbox-host-modules-arch "Needed for virtualbox" on
 PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 80 3 \
 alacritty "" on \
 xterm "Basic X terminal" on \
-cool-retro-term "Cathode-display terminal" off
+cool-retro-term "Cathode-display terminal" on
 ))
 
 # File Managers:
 PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 80 4 \
 pcmanfm "GTK file manager" on \
 lf "(AUR) Terminal file manager" on \
-filezilla "FTP, FTPS, SFTP client" off \
-thunar "xfce FM (installed by xfdesktop)" off
+filezilla "FTP, FTPS, SFTP client" on \
+thunar "xfce FM (installed by xfdesktop)" on
 ))
 
 # Documents:
@@ -230,7 +230,7 @@ xorg-xlsfonts "List available X fonts" on \
 xorg-xfontsel "Tool for selecting font names" on \
 nitrogen "Wallpaper setter" on \
 archlinux-wallpaper "Arch wallpaper pack" on \
-livewallpaper "Animated 3D wallpapers" off \
+livewallpaper "Animated 3D wallpapers" on \
 lxappearance "GTK theme switcher" on \
 qt5ct "Qt5 theme switcher" on \
 breeze-gtk "Breeze GTK2 and GTK3 theme" on \
@@ -263,16 +263,16 @@ xorg-xclock "Clock" on \
 shellcheck "Shell script analysis" on \
 calcurse "Calendar and organizer" on \
 rofi "Window switcher and run launcher" on \
-dmenu "Plain X run launcher" off \
-keepassxc "Password organizer" off \
+dmenu "Plain X run launcher" on \
+keepassxc "Password organizer" on \
 youtube-dl "Download youtube audio and video" on \
 minicom "Serial communication" on \
-kiwix-desktop "Offline reader for web content (expecially wikipedia)" off \
+kiwix-desktop "Offline reader for web content (expecially wikipedia)" on \
 macchanger "Change MAC address" on \
 newsboat "Terminal RSS/atom feed reader" on \
 reflector "Retrieve latest pacman mirror list" on \
-anki-bin "(AUR) Flash card program" off \
-rpi-imager "(AUR) Flash images to card for RPi" off
+anki-bin "(AUR) Flash card program" on \
+rpi-imager "(AUR) Flash images to card for RPi" on
 ))
 
 # Fun stuff:
@@ -284,49 +284,28 @@ figlet "Large letters from text" on \
 lolcat "Rainbows" on \
 neofetch "Display system info" on \
 kjv-git "(AUR) Terminal KJV Bible" on \
-openrazer-meta "(AUR) Razer keyboard backend" off \
-polychromatic-git "(AUR) Razer keyboard GUI frontend" off
+openrazer-meta "(AUR) Razer keyboard backend" on \
+polychromatic-git "(AUR) Razer keyboard GUI frontend" on
 ))
 
-for item in "${PACKAGES[@]}"
-do
-    case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin)
-            location=$(pwd)
-            mkdir /home/${1}/clones/
-            cd /home/${1}/clones/
-            git clone https://aur.archlinux.org/${item}.git
-            chown ${1} ${item}
-            cd ${item}
-            sudo -u ${1} makepkg -si --noconfirm
-            cd location
-            ;;
-        *)
-            pacman -S $item --noconfirm ;;
-    esac
+#https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
+set +e #otherwise the script will exit on error
+containsElement () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
 
-    case "$item" in
-        sddm)
-            systemctl enable sddm ;;
-        pulseaudio)
-            pulseaudio --check
-            pulseaudio -D
-            ;;
-        qemu)
-            systemctl enable --now libvirtd
-            usermod -G libvirt -a ${1}
-            ;;
-        snapd)
-            systemctl enable --now snapd.socket
-            ln -s /var/lib/snapd/snap /snap
-            ;;
-    esac
+INSTALLED_PACKAGES=($(pacman -Qe | awk {'print $1'}))
+for item in "${INSTALLED_PACKAGES[@]}"
+do
+    if printf '%s\0' "${PACKAGES[@]}" | grep -Fxqz -- $item; then
+       printf '\e[0;32m%s: in script\n' $item
+   else
+       printf '\e[0;31m%s: not in script\n' $item
+    fi
 done
 
-# Changing brightness for devices with brightness setting
-mkdir -p /etc/udev/rules.d
-touch /etc/udev/rules.d/backlight.rules
-echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
-echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chmod g+w /sys/class/backlight/%k/brightness\"" >> /etc/udev/rules.d/backlight.rules
 
 exit 0
