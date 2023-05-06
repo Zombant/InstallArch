@@ -3,12 +3,12 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 30 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 31 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
 cifs-utils "Tools for CIFS filesystem (Samba)" on \
-fuse "Allow mounting filesystems" on \
+fuse2 "Allow mounting filesystems" on \
 picom "X Compositor" on \
 dunst "Notification daemon" on \
 libnotify "Notification library" on \
@@ -33,7 +33,8 @@ snapd "(AUR) For installing snap packages" on \
 tlp "Battery Manager" on \
 tlpui "(AUR) GUI for tlp" on \
 jq "Command line JSON" on \
-atool "Archive manager script" on
+atool "Archive manager script" on \
+inetutils "Provides telnet command" on
 ))
 
 
@@ -85,7 +86,7 @@ trayer "GTK2-based system tray" on
 # Browsers:
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 6 \
 brave-bin "(AUR) Privacy fork of chromium" on \
-librewolf-bin "(AUR) Privacy fork of firefox" \
+librewolf-bin "(AUR) Privacy fork of firefox" on \
 firefox "" on \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
@@ -129,7 +130,7 @@ geany "Lightweight IDE" on
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 16 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 17 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 android-studio "(AUR)" on \
@@ -145,7 +146,9 @@ dotnet-sdk ".NET Core sdk (needed for unity)" on \
 mono-msbuild "Xamarin implementation of MS build system" on \
 mono "Implementation of .NET platform" on \
 imlib "Image library for C" on \
-nasm "x86 Assembler" on
+nasm "x86 Assembler" on \
+portaudio "Audio I/O library" on
+
 ))
 
 # Graphics/Design:

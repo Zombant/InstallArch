@@ -3,7 +3,7 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 30 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 31 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -33,7 +33,8 @@ snapd "(AUR) For installing snap packages" off \
 tlp "Battery Manager" off \
 tlpui "(AUR) GUI for tlp" off \
 jq "Command line JSON" on \
-atool "Archive manager script" on
+atool "Archive manager script" on \
+inetutils "Provides telnet command" on
 ))
 
 
@@ -85,7 +86,7 @@ trayer "GTK2-based system tray" off
 # Browsers:
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 6 \
 brave-bin "(AUR) Privacy fork of chromium" on \
-librewolf-bin "(AUR) Privacy fork of firefox" \
+librewolf-bin "(AUR) Privacy fork of firefox" on \
 firefox "" off \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
@@ -93,7 +94,7 @@ amfora "Browser for Gemini protocol" off
 ))
 
 # Communication:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 10 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 15 80 4 \
 discord "" on \
 neomutt "Terminal email client" off \
 thunderbird "Graphical email client" off \
@@ -110,7 +111,7 @@ nextcloud-client "Nextcloud desktop client" off
 
 
 # Games:
-PACKAGES+=($(dialog --stdout --checklist "Games:" 10 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Games:" 15 80 4 \
 steam "" on \
 ttf-liberation "Font needed for steam" on \
 minecraft-launcher "(AUR)" on \
@@ -129,7 +130,7 @@ geany "Lightweight IDE" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 16 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 17 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 android-studio "(AUR)" on \
@@ -145,7 +146,8 @@ dotnet-sdk ".NET Core sdk (needed for unity)" off \
 mono-msbuild "Xamarin implementation of MS build system" off \
 mono "Implementation of .NET platform" off \
 imlib "Image library for C" off \
-nasm "x86 Assembler" off
+nasm "x86 Assembler" off \
+portaudio "Audio I/O library" on
 ))
 
 # Graphics/Design:
