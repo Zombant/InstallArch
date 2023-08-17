@@ -3,7 +3,7 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 31 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 32 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -34,13 +34,14 @@ tlp "Battery Manager" off \
 tlpui "(AUR) GUI for tlp" off \
 jq "Command line JSON" on \
 atool "Archive manager script" on \
-inetutils "Provides telnet command" on
+inetutils "Provides telnet command" on \
+cpupower "Tune processor speeds" on
 ))
 
 
 
 # Audio Setup:
-PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 12 \
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 13 \
 pulseaudio "General-purpose sound server" on \
 pulseaudio-alsa "For pulseaudio to manage ALSA" on \
 pulseaudio-bluetooth "Pulseaudio bluetooth audio support" on \
@@ -52,7 +53,8 @@ pavumeter "(AUR) Volume meter for pulseaudio channels" on \
 paman "(AUR) Simple pulseaudio manager" on \
 bluez "Bluetooth protocol stack" on \
 bluez-utils "Bluetooth utility" on \
-blueman "Bluetooth manager" on
+blueman "Bluetooth manager" on \
+rtcqs "(AUR) Script to test system for realtime performance" on
 ))
 
 # Login Managers/Lock Screens:
@@ -252,7 +254,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 22 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 26 \
 stellarium-bin "(AUR) Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -274,7 +276,11 @@ macchanger "Change MAC address" on \
 newsboat "Terminal RSS/atom feed reader" on \
 reflector "Retrieve latest pacman mirror list" on \
 anki-bin "(AUR) Flash card program" off \
-rpi-imager "(AUR) Flash images to card for RPi" off
+rpi-imager "(AUR) Flash images to card for RPi" off \
+gqrx "SDR Receiver" on \
+sdrsharp "(AUR) Better SDR Receiver" on \
+ltspice "(AUR) SPICE simulator" off \
+wike "(AUR) Wikipedia viewer" on 
 ))
 
 # Fun stuff:
@@ -293,7 +299,7 @@ polychromatic-git "(AUR) Razer keyboard GUI frontend" off
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin | rtcqs | ltspice)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
