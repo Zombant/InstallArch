@@ -3,7 +3,7 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 32 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 33 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -15,7 +15,7 @@ libnotify "Notification library" on \
 zip "Creating/modifying .zip files" on \
 unzip "Extracting/viewing .zip files" on \
 udisks2 "Mount/unmount storage" on \
-exa "Better ls" on \
+eza "Better ls" on \
 bat "Better cat" on \
 procs "Better ps" on \
 prettyping "Better ping" on \
@@ -35,7 +35,8 @@ tlpui "(AUR) GUI for tlp" off \
 jq "Command line JSON" on \
 atool "Archive manager script" on \
 inetutils "Provides telnet command" on \
-cpupower "Tune processor speeds" on
+cpupower "Tune processor speeds" on \
+cheese "GNOME Camera Utility" on
 ))
 
 
@@ -66,7 +67,7 @@ slock "Simple X lock screen" off
 
 
 # DE/WM/Docks:
-PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 80 16 \
+PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 80 17 \
 network-manager-applet "Tray icon for network-manager" on \
 networkmanager-dmenu-git "(AUR) dmenu script for interacting with NM" on \
 pasystray "Tray icon for pulseaudio" on \
@@ -82,7 +83,8 @@ plank "Simple dock (for xfce)" on \
 bspwm "Tiling Window manager" on \
 polybar "Status bar for bspwm" on \
 sxhkd "X hotkey daemon (for bspwm)" on \
-trayer "GTK2-based system tray" off
+trayer "GTK2-based system tray" on \
+kdocker "Dock any window" on
 ))
 
 # Browsers:
@@ -132,7 +134,7 @@ geany "Lightweight IDE" off
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 17 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 20 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 android-studio "(AUR)" on \
@@ -149,7 +151,10 @@ mono-msbuild "Xamarin implementation of MS build system" off \
 mono "Implementation of .NET platform" off \
 imlib "Image library for C" off \
 nasm "x86 Assembler" off \
-portaudio "Audio I/O library" on
+portaudio "Audio I/O library" on \
+nodejs "" on \
+ghidra "Software reverse engineering tool" on \
+dfu-programmer "Programmer for Atmel Chips with USB Bootloader" on
 ))
 
 # Graphics/Design:
@@ -167,17 +172,18 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 10 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 11 \
 moc-pulse-svn "(AUR) Terminal music player" on \
 spotify "(AUR)" on \
 polybar-spotify-module "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
 qjackctl "Qt GUI front-end for jack" on \
-cadence "Another GUI front-end for jack" off \
+cadence "Another GUI front-end for jack" on \
 musescore "Sheet music creation" on \
 guitarix "Guitar amp and FX using jack" on \
-lmms "DAW" off
+lmms "DAW" on \
+ardour "DAW" on
 ))
 
 # Calculators:
@@ -254,7 +260,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 26 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 27 \
 stellarium-bin "(AUR) Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -280,7 +286,8 @@ rpi-imager "(AUR) Flash images to card for RPi" off \
 gqrx "SDR Receiver" on \
 sdrsharp "(AUR) Better SDR Receiver" on \
 ltspice "(AUR) SPICE simulator" off \
-wike "(AUR) Wikipedia viewer" on 
+wike "(AUR) Wikipedia viewer" on \
+gparted "GUI disk partition manager" on
 ))
 
 # Fun stuff:

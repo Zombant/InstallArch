@@ -15,7 +15,7 @@ libnotify "Notification library" on \
 zip "Creating/modifying .zip files" on \
 unzip "Extracting/viewing .zip files" on \
 udisks2 "Mount/unmount storage" on \
-exa "Better ls" on \
+eza "Better ls" on \
 bat "Better cat" on \
 procs "Better ps" on \
 prettyping "Better ping" on \
@@ -166,7 +166,7 @@ audacity "" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 10 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 11 \
 moc-pulse-svn "(AUR) Terminal music player" on \
 spotify "(AUR)" on \
 polybar-spotify-module "(AUR)" on \
@@ -176,7 +176,8 @@ qjackctl "Qt GUI front-end for jack" on \
 cadence "Another GUI front-end for jack" on \
 musescore "Sheet music creation" on \
 guitarix "Guitar amp and FX using jack" on \
-lmms "DAW" on
+lmms "DAW" on \
+ardour "DAW" on
 ))
 
 # Calculators:
@@ -300,10 +301,29 @@ containsElement () {
   return 1
 }
 
+echo "Expanding package groups..."
+packagesExpanded=()
+for item in "${PACKAGES[@]}"
+do
+    # If item is a package
+    pacman -Qi "$item" &>/dev/null
+    if [ $? -eq 0 ]; then
+        packagesExpanded=("${packagesExpanded[@]} $item")
+        continue
+    fi
+    # If item is a group
+    groupPackages=($(pacman -Sgq "$item"))
+    if [ $? -eq 0 ]; then
+        packagesExpanded=("${packagesExpanded[@]} ${groupPackages[@]}")
+    fi
+done
+
+#packagesExpanded=$("${packagesExpanded[@]}" | awk '{$1=$1;print}')
+
 INSTALLED_PACKAGES=($(pacman -Qe | awk {'print $1'}))
 for item in "${INSTALLED_PACKAGES[@]}"
 do
-    if printf '%s\0' "${PACKAGES[@]}" | grep -Fxqz -- $item; then
+    if printf '%s\0' "${PACKAGES[@]}" | grep -Fxqz -- "$item"; then
        printf '\e[0;32m%s: in script\n' $item
    else
        printf '\e[0;31m%s: not in script\n' $item
