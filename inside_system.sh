@@ -83,6 +83,7 @@ curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/reflector.c
 systemctl enable reflector.service
 
 # Set up changemac service
+# TODO: Provide yes or no prompt for enabling changemac on each network device
 pacman -S macchanger --noconfirm
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/changemac@.service > /etc/systemd/system/changemac@.service
 devices=( $(ip link show | awk '{if ($1 ~ "[0-9]:") print substr($2, 1, length($2)-1) }') )

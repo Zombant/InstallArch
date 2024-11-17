@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# Command line arguments:
+# --test    Do not install packages, only test that the script is up to date
+# --show-all   Used with test mode to show included packages
+
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 60 80 33 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 80 80 34 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -29,14 +33,15 @@ starship "Cross-shell prompt" on \
 blugon "(AUR) Blue light filter for X" on \
 base-devel "Group of packages for AUR" on \
 paru-bin "(AUR) AUR Helper" on \
-snapd "(AUR) For installing snap packages" off \
-tlp "Battery Manager" off \
-tlpui "(AUR) GUI for tlp" off \
+snapd "(AUR) For installing snap packages" on \
+tlp "Battery Manager" on \
+tlpui "(AUR) GUI for tlp" on \
 jq "Command line JSON" on \
 atool "Archive manager script" on \
 inetutils "Provides telnet command" on \
 cpupower "Tune processor speeds" on \
-cheese "GNOME Camera Utility" on
+cheese "GNOME Camera Utility" on \
+xclip "X clipboard functionality" on
 ))
 
 
@@ -61,8 +66,8 @@ rtcqs "(AUR) Script to test system for realtime performance" on
 # Login Managers/Lock Screens:
 PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 3 \
 sddm "QML-based login-manager" on \
-xlockmore "X screensaver and lock screen" off \
-slock "Simple X lock screen" off
+xlockmore "X screensaver and lock screen" on \
+slock "Simple X lock screen" on
 ))
 
 
@@ -91,26 +96,27 @@ kdocker "Dock any window" on
 PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 6 \
 brave-bin "(AUR) Privacy fork of chromium" on \
 librewolf-bin "(AUR) Privacy fork of firefox" on \
-firefox "" off \
+firefox "" on \
 qutebrowser "Vim-like browser" on \
 lynx "Terminal browser" on \
-amfora "Browser for Gemini protocol" off
+amfora "Browser for Gemini protocol" on
 ))
 
 # Communication:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 15 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 15 80 5 \
 discord "" on \
-neomutt "Terminal email client" off \
-thunderbird "Graphical email client" off \
-zoom "(AUR)" on
+neomutt "Terminal email client" on \
+thunderbird "Graphical email client" on \
+zoom "(AUR)" on \
+signal-desktop "Signal private messenger for Linux" on
 ))
 
 # Network/Internet
 PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 80 4 \
-putty "SSH client" on \
+putty "SSH/Telnet client" on \
 qbittorrent "Bittorrent client" on \
-network-manager-openvpn "For connecting to VPNs" off \
-nextcloud-client "Nextcloud desktop client" off
+network-manager-openvpn "For connecting to VPNs" on \
+nextcloud-client "Nextcloud desktop client" on
 ))
 
 
@@ -130,11 +136,11 @@ neovim "Better vim" on \
 emacs "Complicated editor" on \
 gedit "Graphical text editor" on \
 nano "Terminal text editor" on \
-geany "Lightweight IDE" off
+geany "Lightweight IDE" on
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 20 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 21 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 android-studio "(AUR)" on \
@@ -142,28 +148,29 @@ arduino "" on \
 arduino-avr-core "Needed for arduino" on \
 valgrind "Memory leak checker" on \
 rust "" on \
-jre-openjdk "Java Development Kit" on \
+jre-openjdk "OpenJDK full java runtime environment" on \
 python-pip "Python package manager" on \
-unityhub "(AUR) Unity game engine installer" off \
-dotnet-runtime ".NET Core runtime (needed for unity)" off \
-dotnet-sdk ".NET Core sdk (needed for unity)" off \
-mono-msbuild "Xamarin implementation of MS build system" off \
-mono "Implementation of .NET platform" off \
-imlib "Image library for C" off \
-nasm "x86 Assembler" off \
+unityhub "(AUR) Unity game engine installer" on \
+dotnet-runtime ".NET Core runtime (needed for unity)" on \
+dotnet-sdk ".NET Core sdk (needed for unity)" on \
+mono-msbuild "Xamarin implementation of MS build system" on \
+mono "Implementation of .NET platform" on \
+imlib "Image library for C" on \
+nasm "x86 Assembler" on \
 portaudio "Audio I/O library" on \
 nodejs "" on \
 ghidra "Software reverse engineering tool" on \
-dfu-programmer "Programmer for Atmel Chips with USB Bootloader" on
+dfu-programmer "Programmer for Atmel Chips with USB Bootloader" on \
+stm32cubeide "(AUR) IDE for STM32 microcontrollers" on
 ))
 
 # Graphics/Design:
 PACKAGES+=($(dialog --stdout --checklist "Graphics/Design:" 20 80 5 \
 gimp "Powerful image editor" on \
-blender "3D graphics creation" off \
-freecad "Parametric CAD" off \
+blender "3D graphics creation" on \
+freecad "Parametric CAD" on \
 imagemagick "Image viewing/manipulation" on \
-rawtherapee "Raw image processing" off
+rawtherapee "Raw image processing" on
 ))
 
 # Audio Editors:
@@ -207,15 +214,15 @@ virtualbox-host-modules-arch "Needed for virtualbox" on
 PACKAGES+=($(dialog --stdout --checklist "Terminals:" 15 80 3 \
 alacritty "" on \
 xterm "Basic X terminal" on \
-cool-retro-term "Cathode-display terminal" off
+cool-retro-term "Cathode-display terminal" on
 ))
 
 # File Managers:
-PACKAGES+=($(dialog --stdout --checklist "File Managers:" 10 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "File Managers:" 30 80 4 \
 pcmanfm "GTK file manager" on \
 lf "(AUR) Terminal file manager" on \
-filezilla "FTP, FTPS, SFTP client" off \
-thunar "xfce FM (installed by xfdesktop)" off
+filezilla "FTP, FTPS, SFTP client" on \
+thunar "xfce FM (installed by xfdesktop)" on
 ))
 
 # Documents:
@@ -240,7 +247,7 @@ xorg-xlsfonts "List available X fonts" on \
 xorg-xfontsel "Tool for selecting font names" on \
 nitrogen "Wallpaper setter" on \
 archlinux-wallpaper "Arch wallpaper pack" on \
-livewallpaper "Animated 3D wallpapers" off \
+livewallpaper "Animated 3D wallpapers" on \
 lxappearance "GTK theme switcher" on \
 qt5ct "Qt5 theme switcher" on \
 breeze-gtk "Breeze GTK2 and GTK3 theme" on \
@@ -260,7 +267,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 27 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 30 \
 stellarium-bin "(AUR) Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -273,40 +280,74 @@ xorg-xclock "Clock" on \
 shellcheck "Shell script analysis" on \
 calcurse "Calendar and organizer" on \
 rofi "Window switcher and run launcher" on \
-dmenu "Plain X run launcher" off \
-keepassxc "Password organizer" off \
-youtube-dl "Download youtube audio and video" on \
+dmenu "Plain X run launcher" on \
+keepassxc "Password organizer" on \
+yt-dlp "Download youtube audio and video" on \
 minicom "Serial communication" on \
-kiwix-desktop "Offline reader for web content (expecially wikipedia)" off \
+kiwix-desktop "Offline reader for web content (expecially wikipedia)" on \
 macchanger "Change MAC address" on \
 newsboat "Terminal RSS/atom feed reader" on \
 reflector "Retrieve latest pacman mirror list" on \
-anki-bin "(AUR) Flash card program" off \
-rpi-imager "(AUR) Flash images to card for RPi" off \
+anki-bin "(AUR) Flash card program" on \
+rpi-imager "(AUR) Flash images to card for RPi" on \
 gqrx "SDR Receiver" on \
 sdrsharp "(AUR) Better SDR Receiver" on \
-ltspice "(AUR) SPICE simulator" off \
+ltspice "(AUR) SPICE simulator" on \
+kicad "Electronic schematic and PCB design tools" on \
+kicad-library "KiCAD symbol, footprint, and template libraries" on \
+kicad-library-3d "KiCAD 3D model libraries" on \
 wike "(AUR) Wikipedia viewer" on \
 gparted "GUI disk partition manager" on
 ))
 
 # Fun stuff:
-PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 80 9 \
+PACKAGES+=($(dialog --stdout --checklist "Fun stuff:" 20 80 7 \
 glava "Audio spectrum visualizer" on \
 cmatrix "Matrix terminal" on \
 doge "doge" on \
 figlet "Large letters from text" on \
 lolcat "Rainbows" on \
 neofetch "Display system info" on \
-kjv-git "(AUR) Terminal KJV Bible" on \
-openrazer-meta "(AUR) Razer keyboard backend" off \
-polychromatic-git "(AUR) Razer keyboard GUI frontend" off
+xorg-xeyes "Eyeballs" on
 ))
+
+if [ "$1" = "--test" ]; then
+    echo "Checking for untracked packages and groups..."
+    packagesExpanded=()
+    for item in "${PACKAGES[@]}"
+    do
+        # If item is a package
+        pacman -Qi "$item" &>/dev/null
+        if [ $? -eq 0 ]; then
+            packagesExpanded+=("$item")
+            continue
+        fi
+        # If item is a group
+        groupPackages=($(pacman -Sgq "$item"))
+        if [ $? -eq 0 ]; then
+            packagesExpanded+=("${groupPackages[@]}")
+        fi
+    done
+
+    INSTALLED_PACKAGES=($(pacman -Qe | awk {'print $1'}))
+    for item in "${INSTALLED_PACKAGES[@]}"
+    do
+        if printf '%s\0' "${packagesExpanded[@]}" | grep -Fxqz -- "$item"; then
+            if [ "$2" = "--show-all" ]; then
+                printf '\e[0;32m%s: in script\n' $item
+            fi
+        else
+            printf '\e[0;31m%s: not in script\n' $item
+        fi
+    done
+
+    exit 0
+fi
 
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | openrazer-meta | polychromatic-git | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | kjv-git | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin | rtcqs | ltspice)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin | rtcqs | ltspice | stm32cubeide)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
@@ -339,6 +380,7 @@ do
 done
 
 # Changing brightness for devices with brightness setting
+# TODO: Move this to inside_system.sh
 mkdir -p /etc/udev/rules.d
 touch /etc/udev/rules.d/backlight.rules
 echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/usr/bin/chgrp video /sys/class/backlight/%k/brightness\"" > /etc/udev/rules.d/backlight.rules
