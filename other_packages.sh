@@ -7,7 +7,7 @@
 pacman -S dialog --noconfirm
 
 # Basics:
-PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 80 80 34 \
+PACKAGES+=($(dialog --stdout --checklist "Basic Packages:" 80 80 35 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 ntfs-3g "FOSS implementation of NTFS filesystem" on \
@@ -41,10 +41,9 @@ atool "Archive manager script" on \
 inetutils "Provides telnet command" on \
 cpupower "Tune processor speeds" on \
 cheese "GNOME Camera Utility" on \
-xclip "X clipboard functionality" on
+xclip "X clipboard functionality" on \
+tmux "Terminal multiplexer" on
 ))
-
-
 
 # Audio Setup:
 PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 13 \
@@ -69,7 +68,6 @@ sddm "QML-based login-manager" on \
 xlockmore "X screensaver and lock screen" on \
 slock "Simple X lock screen" on
 ))
-
 
 # DE/WM/Docks:
 PACKAGES+=($(dialog --stdout --checklist "Desktops/Window Managers/etc.:" 50 80 17 \
@@ -112,13 +110,13 @@ signal-desktop "Signal private messenger for Linux" on
 ))
 
 # Network/Internet
-PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet:" 20 80 5 \
 putty "SSH/Telnet client" on \
 qbittorrent "Bittorrent client" on \
 network-manager-openvpn "For connecting to VPNs" on \
-nextcloud-client "Nextcloud desktop client" on
+nextcloud-client "Nextcloud desktop client" on \
+syncthing "P2P file sync" on
 ))
-
 
 # Games:
 PACKAGES+=($(dialog --stdout --checklist "Games:" 15 80 4 \
@@ -140,7 +138,7 @@ geany "Lightweight IDE" on
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 21 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 22 \
 intellij-idea-community-edition "" on \
 pycharm-community-edition "" on \
 android-studio "(AUR)" on \
@@ -161,7 +159,8 @@ portaudio "Audio I/O library" on \
 nodejs "" on \
 ghidra "Software reverse engineering tool" on \
 dfu-programmer "Programmer for Atmel Chips with USB Bootloader" on \
-stm32cubeide "(AUR) IDE for STM32 microcontrollers" on
+stm32cubeide "(AUR) IDE for STM32 microcontrollers" on \
+cmake "Cross-platform make system" on
 ))
 
 # Graphics/Design:
@@ -174,12 +173,13 @@ rawtherapee "Raw image processing" on
 ))
 
 # Audio Editors:
-PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 10 80 1 \
-audacity "" on
+PACKAGES+=($(dialog --stdout --checklist "Audio Editors:" 20 80 2 \
+audacity "" on \
+sox "Audio manipulation tools" on
 ))
 
 # Music:
-PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 11 \
+PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 12 \
 moc-pulse-svn "(AUR) Terminal music player" on \
 spotify "(AUR)" on \
 polybar-spotify-module "(AUR)" on \
@@ -190,7 +190,8 @@ cadence "Another GUI front-end for jack" on \
 musescore "Sheet music creation" on \
 guitarix "Guitar amp and FX using jack" on \
 lmms "DAW" on \
-ardour "DAW" on
+ardour "DAW" on \
+surge-xt "MIDI Synth" on
 ))
 
 # Calculators:
@@ -267,7 +268,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 30 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 31 \
 stellarium-bin "(AUR) Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -297,7 +298,8 @@ kicad "Electronic schematic and PCB design tools" on \
 kicad-library "KiCAD symbol, footprint, and template libraries" on \
 kicad-library-3d "KiCAD 3D model libraries" on \
 wike "(AUR) Wikipedia viewer" on \
-gparted "GUI disk partition manager" on
+gparted "GUI disk partition manager" on \
+openbsd-netcat "Includes nc command" on
 ))
 
 # Fun stuff:
@@ -375,6 +377,9 @@ do
         snapd)
             systemctl enable --now snapd.socket
             ln -s /var/lib/snapd/snap /snap
+            ;;
+        syncthing)
+            systemctl enable --now syncthing@$USER.service
             ;;
     esac
 done
