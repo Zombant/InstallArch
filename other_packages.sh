@@ -268,7 +268,7 @@ mpg123 "Audio player" on
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 31 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 36 \
 stellarium-bin "(AUR) Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -292,7 +292,12 @@ reflector "Retrieve latest pacman mirror list" on \
 anki-bin "(AUR) Flash card program" on \
 rpi-imager "(AUR) Flash images to card for RPi" on \
 gqrx "SDR Receiver" on \
-sdrsharp "(AUR) Better SDR Receiver" on \
+sdrpp-git "(AUR) SDR Reciever" on \
+multimon-ng "Decode POCSAG pager signals" on \
+adsb_deku "Plot ADS-B flight data" on \
+dump1090 "(AUR) Decode ADS-B signals" on \
+dump1090_rs "Decode ADS-B signals (rust version)" on \
+soapyrtlsdr "Needed for soapy SDR driver for RTL-SDR" on \
 ltspice "(AUR) SPICE simulator" on \
 kicad "Electronic schematic and PCB design tools" on \
 kicad-library "KiCAD symbol, footprint, and template libraries" on \
@@ -349,7 +354,7 @@ fi
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin | rtcqs | ltspice | stm32cubeide)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher | snapd | anki-official-binary-bundle | moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | lf | tlpui | librewolf-bin | rpi-imager | networkmanager-dmenu-git | spotify | spotify-polybar-module | pavumeter | paman | anki-bin | stellarium-bin | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
