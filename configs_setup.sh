@@ -3,6 +3,10 @@
 read -p "Enter URL to the github repo: " REPO
 echo $REPO
 mkdir ~/configs/
+
+rm ~/.bashrc
+rm ~/.bash_profile
+
 /usr/bin/git --git-dir=$HOME/configs/ --work-tree=$HOME clone --bare $REPO ~/configs/
 /usr/bin/git --git-dir=$HOME/configs/ --work-tree=$HOME checkout
 /usr/bin/git --git-dir=$HOME/configs/ --work-tree=$HOME config --local status.showUntrackedFiles no
