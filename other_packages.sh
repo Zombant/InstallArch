@@ -44,30 +44,27 @@ gparted "GUI disk partition manager" on
 ))
 
 # X11
-PACKAGES+=($(dialog --stdout --checklist "X11 Core:" 80 80 12 \
+PACKAGES+=($(dialog --stdout --checklist "X11 Core:" 80 80 13 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
+xorg-xsetroot "Change cursor" on \
 picom "X Compositor" on \
 xdotool "Automate keyboard/mouse" on \
 arandr "Graphical front of xrandr" on \
 xclip "X clipboard functionality" on \
 xlockmore "X screensaver and lock screen" on \
 slock "Simple X lock screen" on \
-nitrogen "X11 Wallpaper setter" on \
 maim "X11 Screenshot" on \
 blugon "(AUR) Blue light filter for X" on \
 lxappearance "X GTK theme switcher" on \
 ))
 
 # X11 Desktop Environments, Window Managers:
-PACKAGES+=($(dialog --stdout --checklist "X11 Desktops/Window Managers:" 50 80 17 \
+PACKAGES+=($(dialog --stdout --checklist "X11 Desktops/Window Managers:" 50 80 14 \
 xmonad "X Tiling window manager" on \
 xmonad-contrib "Extentions for Xmonad" on \
 xmobar "Minimal statusbar (for xmonad)" on \
 cabal-install "Command-line interface for Cabal and Hackage" on \
-openbox "Floating X window manager" on \
-tint2 "Taskbar (for openbox)" on \
-obconf "Openbox config tool" on \
 xfce4 "GTK3 desktop environment" on \
 plank "Simple dock (for xfce)" on \
 bspwm "Tiling Window manager" on \
@@ -83,6 +80,14 @@ network-manager-applet "Tray icon for network-manager" on
 # Login Managers/Lock Screens:
 PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 1 \
 sddm "QML-based login-manager" on \
+))
+
+# Plasma
+PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 4 \
+plasma-desktop "KDE Plasme DE" on \
+sddm "QML-based login-manager" on \
+sddm-kcm "QML-based login-manager" on \
+spectacle "Plasma screenshot" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
@@ -103,7 +108,7 @@ breeze-icons "Breeze theme icons" on \
 arc-gtk-theme "Arc GTK2, GTK3, GTK4 theme" on \
 materia-gtk-theme "Material design theme" on \
 arc-icon-theme "Arc icon theme" on \
-papirus "Papirus icon theme" on
+papirus-icon-theme "Papirus icon theme" on
 ))
 
 # Audio Setup:
@@ -123,29 +128,23 @@ blueman "Bluetooth manager" on \
 ))
 
 # Browsers:
-PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Browsers:" 20 80 2 \
 brave-bin "(AUR) Privacy fork of chromium" on \
-librewolf "(AUR) Privacy fork of firefox" on \
 firefox "" on \
-qutebrowser "Vim-like browser" on
 ))
 
 # Communication:
-PACKAGES+=($(dialog --stdout --checklist "Communication:" 15 80 5 \
+PACKAGES+=($(dialog --stdout --checklist "Communication:" 15 80 2 \
 discord "" on \
-neomutt "Terminal email client" on \
-thunderbird "Graphical email client" on \
 zoom "(AUR)" on \
-signal-desktop "Signal private messenger for Linux" on
 ))
 
 # Network/Internet Tools
-PACKAGES+=($(dialog --stdout --checklist "Network/Internet Tools:" 20 80 8 \
+PACKAGES+=($(dialog --stdout --checklist "Network/Internet Tools:" 20 80 7 \
 putty "SSH/Telnet client" on \
 qbittorrent "Bittorrent client" on \
-network-manager-openvpn "For connecting to VPNs" on \
-nextcloud-client "Nextcloud desktop client" on \
 syncthing "P2P file sync" on \
+tailscale "VPN mesh" on \
 openbsd-netcat "Includes nc command" on \
 wireshark-qt "GUI network traffic and protocol analyzer" on \
 nmap "Network discovery and security" on \
@@ -162,7 +161,7 @@ nbtexplorer-bin "(AUR) Open .nbt files for minecraft" on
 # Document/Text Editors:
 PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 80 6 \
 libreoffice-fresh "" on \
-code "Open source version of VSCode" on \
+vscodium "(AUR) Open source version of VSCode" \
 neovim "Better vim" on \
 emacs "Complicated editor" on \
 gedit "Graphical text editor" on \
@@ -170,9 +169,7 @@ nano "Terminal text editor" on \
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 22 \
-intellij-idea-community-edition "" on \
-pycharm-community-edition "" on \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 21 \
 android-studio "(AUR)" on \
 arduino "" on \
 arduino-avr-core "Needed for arduino" on \
@@ -180,6 +177,7 @@ valgrind "Memory leak checker" on \
 rust "" on \
 jre-openjdk "OpenJDK full java runtime environment" on \
 python-pip "Python package manager" on \
+python-pipx "Python package manager (Arch)" on \
 unityhub "(AUR) Unity game engine installer" on \
 dotnet-runtime ".NET Core runtime (needed for unity)" on \
 dotnet-sdk ".NET Core sdk (needed for unity)" on \
@@ -319,7 +317,7 @@ cmatrix "Matrix terminal" on \
 doge "doge" on \
 figlet "Large letters from text" on \
 lolcat "Rainbows" on \
-neofetch "Display system info" on \
+fastfetch "Display system info" on \
 xorg-xeyes "Eyeballs" on
 ))
 
@@ -359,7 +357,7 @@ fi
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | librewolf | networkmanager-dmenu-git | spotify | polybar-spotify-module | pavumeter | paman | anki | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | librewolf | networkmanager-dmenu-git | spotify | polybar-spotify-module | pavumeter | paman | anki | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090 | vscodium-bin)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
