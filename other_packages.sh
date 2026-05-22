@@ -83,11 +83,13 @@ sddm "QML-based login-manager" on \
 ))
 
 # Plasma
-PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 4 \
+PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 6 \
 plasma-desktop "KDE Plasme DE" on \
+plasma-pa "Volume tray icon" on \
 sddm "QML-based login-manager" on \
 sddm-kcm "QML-based login-manager" on \
-spectacle "Plasma screenshot" on
+spectacle "Plasma screenshot" on \
+konsave "Plasma config saver" on
 ))
 
 # Themes/Wallpapers/Icons/Fonts:
@@ -211,7 +213,7 @@ sox "Audio manipulation tools" on
 # Music:
 PACKAGES+=($(dialog --stdout --checklist "Music:" 20 80 13 \
 moc-pulse-svn "(AUR) Terminal music player" on \
-spotify "(AUR)" on \
+spotify-launcher "" on \
 polybar-spotify-module "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
 jack "Low-latency audio server for music (needed by qsynth)" on \
@@ -357,7 +359,7 @@ fi
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | librewolf | networkmanager-dmenu-git | spotify | polybar-spotify-module | pavumeter | paman | anki | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090 | vscodium-bin)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | librewolf | networkmanager-dmenu-git | polybar-spotify-module | pavumeter | paman | anki | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090 | vscodium-bin)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
