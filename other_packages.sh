@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Command line arguments:
 # --test    Do not install packages, only test that the script is up to date
@@ -15,7 +15,7 @@ dunst "Notification daemon" on \
 libnotify "Notification library" on \
 base-devel "Group of packages for AUR" on \
 paru-bin "(AUR) AUR Helper" on \
-snapd "For installing snap packages" on \
+snapd "(AUR) For installing snap packages" on \
 ))
 
 # System utilities:
@@ -44,7 +44,7 @@ gparted "GUI disk partition manager" on
 ))
 
 # X11
-PACKAGES+=($(dialog --stdout --checklist "X11 Core:" 80 80 13 \
+PACKAGES+=($(dialog --stdout --checklist "X11 Core:" 80 80 12 \
 xorg "Xorg graphics server package group" on \
 xorg-xinit "Manually start Xorg server" on \
 xorg-xsetroot "Change cursor" on \
@@ -60,7 +60,7 @@ lxappearance "X GTK theme switcher" on \
 ))
 
 # X11 Desktop Environments, Window Managers:
-PACKAGES+=($(dialog --stdout --checklist "X11 Desktops/Window Managers:" 50 80 14 \
+PACKAGES+=($(dialog --stdout --checklist "X11 Desktops/Window Managers:" 50 80 12 \
 xmonad "X Tiling window manager" on \
 xmonad-contrib "Extentions for Xmonad" on \
 xmobar "Minimal statusbar (for xmonad)" on \
@@ -72,14 +72,14 @@ polybar "Status bar for bspwm" on \
 sxhkd "X hotkey daemon (for bspwm)" on \
 kdocker "Dock any window" on \
 dmenu "Plain X run launcher" on \
-pasystray "Tray icon for pulseaudio" on \
 trayer "GTK2-based system tray" on \
-network-manager-applet "Tray icon for network-manager" on
 ))
 
-# Login Managers/Lock Screens:
-PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 1 \
+# General UI:
+PACKAGES+=($(dialog --stdout --checklist "General UI:" 30 80 3 \
 sddm "QML-based login-manager" on \
+network-manager-applet "Tray icon for network-manager" on \
+rofi "Window switcher and run launcher" on
 ))
 
 # Plasma
@@ -113,20 +113,29 @@ arc-icon-theme "Arc icon theme" on \
 papirus-icon-theme "Papirus icon theme" on
 ))
 
+
+# Pulse Audio:
+PACKAGES+=($(dialog --stdout --checklist "(Deprecated) Pulse Audio:" 20 80 5 \
+pulseaudio "General-purpose sound server" off \
+pulseaudio-alsa "For pulseaudio to manage ALSA" off \
+pulseaudio-bluetooth "Pulseaudio bluetooth audio support" off \
+pulseaudio-jack "Pulseaudio JACK sink, source, dbus" off \
+pulseaudio-equalizer "Pulseaudio equalizer" off
+))
+
 # Audio Setup:
-PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 12 \
-pulseaudio "General-purpose sound server" on \
-pulseaudio-alsa "For pulseaudio to manage ALSA" on \
-pulseaudio-bluetooth "Pulseaudio bluetooth audio support" on \
-pulseaudio-jack "Pulseaudio JACK sink, source, dbus" on \
-pulseaudio-equalizer "Pulseaudio equalizer" on \
+PACKAGES+=($(dialog --stdout --checklist "Audio/Bluetooth Setup:" 20 80 11 \
+pipewire "New audio system" on \
+pipewire-pulse "Pulseaudio compatability" on \
+pipewire-alsa "ALSA compatability" on \
+pipewire-jack "JACK compatability" on \
+wireplumber "Session manager for pipewire" on \
+pasystray "Tray icon for pulseaudio/pipewire-pulse (not required for DE)" on \
+pavucontrol "Graphical pulseaudio/pipewire-pulse control" on
 alsa-utils "ALSA utilities" on \
-pavucontrol "Graphical pulseaudio control" on \
-pavumeter "(AUR) Volume meter for pulseaudio channels" on \
-paman "(AUR) Simple pulseaudio manager" on \
 bluez "Bluetooth protocol stack" on \
 bluez-utils "Bluetooth utility" on \
-blueman "Bluetooth manager" on \
+blueman "Bluetooth manager" on
 ))
 
 # Browsers:
@@ -163,7 +172,7 @@ nbtexplorer-bin "(AUR) Open .nbt files for minecraft" on
 # Document/Text Editors:
 PACKAGES+=($(dialog --stdout --checklist "Document/Text Editors:" 40 80 6 \
 libreoffice-fresh "" on \
-vscodium "(AUR) Open source version of VSCode" \
+vscodium-bin "(AUR) Open source version of VSCode" \
 neovim "Better vim" on \
 emacs "Complicated editor" on \
 gedit "Graphical text editor" on \
@@ -178,7 +187,6 @@ arduino-avr-core "Needed for arduino" on \
 valgrind "Memory leak checker" on \
 rust "" on \
 jre-openjdk "OpenJDK full java runtime environment" on \
-python-pip "Python package manager" on \
 python-pipx "Python package manager (Arch)" on \
 unityhub "(AUR) Unity game engine installer" on \
 dotnet-runtime ".NET Core runtime (needed for unity)" on \
@@ -216,9 +224,7 @@ moc-pulse-svn "(AUR) Terminal music player" on \
 spotify-launcher "" on \
 polybar-spotify-module "(AUR)" on \
 qsynth "Qt GUI for fluidsynth" on \
-jack "Low-latency audio server for music (needed by qsynth)" on \
-qjackctl "Qt GUI front-end for jack" on \
-cadence "Another GUI front-end for jack" on \
+qpwgraph "Qt GUI front-end for pipewire-jack" on \
 musescore "Sheet music creation" on \
 guitarix "Guitar amp and FX using jack" on \
 lmms "DAW" on \
@@ -235,11 +241,12 @@ gcc-fortran "Needed for octave" on
 ))
 
 # Virtual Machines:
-PACKAGES+=($(dialog --stdout --checklist "Virtual Machines:" 30 80 6 \
-qemu "" on \
-virt-manager "Front-end for qemu" on \
-ebtables "Needed for qemu" on \
-dnsmasq "Needed for qemu" on \
+PACKAGES+=($(dialog --stdout --checklist "Virtual Machines:" 30 80 2 \
+#TODO: Update qemu
+#qemu "" on \
+#virt-manager "Front-end for qemu" on \
+#ebtables "Needed for qemu" on \
+#dnsmasq "Needed for qemu" on \
 virtualbox "" on \
 virtualbox-host-modules-arch "Needed for virtualbox" on
 ))
@@ -288,7 +295,7 @@ soapyrtlsdr "Needed for soapy SDR driver for RTL-SDR" on \
 ))
 
 # Other Apps
-PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 21 \
+PACKAGES+=($(dialog --stdout --checklist "Other Apps:" 50 80 20 \
 stellarium "Planetarium software" on \
 baobab "GUI directory tree analyzer" on \
 android-file-transfer "Android MTP client" on \
@@ -296,20 +303,19 @@ scrcpy "Display and control android device" on \
 grub-customizer "GUI grub2 settings manager" on \
 shellcheck "Shell script analysis" on \
 calcurse "Calendar and organizer" on \
-rofi "Window switcher and run launcher" on \
 keepassxc "Password organizer" on \
 yt-dlp "Download youtube audio and video" on \
 minicom "Serial communication" on \
 kiwix-desktop "Offline reader for web content (expecially wikipedia)" on \
 macchanger "Change MAC address" on \
 newsboat "Terminal RSS/atom feed reader" on \
-anki "(AUR) Flash card program" on \
+anki "Flash card program" on \
 rpi-imager "Flash images to card for RPi" on \
 ltspice "(AUR) SPICE simulator" on \
 kicad "Electronic schematic and PCB design tools" on \
 kicad-library "KiCAD symbol, footprint, and template libraries" on \
 kicad-library-3d "KiCAD 3D model libraries" on \
-wike "(AUR) Wikipedia viewer" on \
+wike "Wikipedia viewer" on \
 ))
 
 # Fun stuff:
@@ -359,7 +365,7 @@ fi
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | librewolf | networkmanager-dmenu-git | polybar-spotify-module | pavumeter | paman | anki | rtcqs | ltspice | stm32cubeide | srdpp-git | dump1090 | vscodium-bin)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | polybar-spotify-module | rtcqs | ltspice | stm32cubeide | sdrpp-git | dump1090 | vscodium-bin | snapd)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/
