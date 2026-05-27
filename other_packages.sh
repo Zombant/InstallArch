@@ -83,8 +83,9 @@ rofi "Window switcher and run launcher" on
 ))
 
 # Plasma
-PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 6 \
+PACKAGES+=($(dialog --stdout --checklist "Login Managers/Lock Screens:" 10 80 7 \
 plasma-desktop "KDE Plasme DE" on \
+kscreen "Display settings" on \
 plasma-pa "Volume tray icon" on \
 sddm "QML-based login-manager" on \
 sddm-kcm "QML-based login-manager" on \
