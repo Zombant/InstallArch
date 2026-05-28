@@ -181,10 +181,10 @@ nano "Terminal text editor" on \
 ))
 
 # Development:
-PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 21 \
+PACKAGES+=($(dialog --stdout --checklist "Development:" 40 80 20 \
 android-studio "(AUR)" on \
-arduino "" on \
-arduino-avr-core "Needed for arduino" on \
+arduino "Arduino CLI" on \
+arduino-ide-bin "(AUR) Arduino GUI" on \
 valgrind "Memory leak checker" on \
 rust "" on \
 jre-openjdk "OpenJDK full java runtime environment" on \
@@ -366,7 +366,7 @@ fi
 for item in "${PACKAGES[@]}"
 do
     case "$item" in
-        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | polybar-spotify-module | rtcqs | ltspice | stm32cubeide | sdrpp-git | dump1090 | vscodium-bin | snapd)
+        brave-bin | android-studio | paru-bin | zoom | joplin-appimage | blugon | minecraft-launcher |  moc-pulse-svn | ttf-ms-fonts | ttf-vista-fonts | unityhub | nbtexplorer-bin | polybar-spotify-module | rtcqs | ltspice | stm32cubeide | sdrpp-git | dump1090 | vscodium-bin | snapd | arduino-ide-bin)
             location=$(pwd)
             mkdir /home/${1}/clones/
             cd /home/${1}/clones/

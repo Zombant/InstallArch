@@ -107,7 +107,7 @@ done
 
 
 # Install and set up other necessities for a base install
-pacman -S git vim openssh htop --noconfirm
+pacman -S git vim openssh htop less --noconfirm
 
 # Copy github setup script into home directory
 curl -L https://raw.githubusercontent.com/Zombant/InstallArch/master/github_setup.sh > /home/$USERNAME/github_setup.sh
